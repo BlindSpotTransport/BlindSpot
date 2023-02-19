@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterCircuitController">
+   <children>
+      <Label layoutX="72.0" layoutY="81.0" text="Départ:" />
+      <Label layoutX="72.0" layoutY="130.0" text="Arrivée:" />
+      <TextField fx:id="TextDepart" layoutX="134.0" layoutY="78.0" promptText="Saisir le départ" />
+      <TextField fx:id="TextArrivee" layoutX="134.0" layoutY="126.0" promptText="Saisir L'arrivée" />
+      <Button fx:id="AjouterID" layoutX="29.0" layoutY="200.0" mnemonicParsing="false" onAction="#AjouterAction" text="Ajouter" textFill="#1562e8" />
+      <Button fx:id="SupprimerID" layoutX="181.0" layoutY="200.0" mnemonicParsing="false" onAction="#SupprimerAction" text="Supprimer" textFill="#da1e1e" />
+      <Button fx:id="ModifierID" layoutX="102.0" layoutY="200.0" mnemonicParsing="false" onAction="#ModifierAction" text="Modifier" textFill="#2f834b" />
+      <TableView fx:id="table" layoutX="346.0" layoutY="39.0" onMouseClicked="#getSelected" prefHeight="200.0" prefWidth="217.0">
+        <columns>
+          <TableColumn fx:id="IDCol" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="DepartCol" prefWidth="75.0" text="Départ" />
+            <TableColumn fx:id="ArriveeCol" prefWidth="75.0" text="Arrivée" />
+        </columns>
+      </TableView>
+      <Label layoutX="72.0" layoutY="39.0" text="ID:" />
+      <TextField fx:id="ifid" layoutX="134.0" layoutY="35.0" />
+      <Pane prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
