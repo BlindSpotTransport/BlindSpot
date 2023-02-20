@@ -12,9 +12,9 @@ import java.sql.Date;
  * @author hp
  */
 public class Evenement {
-    private int id_eve;
-    private String titre_eve,desc_eve;
-    private Date date_deb_eve ,date_fin_eve;
+     int id_eve;
+     String titre_eve,desc_eve;
+     Date date_deb_eve ,date_fin_eve;
 
     public Evenement() {
         
