@@ -95,7 +95,7 @@ public class AjouterAlerteController implements Initializable {
             alert.setContentText("Veuillez remplir toutes les champs");
             alert.showAndWait();
 
-        } else {
+        }else {
             getQuery();
             insert();
             clean();
