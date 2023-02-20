@@ -19,7 +19,7 @@ import java.sql.Date;
  * @author hp
  */
 public class Taktak {
-   /* public static void main(String[] args) {
+   public static void main(String[] args) {
         
 //        Alerte a = new Alerte("panne","bus_panne","ben_arous",new Date(2014, 02, 13),new Date(2014, 02, 18));
 //        Alerte a1 = new Alerte("greve","metro","tunis",new Date(2015, 02, 13),new Date(2018, 02, 18));
@@ -73,7 +73,13 @@ public class Taktak {
          //es.modifier(e);
          //e.setId_eve(4);
          //es.supprimer(e);
+         OffresService os = new OffresService();
+        System.out.println(os.afficher());
+     
         
     }
-    */
+    
+    
+    
+    
 }

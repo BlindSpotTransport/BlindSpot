@@ -86,10 +86,13 @@ public class OffresService implements NewInterface<Offres>{
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
-                Offres o = new Offres(s.getInt("id_offre_eve"),s.getInt("id_offre_eve"),s.getInt("idU"),s.getInt("duree_offre"),s.getFloat("budget_offre")
-                ,s.getString("img_src_offre"),s.getString("statut_offre"), s.getString("titre_eve"),
-                 s.getString("desc_eve"), s.getDate("date_deb_eve"),s.getDate("date_fin_eve"));
-                 offres.add(o);
+//                Offres o = new Offres(s.getInt("id_offre_eve"),s.getInt("id_offre_eve"),s.getInt("idU"),s.getInt("duree_offre"),s.getFloat("budget_offre")
+//                ,s.getString("img_src_offre"),s.getString("statut_offre"), s.getString("titre_eve"),
+//                 s.getString("desc_eve"), s.getDate("date_deb_eve"),s.getDate("date_fin_eve"));
+                Offres o1 = new Offres(s.getInt("id_offre_eve"),s.getString("titre_eve"),s.getString("desc_eve"),s.getDate("date_deb_eve"),s.getDate("date_fin_eve"));
+                
+                 offres.add(o1);
+                 
                 
               
             }

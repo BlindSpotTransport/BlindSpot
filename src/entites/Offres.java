@@ -37,6 +37,16 @@ public class Offres  extends Evenement {
         this.statut_offre = statut_offre;
     }
 
+    public Offres(int id_offre_eve) {
+        this.id_offre_eve = id_offre_eve;
+    }
+
+    public Offres(int id_offre_eve, String titre_eve, String desc_eve, Date date_deb_eve, Date date_fin_eve) {
+        super(titre_eve, desc_eve, date_deb_eve, date_fin_eve);
+        this.id_offre_eve = id_offre_eve;
+        
+    }
+
     
 
     public int getId_offre_eve() {
