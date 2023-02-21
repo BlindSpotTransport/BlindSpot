@@ -29,7 +29,7 @@ public class MainFX extends Application{
          
              try {
               Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterCircuit.fxml"));
-              Scene scene = new Scene(root, 300, 250);   
+              Scene scene = new Scene(root, 600, 500);   
               primaryStage.setTitle("CIRCUIT");
               primaryStage.setScene(scene);
               primaryStage.show();

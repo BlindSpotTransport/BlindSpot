@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Alert;
 import tools.MaConnection;
 
 /**
@@ -37,9 +38,13 @@ public class ServiceCircuit implements InterfaceCircuit{
             ste.setString(1, c.getDepartC());
             ste.setString(2, c.getArriveeC());
             ste.executeUpdate();
-            System.out.println("Circuit ajoutée");
+            System.out.println("Circuit added successfully");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            Alert alert = new Alert (Alert.AlertType.ERROR);  
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+           alert.setContentText("Circuit already exist");
+           alert.showAndWait();
         }
     }
 
@@ -64,13 +69,14 @@ public class ServiceCircuit implements InterfaceCircuit{
     }
 
     @Override
-    public List findById(int idCircuit) {
+    public List findBy(String departC, String arriveeC) {
          List<Circuit> circuits = new ArrayList<>(); 
         
    try {
-   String sql ="select * from `circuit` where idCircuit = ?";
+   String sql ="select * from `circuit` where departC = ? or arriveeC = ?";
    PreparedStatement ste = cnx.prepareStatement(sql);
-   ste.setInt(1, idCircuit);
+   ste.setString(1, departC);
+   ste.setString(2, arriveeC);
    ResultSet rs = ste.executeQuery();
    while (rs.next())  {
        
@@ -91,7 +97,7 @@ System.out.println(ex.getMessage());
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, c.getIdCircuit());
             ste.executeUpdate();
-            System.out.println("Circuit supprimée");
+            System.out.println("Circuit deleted successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -106,7 +112,7 @@ System.out.println(ex.getMessage());
             ste.setString(2, arriveeC);
             ste.setInt(3,c.getIdCircuit());
             ste.executeUpdate();
-            System.out.println("Circuit modifiée");
+            System.out.println("Circuit updated successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

@@ -49,8 +49,8 @@ public class PIDev {
        // SC.ajouterCircuit(c4);
        //SC.supprimerCircuit(c4);
      // SC.modifierCiruit("Barcelone", "Manouba", c1);
-       // System.out.println(SC.getAll());
-      //  System.out.println(SC.findById(4));
+        System.out.println(SC.getAll());
+      // System.out.println(SC.findById(4));
        
        
   

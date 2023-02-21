@@ -15,7 +15,7 @@ import java.util.List;
 public interface InterfaceStation <S>{
      public void ajouterStation(Station s);
     public List<S> getAll();
-    public List<S> findById(int id);
+    public List<S> findByNom(String nomS);
     public void supprimerStation(Station s);
     public void modifierStation(String nomS, Station s);
 }

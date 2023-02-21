@@ -6,26 +6,26 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterCircuitController">
    <children>
-      <Label layoutX="72.0" layoutY="81.0" text="Départ:" />
-      <Label layoutX="72.0" layoutY="130.0" text="Arrivée:" />
-      <TextField fx:id="TextDepart" layoutX="134.0" layoutY="78.0" promptText="Saisir le départ" />
-      <TextField fx:id="TextArrivee" layoutX="134.0" layoutY="126.0" promptText="Saisir L'arrivée" />
-      <Button fx:id="AjouterID" layoutX="29.0" layoutY="200.0" mnemonicParsing="false" onAction="#AjouterAction" text="Ajouter" textFill="#1562e8" />
-      <Button fx:id="SupprimerID" layoutX="181.0" layoutY="200.0" mnemonicParsing="false" onAction="#SupprimerAction" text="Supprimer" textFill="#da1e1e" />
-      <Button fx:id="ModifierID" layoutX="102.0" layoutY="200.0" mnemonicParsing="false" onAction="#ModifierAction" text="Modifier" textFill="#2f834b" />
-      <TableView fx:id="table" layoutX="346.0" layoutY="39.0" onMouseClicked="#getSelected" prefHeight="200.0" prefWidth="217.0">
+      <Label layoutX="72.0" layoutY="191.0" text="Départ:" />
+      <Label layoutX="71.0" layoutY="226.0" text="Arrivée:" />
+      <TextField fx:id="TextDepart" layoutX="134.0" layoutY="174.0" promptText="Saisir le départ" />
+      <TextField fx:id="TextArrivee" layoutX="134.0" layoutY="213.0" promptText="Saisir L'arrivée" />
+      <Button fx:id="AjouterID" layoutX="31.0" layoutY="300.0" mnemonicParsing="false" onAction="#AjouterAction" text="Add" textFill="#1562e8" />
+      <Button fx:id="SupprimerID" layoutX="186.0" layoutY="300.0" mnemonicParsing="false" onAction="#SupprimerAction" text="Delete" textFill="#da1111" />
+      <Button fx:id="ModifierID" layoutX="102.0" layoutY="300.0" mnemonicParsing="false" onAction="#ModifierAction" text="Edit" textFill="#2f834b" />
+      <TableView fx:id="table" layoutX="319.0" layoutY="59.0" onMouseClicked="#getSelected" prefHeight="231.0" prefWidth="243.0">
         <columns>
           <TableColumn fx:id="IDCol" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="DepartCol" prefWidth="75.0" text="Départ" />
             <TableColumn fx:id="ArriveeCol" prefWidth="75.0" text="Arrivée" />
         </columns>
       </TableView>
-      <Label layoutX="72.0" layoutY="39.0" text="ID:" />
-      <TextField fx:id="ifid" layoutX="134.0" layoutY="35.0" />
-      <Pane prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="80.0" layoutY="148.0" text="ID:" />
+      <TextField fx:id="ifid" layoutX="134.0" layoutY="135.0" />
+      <TextField fx:id="TextRecherche" layoutX="58.0" layoutY="52.0" promptText="Fill the case" />
+      <Button fx:id="rechercheID" layoutX="224.0" layoutY="50.0" mnemonicParsing="false" onAction="#RechercherAction" text="Search" textFill="#867d7d" />
    </children>
 </AnchorPane>

@@ -23,14 +23,18 @@ public class MainFX2 extends Application{
       @Override
     public void start(Stage primaryStage) {
         
+        
          {
             
          
              try {
               Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterStation.fxml"));
-              Scene scene = new Scene(root, 300, 250);   
+              
+              Scene scene = new Scene(root, 600, 500);  
+             
               primaryStage.setTitle("Station");
               primaryStage.setScene(scene);
+             
               primaryStage.show();
              } catch (IOException ex) {
                  Logger.getLogger(MainFX.class.getName()).log(Level.SEVERE, null, ex);
@@ -38,6 +42,22 @@ public class MainFX2 extends Application{
     
     }
     }
+   
+//    public void start1(Stage secondaryStage){
+//         try {
+//              
+//              Parent root1 = FXMLLoader.load(getClass().getResource("../gui/AjouterCircuit.fxml"));
+//                
+//              Scene scene1 = new Scene(root1, 300, 250);
+//             // primaryStage.setTitle("Station");
+//              
+//              secondaryStage.setScene(scene1);
+//              secondaryStage.show();
+//             } catch (IOException ex) {
+//                 Logger.getLogger(MainFX.class.getName()).log(Level.SEVERE, null, ex);
+//             }
+//        
+//    }
      /**
      * @param args the command line arguments
      */

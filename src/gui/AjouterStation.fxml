@@ -13,10 +13,10 @@
       <Label layoutX="28.0" layoutY="175.0" text="Adresse:" />
       <TextField fx:id="TextNom" layoutX="101.0" layoutY="128.0" promptText="Saisir Nom" />
       <TextField fx:id="TextAdresse" layoutX="101.0" layoutY="171.0" promptText="Saisir Adresse" />
-      <Button layoutX="22.0" layoutY="225.0" mnemonicParsing="false" onAction="#AjouterAction" text="Ajouter" textFill="#1763e5" />
-      <Button layoutX="95.0" layoutY="225.0" mnemonicParsing="false" onAction="#ModifierAction" text="Modifier" textFill="#2f834b" />
-      <Button layoutX="175.0" layoutY="225.0" mnemonicParsing="false" onAction="#SupprimerAction" text="Supprimer" textFill="#da1e1e" />
-      <TableView fx:id="table" layoutX="321.0" layoutY="65.0" onMouseClicked="#getSelected" prefHeight="200.0" prefWidth="242.0">
+      <Button layoutX="22.0" layoutY="225.0" mnemonicParsing="false" onAction="#AjouterAction" text="Add" textFill="#1763e5" />
+      <Button layoutX="95.0" layoutY="225.0" mnemonicParsing="false" onAction="#ModifierAction" text="Edit" textFill="#2f834b" />
+      <Button layoutX="175.0" layoutY="225.0" mnemonicParsing="false" onAction="#SupprimerAction" text="Delete" textFill="#da1e1e" />
+      <TableView fx:id="table" layoutX="321.0" layoutY="65.0" onMouseClicked="#getSelected" prefHeight="242.0" prefWidth="228.0">
         <columns>
           <TableColumn fx:id="IDCol" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="nomCol" prefWidth="75.0" text="Nom" />
@@ -25,5 +25,7 @@
       </TableView>
       <Label layoutX="42.0" layoutY="84.0" text="ID:" />
       <TextField fx:id="ifid" layoutX="95.0" layoutY="80.0" />
+      <TextField fx:id="TextRechercher" layoutX="42.0" layoutY="25.0" promptText="Fill the case" />
+      <Button layoutX="218.0" layoutY="25.0" mnemonicParsing="false" onAction="#RechercherAction" text="Searsh" textFill="#867d7d" />
    </children>
 </AnchorPane>

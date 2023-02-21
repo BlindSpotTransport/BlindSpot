@@ -46,6 +46,8 @@ public class AjouterStationController implements Initializable {
     @FXML
     private TextField ifid;
     ServiceStation ss = new ServiceStation();
+    @FXML
+    private TextField TextRechercher;
 
     /**
      * Initializes the controller class.
@@ -63,11 +65,11 @@ public class AjouterStationController implements Initializable {
 
     @FXML
     private void AjouterAction(ActionEvent event) {
-        if (TextNom.getText() == null | TextAdresse.getText() == null){
+        if (TextNom.getText().equals("") && TextAdresse.getText().equals("")){
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("fill in all fields");
+           alert.setContentText("fill all the cases");
            alert.showAndWait();
         }else{
         Station s= new Station();
@@ -76,6 +78,7 @@ public class AjouterStationController implements Initializable {
         s.setAdresse(TextAdresse.getText());
         ss.ajouterStation(s);
         reset();
+        refresh();
         
     }
     }
@@ -103,6 +106,7 @@ public class AjouterStationController implements Initializable {
         String nom=s.getNomS();
         ss.modifierStation(nom,s);
         reset();
+        refresh();
     }
     }
 
@@ -127,6 +131,7 @@ int x=Integer.parseInt(ifid.getText());
         System.out.println(x);
 
         ss.supprimerStation(s);
+        refresh();
     }
     }
     private void reset() {
@@ -145,5 +150,36 @@ int x=Integer.parseInt(ifid.getText());
         TextNom.setText(nomCol.getCellData(index).toString());
         TextAdresse.setText(adresseCol.getCellData(index).toString());
         
+    }
+    private void refresh(){
+         List<Station> stat = ss.getAll();
+        ObservableList<Station> listStat = FXCollections.observableArrayList(stat);
+        IDCol.setCellValueFactory(new PropertyValueFactory<>("IdStation"));
+        nomCol.setCellValueFactory(new PropertyValueFactory<>("nomS"));
+        adresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        table.setItems(listStat);
+         }
+
+    @FXML
+     private void RechercherAction(ActionEvent event) {
+         if (TextRechercher.getText().equals(nomCol)) {
+       // if (TextRecherche== null ){
+            Alert alert = new Alert (Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+           alert.setContentText("Fill the case");
+           alert.showAndWait();
+        }else{
+             String nom = TextRechercher.getText();
+             
+         List<Station> stat = ss.findByNom(nom);
+        ObservableList<Station> listStat = FXCollections.observableArrayList(stat);
+        IDCol.setCellValueFactory(new PropertyValueFactory<>("IdStation"));
+        nomCol.setCellValueFactory(new PropertyValueFactory<>("nomS"));
+        adresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        table.setItems(listStat);
+        
+       
+    }
     }
 }

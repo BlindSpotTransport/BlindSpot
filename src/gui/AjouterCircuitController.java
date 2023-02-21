@@ -7,6 +7,7 @@ package gui;
 
 import entities.Circuit;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -51,7 +52,11 @@ public class AjouterCircuitController implements Initializable {
     private TextField ifid;
     @FXML
     private TableColumn<Circuit, Integer> IDCol;
-    int x;
+
+    @FXML
+    private TextField TextRecherche;
+    @FXML
+    private Button rechercheID;
     /**
      * Initializes the controller class.
      */
@@ -68,11 +73,12 @@ public class AjouterCircuitController implements Initializable {
 
     @FXML
     private void AjouterAction(ActionEvent event) {
-        if (TextDepart.getText() == null | TextArrivee.getText() == null){
-            Alert alert = new Alert (Alert.AlertType.ERROR);
+  
+      if (TextDepart.getText().equals("") && TextArrivee.getText().equals("")) {
+            Alert alert = new Alert (Alert.AlertType.ERROR);  
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("fill in all fields");
+           alert.setContentText("fill all the case");
            alert.showAndWait();
         }else{
         Circuit c= new Circuit();
@@ -80,10 +86,16 @@ public class AjouterCircuitController implements Initializable {
         c.setDepartC(TextDepart.getText());
         c.setArriveeC(TextArrivee.getText());
         sc.ajouterCircuit(c);
-        reset();
-        
+        reset(); 
+        refresh();
+      
+      }
     }
-    }
+
+              
+          
+    
+    
 
     @FXML
     private void SupprimerAction(ActionEvent event) {
@@ -102,11 +114,12 @@ public class AjouterCircuitController implements Initializable {
 //        System.out.println( TextDepart.getText()) ;
 //        c.setArriveeC(TextArrivee.getText());
 //        System.out.println( TextArrivee.getText()) ;
-int x=Integer.parseInt(ifid.getText());
+        int x=Integer.parseInt(ifid.getText());
         c.setIdCircuit(x);
         System.out.println(x);
 
         sc.supprimerCircuit(c);
+        refresh();
     }
         
     }
@@ -136,6 +149,7 @@ int x=Integer.parseInt(ifid.getText());
         String Arriveee=c.getArriveeC();
         sc.modifierCircuit(Departt,Arriveee,c);
         reset();
+        refresh();
     }
     }
 
@@ -155,7 +169,42 @@ int x=Integer.parseInt(ifid.getText());
         ifid.setText(IDCol.getCellData(index).toString());
         TextDepart.setText(DepartCol.getCellData(index).toString());
         TextArrivee.setText(ArriveeCol.getCellData(index).toString());
+        //TestDep.setText(DepartCol.getCellData(index).toString());
+        //testArr.setText(ArriveeCol.getCellData(index).toString());
+    }
+
+    @FXML
+    private void RechercherAction(ActionEvent event) {
+         if (TextRecherche.getText().equals(DepartCol)) {
+       // if (TextRecherche== null ){
+            Alert alert = new Alert (Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+           alert.setContentText("Fill the case");
+           alert.showAndWait();
+        }else{
+             String departC = TextRecherche.getText();
+             String arriveeC = TextRecherche.getText();
+         List<Circuit> cir = sc.findBy(departC, arriveeC);
+        ObservableList<Circuit> listCir = FXCollections.observableArrayList(cir);
+        IDCol.setCellValueFactory(new PropertyValueFactory<>("IdCircuit"));
+        DepartCol.setCellValueFactory(new PropertyValueFactory<>("departC"));
+        ArriveeCol.setCellValueFactory(new PropertyValueFactory<>("arriveeC"));
+        table.setItems(listCir);
+        
+       
+    }
+    }
+         
+         private void refresh(){
+         List<Circuit> cir = sc.getAll();
+        ObservableList<Circuit> listCir = FXCollections.observableArrayList(cir);
+        IDCol.setCellValueFactory(new PropertyValueFactory<>("IdCircuit"));
+        DepartCol.setCellValueFactory(new PropertyValueFactory<>("departC"));
+        ArriveeCol.setCellValueFactory(new PropertyValueFactory<>("arriveeC"));
+        table.setItems(listCir);
+         }
         
     }
     
-}
+

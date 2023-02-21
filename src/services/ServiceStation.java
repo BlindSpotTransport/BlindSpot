@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Alert;
 import tools.MaConnection;
 
 /**
@@ -37,9 +38,13 @@ public class ServiceStation implements InterfaceStation {
             ste.setString(1, s.getNomS());
             ste.setString(2, s.getAdresse());
             ste.executeUpdate();
-            System.out.println("Station ajoutée");
+            System.out.println("Circuit added successfully");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            Alert alert = new Alert (Alert.AlertType.ERROR);  
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+           alert.setContentText("Circuit already exist");
+           alert.showAndWait();
         }
 
     }
@@ -65,13 +70,13 @@ public class ServiceStation implements InterfaceStation {
     }
 
     @Override
-    public List findById(int idStation) {
+    public List findByNom(String nomS) {
          List<Station> stations = new ArrayList<>(); 
         
    try {
-   String sql ="select * from `station` where idStation = ?";
+   String sql ="select * from `station` where nomS = ?";
    PreparedStatement ste = cnx.prepareStatement(sql);
-   ste.setInt(1, idStation);
+   ste.setString(1, nomS);
    ResultSet rs = ste.executeQuery();
    while (rs.next())  {
        
@@ -94,7 +99,7 @@ System.out.println(ex.getMessage());
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, s.getIdStation());
             ste.executeUpdate();
-            System.out.println("Station supprimée");
+            System.out.println("Circuit deleted successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -108,7 +113,7 @@ System.out.println(ex.getMessage());
             ste.setString(1, nomS);
             ste.setInt(2,s.getIdStation());
             ste.executeUpdate();
-            System.out.println("Station modifiée");
+            System.out.println("Circuit updated successfully");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
