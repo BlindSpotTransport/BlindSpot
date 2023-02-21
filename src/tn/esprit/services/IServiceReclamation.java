@@ -15,7 +15,6 @@ public interface IServiceReclamation <T> {
      public void ajouter_reclamation (T t);
     public  List<T> afficher_reclamation (); 
     public void modifier_reclamation(T t);
-    public void modifier_reclamation1(T t);
     public void supprimer_reclamation(T t);
     public int compter_rec();
     

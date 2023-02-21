@@ -5,6 +5,10 @@
  */
 package tn.esprit.main;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.FormatStyle;
+import javafx.util.converter.LocalDateStringConverter;
 import tn.esprit.entities.Commentaire;
 import tn.esprit.entities.Evaluation;
 import tn.esprit.entities.Reclamation;
@@ -33,13 +37,15 @@ public class Test {
 //  
 //  sc.afficher_commentaire(); 
 ServiceReclamation sr = new ServiceReclamation();
-Date createdat = new Date (123,02,14);
-Date createddate = new Date (123,05,22);
-Reclamation re1 = new Reclamation (createdat,"J ai un probleme avec la reservation ","Hold");
-Reclamation re2 = new Reclamation (5,createddate,"J ai un probleme avec l application","traitée");
-//sr.ajouter_reclamation(re1) ;
+LocalDate createdat = LocalDate.of(2023, 2, 20);
+LocalDate createdat1 = LocalDate.of(2023, 3, 10);
+Reclamation re3 = new Reclamation ("Semi","saafi",createdat,"J ai un probleme avec la reservation ");
+Reclamation re4 = new Reclamation ("Amir","Razi",createdat1,"Il y a un bug ");
+
+sr.ajouter_reclamation(re3) ;
+sr.ajouter_reclamation(re4) ;
 // sr.afficher_reclamation();
- sr.modifier_reclamation1(re2);
+// sr.modifier_reclamation(re2);
 //  sr.supprimer_reclamation(re2);
 ServiceEvaluation se = new ServiceEvaluation();
 Evaluation eva1 = new Evaluation(5); 

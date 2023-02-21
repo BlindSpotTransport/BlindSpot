@@ -5,7 +5,8 @@
  */
 package tn.esprit.entities;
 
-import java.sql.Date;
+import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,25 +14,54 @@ import java.sql.Date;
  */
 public class Reclamation {
     private int idr ; 
-    private Date dater  ; 
-    private String descrec ;  
-    private String statusr  ; 
+    private String nom ; 
+    private String prenom ;
+    private LocalDate dater  ; 
+    private String descrec ;   
 
     public Reclamation() {
     }
-
-    public Reclamation(int idr, Date dater , String descrec, String statusr) {
+ public Reclamation(int idr, String nom, String prenom, LocalDate dater, String descrec) {
         this.idr = idr;
-        this.dater  = dater ;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dater = dater;
         this.descrec = descrec;
-        this.statusr = statusr;
     }
 
-    public Reclamation(Date dater , String descrec, String statusr) {
-        this.dater  = dater ;
+    public Reclamation(String nom, String prenom, LocalDate dater, String descrec) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dater = dater;
         this.descrec = descrec;
-        this.statusr = statusr;
     }
+
+    public Reclamation(String nom, String prenom, String descrec) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.descrec = descrec;
+    }
+
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+   
+
+ 
 
     public Reclamation(int idr) {
         this.idr = idr;
@@ -41,7 +71,7 @@ public class Reclamation {
         return idr;
     }
 
-    public Date getDater() {
+    public LocalDate getDater() {
         return dater;
     }
 
@@ -51,7 +81,7 @@ public class Reclamation {
         this.idr = idr;
     }
 
-    public void setDater(Date dater) {
+    public void setDater(LocalDate dater) {
         this.dater = dater;
     }
 
@@ -63,23 +93,20 @@ public class Reclamation {
         return descrec;
     }
 
-    public String getStatusr() {
-        return statusr;
-    }
-
+ 
 
 
     public void setDescrec(String descrec) {
         this.descrec = descrec;
     }
 
-    public void setStatusr(String statusr) {
-        this.statusr = statusr;
-    }
+   
 
     @Override
     public String toString() {
-        return "reclamation{" + "idr=" + idr + ", dater =" + dater  + ", descrec=" + descrec + ", statusr=" + statusr + '}';
+        return "Reclamation{" + "idr=" + idr + ", nom=" + nom + ", prenom=" + prenom + ", dater=" + dater + ", descrec=" + descrec + '}';
     }
+
+   
     
 }
