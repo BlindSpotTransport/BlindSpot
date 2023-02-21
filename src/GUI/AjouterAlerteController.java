@@ -138,7 +138,11 @@ public class AjouterAlerteController implements Initializable {
             preparedStatement.execute();
 
         } catch (SQLException ex) {
-            Logger.getLogger(AjouterAlerteController.class.getName()).log(Level.SEVERE, null, ex);
+         //   Logger.getLogger(AjouterAlerteController.class.getName()).log(Level.SEVERE, null, ex);
+         Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Duplicate");
+            alert.showAndWait();
         }
 
     }
