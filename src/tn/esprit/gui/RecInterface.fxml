@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.RecInterfaceController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ReclaInterfaceController">
    <children>
-      <AnchorPane id="AnchorPane" layoutY="4.0" prefHeight="540.0" prefWidth="861.0" style="-fx-background-color: white;" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" layoutX="-14.0" layoutY="2.0" prefHeight="540.0" prefWidth="861.0" style="-fx-background-color: white;" styleClass="mainFxmlClass">
          <children>
             <Pane layoutY="-27.0" prefHeight="99.0" prefWidth="862.0" style="-fx-background-color: #0598ff;">
                <children>
@@ -23,48 +23,44 @@
                   </Text>
                </children>
             </Pane>
-            <Text layoutX="14.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="42.50927734375">
+            <Text layoutX="25.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="42.50927734375">
                <font>
                   <Font size="19.0" />
                </font>
             </Text>
-            <Text layoutX="11.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" wrappingWidth="108.50927734375">
+            <Text layoutX="25.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" wrappingWidth="108.50927734375">
                <font>
                   <Font size="19.0" />
                </font>
             </Text>
             <TextArea fx:id="prenomRec" layoutX="125.0" layoutY="214.0" prefHeight="28.0" prefWidth="147.0" />
             <TextArea fx:id="nomRec" layoutX="125.0" layoutY="152.0" prefHeight="28.0" prefWidth="147.0" />
-            <Button fx:id="ajouterRec" layoutX="369.0" layoutY="472.0" mnemonicParsing="false" onAction="#addRec" onMouseClicked="#addRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Ajouter " textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <TableView fx:id="tableRec" layoutX="369.0" layoutY="199.0" onMouseClicked="#getSelected" onMouseEntered="#afficherReclamation" prefHeight="261.0" prefWidth="485.0">
+            <TableView fx:id="tableRec" layoutX="356.0" layoutY="199.0" onMouseClicked="#getSelected" onMouseEntered="#afficherReclamation" prefHeight="261.0" prefWidth="498.0">
                <columns>
                 
-                  <TableColumn fx:id="nom" prefWidth="103.0" text="Nom" />
-                  <TableColumn fx:id="prenom" prefWidth="103.0" text="Prenom" />
-                  <TableColumn fx:id="date" prefWidth="103.0" text="Date" />
-                  <TableColumn fx:id="desc" prefWidth="175.0" text="Description" />
+                  <TableColumn fx:id="nom" prefWidth="110.0" text="Nom" />
+                  <TableColumn fx:id="prenom" prefWidth="99.0" text="Prenom" />
+                  <TableColumn fx:id="date" prefWidth="107.0" text="Date" />
+                  <TableColumn fx:id="desc" prefWidth="180.0" text="Description" />
+                  <TableColumn fx:id="idr" prefWidth="155.0" text="id" />
                </columns>
             </TableView>
-            <Button fx:id="supprimerRec" layoutX="481.0" layoutY="472.0" mnemonicParsing="false" onAction="#deleteRec" onMouseClicked="#deleteRec" style="-fx-background-color: #0598ff;" text="Supprimer " textFill="WHITE">
+            <Button layoutX="481.0" layoutY="472.0" mnemonicParsing="false" onAction="#deleteRec" style="-fx-background-color: #0598ff;" text="Supprimer " textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="modifierRec" layoutX="592.0" layoutY="472.0" mnemonicParsing="false" onAction="#updateRec" onMouseClicked="#updateRec" style="-fx-background-color: #0598ff;" text="Modifier " textFill="WHITE">
+            <Button layoutX="592.0" layoutY="472.0" mnemonicParsing="false" onAction="#updateRec" style="-fx-background-color: #0598ff;" text="Modifier " textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Text layoutX="14.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="108.50927734375">
+            <Text layoutX="25.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="108.50927734375">
                <font>
                   <Font size="19.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="108.50927734375">
+            <Text layoutX="25.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="108.50927734375">
                <font>
                   <Font size="19.0" />
                </font>
@@ -77,12 +73,17 @@
                   <Font size="19.0" />
                </font>
             </Text>
-            <Button fx:id="Retourbtn" layoutX="66.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#retour" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="retour" textFill="WHITE">
+            <Button layoutX="66.0" layoutY="470.0" mnemonicParsing="false" onAction="#retourRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="retour" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
             <DatePicker fx:id="dateRec" layoutX="125.0" layoutY="285.0" promptText="Choisir la date" />
+            <Button layoutX="369.0" layoutY="472.0" mnemonicParsing="false" onAction="#AddRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

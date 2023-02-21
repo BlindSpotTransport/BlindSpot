@@ -53,9 +53,10 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
                 r.setNom(rs.getString("nom"));
                 r.setPrenom(rs.getString("prenom"));
                 r.setDater(rs.getDate("dater").toLocalDate()); 
-                r.setDescrec(rs.getString("descrec"));
-               
+                r.setDescrec(rs.getString("descrec"));   
+                
                 ReclamationsList.add(r);
+                
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
