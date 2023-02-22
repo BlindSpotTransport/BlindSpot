@@ -18,14 +18,14 @@ public class TypeAbn {
     private String dureeA;
 
     public TypeAbn(){}
-    public TypeAbn(Abonnement a,String dureeA, int prixA, Date dateExpA) {
+ /*   public TypeAbn(Abonnement a,String dureeA, int prixA, Date dateExpA) {
         this.idA = a.getIdA();
         this.idU = a.getIdU();
         this.dureeA = dureeA;
         this.prixA = prixA;
         this.dateExpA = dateExpA;
         
-    }
+    }*/
     
     public TypeAbn(int idA,int idU ,String dureeA, int prixA, Date dateExpA) {
         this.idA =idA;
@@ -42,7 +42,7 @@ public class TypeAbn {
         this.dureeA = dureeA;
         this.prixA = prixA;
         this.dateExpA = dateExpA;
-        
+       
     }
     public int getIdA() {
         return idA;

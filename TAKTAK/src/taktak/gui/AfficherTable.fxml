@@ -4,31 +4,39 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="782.0" style="-fx-background-color: #e8f1f4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taktak.gui.AfficherTableController">
+<AnchorPane id="AnchorPane" prefHeight="552.0" prefWidth="834.0" style="-fx-background-color: #f1f7f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taktak.gui.AfficherTableController">
    <children>
-      <Label contentDisplay="CENTER" layoutX="281.0" layoutY="35.0" prefHeight="46.0" prefWidth="220.0" text="Liste des Abonnements" textFill="#2e515f">
+      <Label contentDisplay="CENTER" layoutX="307.0" layoutY="35.0" prefHeight="46.0" prefWidth="220.0" text="Liste des Abonnements" textFill="#2e515f">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="16.0" layoutY="100.0" prefHeight="234.0" prefWidth="750.0" style="-fx-background-color: white;">
+      <TableView fx:id="tblAbn" layoutX="12.0" layoutY="147.0" prefHeight="383.0" prefWidth="810.0" style="-fx-background-color: white;">
         <columns>
-          <TableColumn prefWidth="68.7999849319458" text="IdA" />
-          <TableColumn prefWidth="81.60000610351562" text="IdU" />
-            <TableColumn prefWidth="75.0" text=" moyen" />
-            <TableColumn prefWidth="75.0" text="Date Debut" />
-            <TableColumn prefWidth="75.0" text="Date fin" />
-            <TableColumn prefWidth="75.0" text="Durée" />
-            <TableColumn prefWidth="75.0" text="Prix" />
-            <TableColumn prefWidth="75.0" text="Etudiant" />
-            <TableColumn prefWidth="75.0" text="Red Etud" />
-            <TableColumn prefWidth="75.0" text="Red Ev" />
+          <TableColumn fx:id="idaColumn" prefWidth="68.7999849319458" text="IdA" />
+          <TableColumn fx:id="iduColumn" prefWidth="81.60000610351562" text="IdU" />
+            <TableColumn fx:id="moyenColumn" prefWidth="75.0" text=" moyen" />
+            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date Debut" />
+            <TableColumn fx:id="imgColumn" prefWidth="75.0" text="image" />
+            <TableColumn fx:id="etudColumn" prefWidth="75.0" text="Etudiant" />
+            <TableColumn fx:id="redColumn" prefWidth="75.0" text="Red Etud" />
+            <TableColumn fx:id="promoColumn" prefWidth="75.0" text="Red Ev" />
+            <TableColumn fx:id="dureeColumn" prefWidth="75.0" text="Durée" />
+            <TableColumn fx:id="dateExpColumn" prefWidth="75.0" text="Date fin" />
+            <TableColumn fx:id="prixColumn" prefWidth="75.0" text="Prix" />
         </columns>
       </TableView>
-      <Button fx:id="AddBtn" layoutX="354.0" layoutY="345.0" mnemonicParsing="false" onAction="#ajouterAbn" prefHeight="46.0" prefWidth="90.0" style="-fx-cursor: hand; -fx-background-color: #e8f1f4;" text="Supprimer" textFill="#04b697">
+      <Button fx:id="deleteBtn" layoutX="527.0" layoutY="102.0" mnemonicParsing="false" onAction="#supprimerAbn" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: white;" text="Supprimer" textFill="#2e515f">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="searchBar" layoutX="149.0" layoutY="105.0" prefHeight="26.0" prefWidth="229.0" text="recherche" />
+      <Button fx:id="srchBtn" layoutX="396.0" layoutY="102.0" mnemonicParsing="false" onAction="#rechercherAbn" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: white;" text="Recherche" textFill="#2e515f">
          <font>
             <Font size="15.0" />
          </font>

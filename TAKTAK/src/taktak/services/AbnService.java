@@ -142,16 +142,16 @@ public class AbnService implements NewInterface<Abonnement> {
 
     @Override
     public void delete(Abonnement t) {
-        String sql = "delete from abonnement where idU=?";
+        String sql = "delete from abonnement where idA=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
-            ste.setInt(1, t.getIdU());
+            ste.setInt(1, t.getIdA());
             ste.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    public void delete(int id) {
+ /*   public void delete(int id) {
         String sql = "delete from abonnement where idA=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
@@ -160,7 +160,7 @@ public class AbnService implements NewInterface<Abonnement> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    }
+    }*/
 
  //   @Override
     public void updateMoy(String moy,Abonnement t) {

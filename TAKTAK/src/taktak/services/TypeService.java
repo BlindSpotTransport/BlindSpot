@@ -58,9 +58,9 @@ public class TypeService implements NewInterface<TypeAbn> {
             ste.setInt(1, t.getIdA());
             ste.setInt(2, t.getIdU());
 
-            ste.setString(1, t.getDureeA());
-            ste.setInt(2, t.getPrixA());
-            ste.setDate(3, (Date) t.getDateExpA());
+            ste.setString(3, t.getDureeA());
+            ste.setInt(4, t.getPrixA());
+            ste.setDate(5, (Date) t.getDateExpA());
             ste.executeUpdate();
             System.out.println("type abonnement ajoutée");
         } catch (SQLException ex) {
@@ -162,53 +162,8 @@ public class TypeService implements NewInterface<TypeAbn> {
             System.out.println(ex.getMessage());
         }    }
         
-        //Abonnement a=new Abonnement();
-        public void plan1(Abonnement a){
-        TypeAbn t=new TypeAbn();
-        t.setPrixA(5);
-        t.setDureeA("Mensuel");
-        t.setIdA(a.getIdA());
-        t.setIdU(a.getIdU());
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(a.getDateA()); 
-
-        calendar.add(Calendar.MONTH, 1);
-
-        Date newDate = (Date) calendar.getTime(); 
-
-        t.setDateExpA(newDate);
-        }
- /*       public void plan2(Abonnement a){
-            
-        TypeAbn t=new TypeAbn();
-        t.setDureeA("Semestriel");
-        t.setIdA(a.getIdA());
-        t.setIdU(a.getIdU());
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(a.getDateA()); 
-
-        calendar.add(Calendar, 1);
-
-        Date newDate = (Date) calendar.getTime(); 
-
-        t.setDateExpA(newDate);
-        }*/
-
-        public void plan3(Abonnement a){
-        TypeAbn t=new TypeAbn();
-        t.setPrixA(5);
-        t.setDureeA("Annuel");
-        t.setIdA(a.getIdA());
-        t.setIdU(a.getIdU());
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(a.getDateA()); 
-
-        calendar.add(Calendar.YEAR, 1);
-
-        Date newDate = (Date) calendar.getTime(); 
-
-        t.setDateExpA(newDate);
-        }
+        
+ 
 
 
 }

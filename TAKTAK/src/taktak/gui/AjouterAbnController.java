@@ -8,7 +8,9 @@ package taktak.gui;
 import static java.awt.SystemColor.control;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +27,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import taktak.entity.Abonnement;
+import taktak.entity.TypeAbn;
 import taktak.services.AbnService;
+import taktak.services.TypeService;
 
 
 /**
@@ -41,22 +45,33 @@ public class AjouterAbnController implements Initializable {
     @FXML
     private ChoiceBox<String> ChoiceBx;
     private String[] moyTr = {"Bus","Métro","Train"};
-    @FXML
-    private ImageView ImgFld;
-    @FXML
-    private Button AddBtn;
     AbnService as=new AbnService();
+    TypeService ts=new TypeService();
     @FXML
     private Label control;
     @FXML
     private Label control2;
 
     private Parent root;
-    @FXML
-    private Button NextBtn;
     //Abonnememt ab=new Abonnement();
     private Scene scene;
     private Stage stage;
+    @FXML
+    private ImageView ImgFld1;
+    @FXML
+    private Button PlanMBtn;
+    @FXML
+    private Button PlanSBtn;
+    @FXML
+    private Button PlanABtn;
+    @FXML
+    private Label control3;
+    private RadioButton rBtn1;
+    @FXML
+    private Button ReadBtn;
+    private RadioButton rbtn1;
+    private RadioButton rbtn2;
+    private RadioButton rbtn3;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ChoiceBx.getItems().addAll(moyTr);
@@ -66,16 +81,22 @@ public class AjouterAbnController implements Initializable {
 
     @FXML
     private void ajouterAbn(ActionEvent event){
+         Abonnement a= new Abonnement();
+         TypeAbn t=new TypeAbn();
         if (ChoiceBx.getSelectionModel().isEmpty())
         {control.setText("Ce champ est obligatoire");}
         else{
-            Abonnement a= new Abonnement();
+
           
             a.setIdU(1);
             a.setMoyTrA(ChoiceBx.getValue());
             verifEtudiant(a);
             verifPromo(a);
+            t.setIdA(a.getIdA());
+            t.setIdU(a.getIdU());
+            ajouterPlan(a,t);
             as.add2(a);
+            ts.add(t);
             reset();
 
     }
@@ -107,18 +128,47 @@ public class AjouterAbnController implements Initializable {
         else{control2.setText("Code invalide"); }
     }
 
-
-
-    @FXML
-    private void pageSuiv(ActionEvent event) throws IOException {
-        
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterTA.fxml"));	
-            root = loader.load();	
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+private void ajouterPlan(Abonnement a,TypeAbn t) {
+    if (PlanMBtn.isPressed()) {
+        //TypeAbn t = new TypeAbn();
+        //t.setIdA(a.getIdA());
+        //t.setIdU(a.getIdU());
+        t.setPrixA(5);
+        t.setDureeA("Mensuel");
+        t.setDateExpA(addDurationToDate(a.getDateA(), Calendar.MONTH, 1));
+        //ts.add(t);
+    } else if (PlanSBtn.isPressed()) {
+        //TypeAbn t = new TypeAbn();
+        //t.setIdA(a.getIdA());
+        //t.setIdU(a.getIdU());
+        t.setPrixA(10);
+        t.setDureeA("Semestriel");
+        t.setDateExpA(addDurationToDate(a.getDateA(), Calendar.MONTH, 6));
+        //ts.add(t);
+    } else if (PlanABtn.isPressed()) {
+        //TypeAbn t = new TypeAbn();
+        //t.setIdA(a.getIdA());
+       // t.setIdU(a.getIdU());
+        t.setPrixA(15);
+        t.setDureeA("Annuel");
+        t.setDateExpA(addDurationToDate(a.getDateA(), Calendar.YEAR, 1));
+        //ts.add(t);
+    } else {
+        control3.setText("Veillez Choisir un Plan");
     }
+}
+
+private Date addDurationToDate(Date date, int field, int amount) {
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    calendar.add(field, amount);
+    return (Date) calendar.getTime();
+}
+
+
+
+    
+ 
 
     }
     
