@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -35,7 +36,7 @@
             </Text>
             <TextArea fx:id="prenomRec" layoutX="125.0" layoutY="214.0" prefHeight="28.0" prefWidth="147.0" />
             <TextArea fx:id="nomRec" layoutX="125.0" layoutY="152.0" prefHeight="28.0" prefWidth="147.0" />
-            <TableView fx:id="tableRec" layoutX="356.0" layoutY="199.0" onMouseClicked="#getSelected" onMouseEntered="#afficherReclamation" prefHeight="261.0" prefWidth="498.0">
+            <TableView fx:id="tableRec" layoutX="356.0" layoutY="152.0" onMouseClicked="#getSelected" prefHeight="308.0" prefWidth="498.0">
                <columns>
                 
                   <TableColumn fx:id="nom" prefWidth="110.0" text="Nom" />
@@ -45,12 +46,12 @@
                   <TableColumn fx:id="idr" prefWidth="155.0" text="id" />
                </columns>
             </TableView>
-            <Button layoutX="481.0" layoutY="472.0" mnemonicParsing="false" onAction="#deleteRec" style="-fx-background-color: #0598ff;" text="Supprimer " textFill="WHITE">
+            <Button layoutX="543.0" layoutY="472.0" mnemonicParsing="false" onAction="#deleteRec" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Supprimer " textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button layoutX="592.0" layoutY="472.0" mnemonicParsing="false" onAction="#updateRec" style="-fx-background-color: #0598ff;" text="Modifier " textFill="WHITE">
+            <Button layoutX="669.0" layoutY="470.0" mnemonicParsing="false" onAction="#updateRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Modifier " textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -67,23 +68,28 @@
             </Text>
             <TextArea fx:id="descRec" layoutX="123.0" layoutY="328.0" prefHeight="128.0" prefWidth="222.0" />
             <TextArea fx:id="idtxt" layoutX="130.0" layoutY="85.0" opacity="0.0" prefHeight="28.0" prefWidth="147.0" />
-            <TextArea fx:id="recherche" layoutX="612.0" layoutY="134.0" prefHeight="48.0" prefWidth="201.0" />
-            <Text layoutX="512.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recherche" wrappingWidth="99.99999943375587">
+            <Text fill="#0598ff" layoutX="467.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recherche" wrappingWidth="108.509281873703">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="19.0" />
                </font>
             </Text>
-            <Button layoutX="66.0" layoutY="470.0" mnemonicParsing="false" onAction="#retourRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="retour" textFill="WHITE">
+            <Button layoutX="29.0" layoutY="472.0" mnemonicParsing="false" onAction="#retourRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="retour" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <DatePicker fx:id="dateRec" layoutX="125.0" layoutY="285.0" promptText="Choisir la date" />
-            <Button layoutX="369.0" layoutY="472.0" mnemonicParsing="false" onAction="#AddRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Ajouter" textFill="WHITE">
+            <DatePicker fx:id="dateRec" disable="true" layoutX="125.0" layoutY="285.0" promptText="Choisir la date" />
+            <Button layoutX="411.0" layoutY="472.0" mnemonicParsing="false" onAction="#AddRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Ajouter" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
+            <Button layoutX="265.0" layoutY="472.0" mnemonicParsing="false" onAction="#reset" prefHeight="37.0" prefWidth="67.0" style="-fx-background-color: #0598ff;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="recherche" layoutX="576.0" layoutY="94.0" onKeyPressed="#Recherche" />
          </children>
       </AnchorPane>
    </children>

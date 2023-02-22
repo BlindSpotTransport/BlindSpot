@@ -6,12 +6,14 @@
 package tn.esprit.services;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import tn.esprit.entities.Reclamation;
 import tn.esprit.tools.Connexion;
@@ -25,13 +27,16 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
       @Override
     public void ajouter_reclamation(Reclamation r) {
         try {
+            Calendar calendar = Calendar.getInstance();
+            java.util.Date now = calendar.getTime();
+            Date currentDate = new Date(now.getTime());
             String requete = "INSERT INTO Reclamation (nom,prenom,dater,descrec) VALUES (?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, r.getNom());
             pst.setString(2, r.getPrenom());
  LocalDate localDate = r.getDater();
  java.sql.Date LocalToDate = java.sql.Date.valueOf(localDate);
-            pst.setDate(3, LocalToDate);
+            pst.setDate(3, currentDate);
             pst.setString(4, r.getDescrec());
        
             pst.executeUpdate();
@@ -69,7 +74,7 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
     public void modifier_reclamation(Reclamation r) {
      
         try {
-            PreparedStatement pst = cnx.prepareStatement("Update Reclamation nom=?,prenom=?,descrec=? where idr = ? ");
+            PreparedStatement pst = cnx.prepareStatement("Update Reclamation set nom=?,prenom=?,descrec=? where idr = ? ");
             pst.setString(1, r.getNom());
             pst.setString(2, r.getPrenom());
             pst.setString(3, r.getDescrec());

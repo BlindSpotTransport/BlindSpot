@@ -7,7 +7,6 @@ package tn.esprit.main;
 
 import java.io.IOException;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,15 +21,15 @@ import javafx.stage.Stage;
  *
  * @author sbs
  */
-public class MainFx extends Application {
+public class Main2FX extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-    // Create a background thread to load the GUI
+      // Create a background thread to load the GUI
     Thread thread = new Thread(() -> {
         try {
             // Load the GUI using a cached FXML loader
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Home.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/CommentForm.fxml"));
             Parent root = loader.load();
             
             // Create a scene and set it on the primary stage
@@ -57,5 +56,3 @@ public class MainFx extends Application {
     }
     
 }
-    
-

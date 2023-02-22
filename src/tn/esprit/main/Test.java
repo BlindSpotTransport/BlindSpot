@@ -29,8 +29,8 @@ public class Test {
    
  ServiceCommentaire sc = new ServiceCommentaire();
   Date CreationDate = new Date (123,02,15);
-  Commentaire co1 = new Commentaire(1,"I would like to file a complaint",CreationDate,true);
-  Commentaire co2 = new Commentaire(3, "salem cv", CreationDate, false);
+//  Commentaire co1 = new Commentaire(1,"I would like to file a complaint",CreationDate,true);
+//  Commentaire co2 = new Commentaire(3, "salem cv", CreationDate, false);
 //  sc.ajouter_commentaire(co1);  
 ////  sc.supprimer_commentaire(co1);
 //  /*sc.modifier_commentaire(co1); */
@@ -42,8 +42,8 @@ LocalDate createdat1 = LocalDate.of(2023, 3, 10);
 Reclamation re3 = new Reclamation ("Semi","saafi",createdat,"J ai un probleme avec la reservation ");
 Reclamation re4 = new Reclamation ("Amir","Razi",createdat1,"Il y a un bug ");
 
-sr.ajouter_reclamation(re3) ;
-sr.ajouter_reclamation(re4) ;
+//sr.ajouter_reclamation(re3) ;
+//sr.ajouter_reclamation(re4) ;
 // sr.afficher_reclamation();
 // sr.modifier_reclamation(re2);
 //  sr.supprimer_reclamation(re2);
