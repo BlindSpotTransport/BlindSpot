@@ -42,11 +42,35 @@ public class PrincipalePageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    private void TransportAjoutConsulterPage(ActionEvent event) {
+     try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("CRUDMoyensTransport.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @FXML
-    private void AfficherAjoutConsulterPage(ActionEvent event) {
-     try {
-            AnchorPane view = FXMLLoader.load(getClass().getResource("AjouterConsulterPageTr.fxml"));
+    private void ReservationAjoutConsulterPage(ActionEvent event) {
+    try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("ConsulterReservation.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void PlanningAjoutConsulterPage(ActionEvent event) {
+      try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("CrudPlanning.fxml"));
             //System.out.print(view);
             borderPane.setCenter(view);
             

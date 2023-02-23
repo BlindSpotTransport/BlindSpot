@@ -15,7 +15,10 @@ public class Moyenstransport {
 
     public Moyenstransport() {
     }
-
+    public Moyenstransport(String type,int capacite) {
+        this.type=type;
+        this.capacite=capacite;
+    }
     public Moyenstransport(int idMoy, int capacite, String type, String matricule, String numMoy) {
         this.idMoy = idMoy;
         this.capacite = capacite;

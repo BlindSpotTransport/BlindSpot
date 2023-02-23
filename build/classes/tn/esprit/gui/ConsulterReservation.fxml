@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ConsulterReservationController">
+   <children>
+      <TableView fx:id="tableR" layoutX="32.0" layoutY="77.0" prefHeight="311.0" prefWidth="582.0">
+        <columns>
+          <TableColumn fx:id="IDcol" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="dateRcol" prefWidth="115.20001220703125" text="date de reservation" />
+            <TableColumn fx:id="heureDepCol" prefWidth="98.4000244140625" text="heure de depart" />
+            <TableColumn fx:id="heureArrCol" prefWidth="94.4000244140625" text="heure d'arriver" />
+            <TableColumn fx:id="typeCol" prefWidth="64.800048828125" text="type" />
+            <TableColumn fx:id="CinCol" prefWidth="71.20001220703125" text="cin" />
+            <TableColumn fx:id="prixCol" prefWidth="60.0" text="prix" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

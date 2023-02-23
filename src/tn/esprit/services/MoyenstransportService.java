@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import tn.esprit.entity.Moyenstransport;
 import java.util.List;
+import javafx.scene.control.Alert;
 import tn.esprit.tools.MaConnection;
 
 /**
@@ -36,10 +37,15 @@ public class MoyenstransportService implements NewInterface<Moyenstransport>{
         ste.setString(3, m.getMatricule());
         ste.setInt(4, m.getCapacite());
         ste.setString(5, m.getNumMoy());
+        ste.executeUpdate();        
         System.out.println("Moyenne de transport ajoutée avec succées !");
-        ste.executeUpdate();
     } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("error");
+        alert.setHeaderText(null);
+        alert.setContentText(ex.getMessage());
+        alert.showAndWait();
+            
     }
 
     }
@@ -59,7 +65,11 @@ public class MoyenstransportService implements NewInterface<Moyenstransport>{
             }
             
             } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("error");
+                alert.setHeaderText(null);
+                alert.setContentText(ex.getMessage());
+                alert.showAndWait();
     }
         return MoyensTran;
         
@@ -75,7 +85,11 @@ public class MoyenstransportService implements NewInterface<Moyenstransport>{
             System.out.println("moyenne de transport a éte supprimer avec succées !!");
 
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("error");
+           alert.setHeaderText(null);
+           alert.setContentText(ex.getMessage());
+           alert.showAndWait();
         }
 
     }
@@ -111,9 +125,20 @@ public class MoyenstransportService implements NewInterface<Moyenstransport>{
             }              
             ste.setInt(5, m.getIdMoy());
             ste.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Moyenne de transport a ete modifié avec succès !");
+            alert.showAndWait();
+        
             System.out.println("moyenne de transport a éte Modifier avec succées !!");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("error");
+                alert.setHeaderText(null);
+                alert.setContentText(ex.getMessage());
+                alert.showAndWait();
+                
         }    
     }
     
@@ -146,7 +171,11 @@ public class MoyenstransportService implements NewInterface<Moyenstransport>{
             }
             
             } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("error");
+                    alert.setHeaderText(null);
+                    alert.setContentText(ex.getMessage());
+                    alert.showAndWait();
     }
         return MoyensTran;
     }

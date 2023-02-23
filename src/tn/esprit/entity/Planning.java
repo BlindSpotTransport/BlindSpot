@@ -6,17 +6,23 @@
 
 package tn.esprit.entity;
 import java.sql.Time;
+import javafx.scene.shape.Circle;
 /**
  *
  * @author pc
  */
 public class Planning {
       private int idMoy ,idCir ,NbPlace	; 
+           
       private Time dateD , DateA ;
-
-    public Planning() {
+    
+      
+      public Planning() {
     }
-
+    public Planning(Time dateD,Time DateA) {
+    this.dateD=dateD;
+    this.DateA=DateA;
+    }
     public Planning(int idMoy, int idCir, int NbPlace, Time dateD, Time DateA) {
         this.idMoy = idMoy;
         this.idCir = idCir;
@@ -24,6 +30,7 @@ public class Planning {
         this.dateD = dateD;
         this.DateA = DateA;
     }
+      
 
     public int getIdMoy() {
         return idMoy;

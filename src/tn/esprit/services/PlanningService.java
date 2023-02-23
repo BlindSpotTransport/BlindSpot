@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tn.esprit.entity.Moyenstransport;
 import tn.esprit.entity.Planning;
 import tn.esprit.tools.MaConnection;
@@ -65,6 +67,42 @@ public class PlanningService implements NewInterface<Planning>{
     }
         return Plan;
     }
+    
+     /*
+     public List<Planning> getAllPlanning() {
+        List<Planning> Plan = new ArrayList<>();        
+        try{
+            String sql="select C.departC AS DepartCircuit , C.arriveeC AS ArriverCircuit , M.type AS TypeMoyen, M.capacite AS capacitee, P.dateD AS dateDepart , P.DateA AS dateArriver  from circuit AS C "
+                    + ", moyenstransport AS M , planning AS P where P.idMoy= M.idMoy AND P.idCir=C.idCircuit" ;
+            Statement ste = cnx.createStatement();
+            ResultSet s = ste.executeQuery(sql);
+            while (s.next()) 
+            {
+                Planning pln = new Planning(s.getString("DepartCircuit"), s.getString("ArriverCircuit"), s.getString("TypeMoyen")
+                        , s.getInt("capacitee"), s.getTime("dateDepart"), s.getTime("dateArriver"));
+              /* String DepartCircuit = s.getString(1);
+  /*              String ArriverCircuit = s.getString(2);
+                String TypeMoyen=s.getString(3);
+                int capacitee=s.getInt(4);
+                Time dateDepart=s.getTime(5);
+                Time dateArriver=s.getTime(6);
+                Plan.add(DepartCircuit);
+                Plan.add(ArriverCircuit);
+                Plan.add(TypeMoyen);
+                Plan.add(capacitee);
+                Plan.add(dateDepart);
+                Plan.add(dateArriver);
+                */
+              /*
+                Plan.add(pln);
+            
+}
+            
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+    }
+        return Plan;
+    }*/
 
     @Override
     public List<Planning> findById(int id) {
@@ -112,4 +150,23 @@ public class PlanningService implements NewInterface<Planning>{
             System.out.println(ex.getMessage());
         }    
     }
-}
+     public void changerHourTo12(Time t){
+        if (t.getHours()== 00){
+            t.setHours(12);
+     }
+        else if(t.getHours()==12)
+        {
+        t.setHours(00);
+        }
+     
+     }
+          public void changerHourTo12A(Time t){
+        if (t.getHours()== 00){
+            t.setHours(12);
+     }
+        
+     
+     }
+    }
+
+

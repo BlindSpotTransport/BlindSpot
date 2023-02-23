@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="565.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.CrudPlanningController">
+   <children>
+      <TableView fx:id="TablePlanning" layoutX="33.0" layoutY="53.0" onMouseClicked="#GetSelected" prefHeight="294.0" prefWidth="874.0">
+        <columns>
+          <TableColumn fx:id="CirDepColumn" prefWidth="121.60008239746094" text="Circuit depart" />
+          <TableColumn fx:id="CirArrColumn" prefWidth="112.7999267578125" text="Circuit Arrivée" />
+            <TableColumn fx:id="TypeColumn" prefWidth="138.39996337890625" text="Type de transport" />
+            <TableColumn fx:id="DateDepColumn" prefWidth="126.39996337890625" text="Date de depart" />
+            <TableColumn fx:id="DateArrColumn" prefWidth="129.60003662109375" text="Date d'arrivée" />
+            <TableColumn fx:id="NbPlaceColumn" prefWidth="151.99997558593748" text="Nembre de place" />
+            <TableColumn fx:id="NumMCol" prefWidth="91.19998779296873" text="Numero" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="CirDepComboBox" layoutX="59.0" layoutY="372.0" onAction="#SelectedCirDep" prefHeight="27.0" prefWidth="200.0" promptText="Circuit de départ" />
+      <ComboBox fx:id="CirArrComboBox" layoutX="273.0" layoutY="371.0" onAction="#SelectedCirArr" prefHeight="27.0" prefWidth="200.0" promptText="Circuit d'arrivée" />
+      <TextField fx:id="DateDep" layoutX="273.0" layoutY="440.0" prefHeight="26.0" prefWidth="164.0" promptText="Forme : HH:MM:SS" />
+      <TextField fx:id="DateArr" layoutX="452.0" layoutY="440.0" prefHeight="26.0" prefWidth="164.0" promptText="Forme : HH:MM:SS" />
+      <Label layoutX="454.0" layoutY="414.0" prefHeight="26.0" prefWidth="114.0" text="Date de debut" />
+      <Label layoutX="275.0" layoutY="414.0" prefHeight="26.0" prefWidth="114.0" text="Date D'arrivée" />
+      <Button layoutX="517.0" layoutY="523.0" mnemonicParsing="false" onAction="#AjouterBtn" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: #243665;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="727.0" layoutY="523.0" mnemonicParsing="false" onAction="#ModifierAction" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: green;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="621.0" layoutY="523.0" mnemonicParsing="false" onAction="#SupprimerAction" style="-fx-background-color: red;" text="supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="typeTran" layoutX="59.0" layoutY="439.0" prefHeight="27.0" prefWidth="200.0" promptText="Type de transport" />
+      <ComboBox fx:id="NumeroMComboBox" layoutX="487.0" layoutY="371.0" prefHeight="27.0" prefWidth="164.0" promptText="Numero de tansport" visibleRowCount="5" />
+   </children>
+</AnchorPane>

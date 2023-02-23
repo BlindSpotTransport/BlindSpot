@@ -96,7 +96,7 @@ public class TestMyProject {
 
         PlanningService ps1 = new PlanningService();
         
-        Planning p1 = new Planning(1, 1, 30, t2, t3) ;
+        //Planning p1 = new Planning(1, 1, 30, t2, t3) ;
         //**************Ajouter une Planning***************//
         //ps1.ajouter(p1);
         //*************Afficher Liste de Planning************//
@@ -108,7 +108,11 @@ public class TestMyProject {
         sdf3 = new SimpleDateFormat("hh:mm:ss").parse("15:20:14");
             long ms4 = sdf3.getTime();
             Time t4 = new Time(ms4); 
-        ps1.modifierPlannig(t4,80, p1);
+        //ps1.modifierPlannig(t4,80, p1);
+        
+        //Afficher jointure Planning
+        //Planning pla = new Planning();
+        //ps1.getAllPlanning();
                 
                 } catch (ParseException ex) {
             Logger.getLogger(TestMyProject.class.getName()).log(Level.SEVERE, null, ex);

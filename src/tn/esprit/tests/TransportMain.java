@@ -28,14 +28,15 @@ public class TransportMain extends Application {
     public void start(Stage primaryStage) {
    try {
             Parent root = FXMLLoader.load(getClass().getResource("../gui/PrincipalePage.fxml"));
-            Scene scene = new Scene(root, 1000, 600);
+            Scene scene = new Scene(root, 1150, 650);
             primaryStage.setTitle("Taktak");
             primaryStage.setScene(scene);
+            primaryStage.resizableProperty().setValue(false);
             primaryStage.show();
+            
         } catch (IOException ex) {
             Logger.getLogger(TransportMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**
