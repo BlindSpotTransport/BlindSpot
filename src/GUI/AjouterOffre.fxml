@@ -20,7 +20,7 @@
          <children>
             <HBox prefHeight="73.0" prefWidth="600.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Offre Details">
+                  <Text fill="#243665" strokeType="OUTSIDE" strokeWidth="0.0" text="Offre Details">
                      <font>
                         <Font name="Bauhaus 93" size="34.0" />
                      </font>
@@ -103,15 +103,21 @@
                   <Insets top="20.0" />
                </VBox.margin>
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#save" prefHeight="57.0" prefWidth="156.0" styleClass="btn" text="Enregistrer" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onMouseClicked="#save" prefHeight="57.0" prefWidth="156.0" style="-fx-background-color: #4CCB9E; -fx-background-radius: 15;" styleClass="btn" text="Enregistrer" textAlignment="CENTER" textFill="#f8f1f1">
                      <HBox.margin>
                         <Insets left="60.0" top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="21.0" />
+                     </font>
                   </Button>
-                  <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#retour" prefHeight="57.0" prefWidth="156.0" styleClass="btn" text="Retour" textAlignment="CENTER">
+                  <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#retour" prefHeight="57.0" prefWidth="156.0" style="-fx-background-color: #4CCB9E; -fx-background-radius: 15;" styleClass="btn" text="Retour" textAlignment="CENTER" textFill="#f5f2f2">
                      <HBox.margin>
                         <Insets left="150.0" top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="23.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>

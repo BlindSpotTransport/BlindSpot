@@ -3,9 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/GUI/DashbordNotifController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/entites/Circuit.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/Service/NotificationService.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/GUI/DashbordNotif.fxml</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/GUI/GererAlerteController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/Main/Taktak.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/GUI/DashbordClientController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/Service/InterfaceCircuit.java</file>
             <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/GUI/DashbordAdminEventsController.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/GUI/DashbordAdminEvents.fxml</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/Main/Mainjavafx.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/GUI/AjouterAlerteController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/nbproject/genfiles.properties</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/Service/ServiceCircuit.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/API/EnvoyerEmail.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Taktak/src/GUI/DashbordClient.fxml</file>
         </group>
     </open-files>
 </project-private>

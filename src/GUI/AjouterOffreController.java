@@ -120,11 +120,14 @@ public class AjouterOffreController implements Initializable {
             preparedStatement.execute();
 
         } catch (SQLException ex) {
-            Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(AjouterOffreController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText(" Offre déja existe !! ");
+            alert.showAndWait();
         }
 
     }
-         @FXML
         private void clean() {
         titreld.setText(null);
         descld.setText(null);

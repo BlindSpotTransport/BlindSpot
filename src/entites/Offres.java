@@ -12,25 +12,26 @@ import java.sql.Date;
  * @author hp
  */
 public class Offres  extends Evenement {
-    private int id_offre_eve,idU , duree_offre;
+    private int id_offre_eve, duree_offre;
     private float budget_offre;
     private String img_src_offre ;
     private String statut_offre;
+    private Utilisateur user ; 
 
-     public Offres(int idU, int duree_offre, float budget_offre, String img_src_offre, String statut_offre, String titre_eve, String desc_eve, Date date_deb_eve, Date date_fin_eve) {
+     public Offres( int duree_offre, float budget_offre, String img_src_offre, String statut_offre, String titre_eve, String desc_eve, Date date_deb_eve, Date date_fin_eve) {
         super(titre_eve, desc_eve, date_deb_eve, date_fin_eve);
         
-        this.idU = idU;
+        
         this.duree_offre = duree_offre;
         this.budget_offre = budget_offre;
         this.img_src_offre = img_src_offre;
         this.statut_offre = statut_offre;
     }
 
-    public Offres(int id_eve,int id_offre_eve, int idU, int duree_offre, float budget_offre, String img_src_offre, String statut_offre, String titre_eve, String desc_eve, Date date_deb_eve, Date date_fin_eve) {
+    public Offres(int id_eve,int id_offre_eve, Utilisateur user, int duree_offre, float budget_offre, String img_src_offre, String statut_offre, String titre_eve, String desc_eve, Date date_deb_eve, Date date_fin_eve) {
         super(id_eve,titre_eve, desc_eve, date_deb_eve, date_fin_eve);
         this.id_offre_eve = id_offre_eve;
-        this.idU = idU;
+        this.user=user;
         this.duree_offre = duree_offre;
         this.budget_offre = budget_offre;
         this.img_src_offre = img_src_offre;
@@ -58,11 +59,11 @@ public class Offres  extends Evenement {
     }
 
     public int getIdU() {
-        return idU;
+        return user.getIdU();
     }
 
-    public void setIdU(int idU) {
-        this.idU = idU;
+    public Utilisateur setUser() {
+        return user;
     }
 
     public int getDuree_offre() {
@@ -99,7 +100,7 @@ public class Offres  extends Evenement {
 
     @Override
     public String toString() {
-        return "Offres{" + super.toString() + "id_offre_eve=" + id_offre_eve + ", idU=" + idU + ", duree_offre=" + duree_offre + ", budget_offre=" + budget_offre + ", img_src_offre=" + img_src_offre + ", statut_offre=" + statut_offre + '}';
+        return "Offres{" + super.toString() + "id_offre_eve=" + id_offre_eve + ", idU=" + user.getIdU() + ", duree_offre=" + duree_offre + ", budget_offre=" + budget_offre + ", img_src_offre=" + img_src_offre + ", statut_offre=" + statut_offre + '}';
     }
     
     

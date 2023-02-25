@@ -5,6 +5,7 @@
  */
 package Service;
 
+import API.EnvoyerEmail;
 import entites.Evenement;
 import entites.Utilisateur;
 import java.sql.Connection;
@@ -13,6 +14,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import tools.MaConnection;
 
 /**
@@ -78,16 +87,20 @@ public class NotificationService   {
     public void Notification(){
         this.getTargetUsers();
         this.getEvents();
+        EnvoyerEmail msg_envoyer = new EnvoyerEmail();
+
          for (Utilisateur u : users) {   
-           System.out.println("Bonjour : "+ u.getNomU()+" "+u.getPrenomU()+"\n"); 
-           System.out.println("************** Nos Evenements *****************"); 
+           //System.out.println("Bonjour : "+ u.getNomU()+" "+u.getPrenomU()+"\n"); 
+           //System.out.println("************** Nos Evenements *****************"); 
             for (Evenement e : evenements) {
-                System.out.println("Titre "+ e.getTitre_eve()+"Descreption "+e.getDesc_eve()+" Date Début : "+e.getDate_deb_eve());   
+                System.out.println("Titre "+ e.getTitre_eve()+"Descreption "+e.getDesc_eve()+" Date Début : "+e.getDate_deb_eve()); 
+              msg_envoyer.envoyer(e.getTitre_eve(),u.getEmailU(),e.getDesc_eve());
             } 
             
-             System.out.println("************** Good Bye ,Vous avez recu une notif sur le mail . *****************"); 
+            // System.out.println("************** Good Bye ,Vous avez recu une notif sur le mail . *****************"); 
         } 
     } 
     
     
+   
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="489.0" prefWidth="721.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GererOffreController">
+    <stylesheets>
+        <URL value="@../Taktak/src/GUI/gereroffre.css" />                   
+    </stylesheets>
+   <children>
+      <Text fill="#243665" layoutX="54.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="206.13671875">
+         <font>
+            <Font name="Bauhaus 93" size="32.0" />
+         </font>
+      </Text>
+      <HBox layoutX="639.0" layoutY="7.142857551574707">
+         <children>
+            <HBox alignment="CENTER" />
+         </children>
+         
+         
+      </HBox>
+      <FontAwesomeIconView fill="#243665" glyphName="CLOSE" layoutX="691.0" layoutY="21.0" onMouseClicked="#close" size="20" styleClass="btn" wrappingWidth="36.999988317489624" />
+      <HBox layoutX="21.0" layoutY="70.0" prefHeight="45.0" prefWidth="175.0" />
+      <TableView fx:id="tabnotifClient" layoutX="39.0" layoutY="156.0" minHeight="0.0" minWidth="0.0" prefHeight="273.0" prefWidth="600.0">
+         <columns>
+            <TableColumn fx:id="titenotifClient" maxWidth="140.0" prefWidth="109.5999755859375" text="Titre" />
+            <TableColumn fx:id="descnotifClient" maxWidth="152.7999725341797" prefWidth="127.99998474121094" text="Description" />
+            <TableColumn fx:id="debnotifClient" maxWidth="164.79998779296875" prefWidth="128.0" text="Date Début" />
+            <TableColumn fx:id="finnotifClient" maxWidth="163.2000732421875" prefWidth="119.20001220703125" text="Date Fin" />
+            <TableColumn fx:id="suppnotifClient" prefWidth="119.20001220703125" text="Supprimer" />
+         </columns>
+      </TableView>
+      <ImageView fx:id="logo" fitHeight="95.0" fitWidth="116.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Taktak/src/GUI/logotaktak.PNG" />
+         </image>
+      </ImageView>
+      <Text fill="#243665" layoutX="157.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications">
+         <font>
+            <Font name="Constantia Italic" size="37.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

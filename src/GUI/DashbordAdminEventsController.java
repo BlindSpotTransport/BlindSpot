@@ -12,12 +12,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -34,6 +36,8 @@ public class DashbordAdminEventsController implements Initializable {
     private ImageView event;
     @FXML
     private ImageView logo;
+    @FXML
+    private Button notif;
 
     /**
      * Initializes the controller class.
@@ -46,9 +50,10 @@ public class DashbordAdminEventsController implements Initializable {
            
     }    
 
+  
     @FXML
-    private void gereroffre(MouseEvent event) {
-        try {
+    void gereroffre(MouseEvent event) {
+   try {
             Parent parent = FXMLLoader.load(getClass().getResource("/GUI/GererOffre.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
@@ -58,12 +63,17 @@ public class DashbordAdminEventsController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(GererOffreController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @FXML
-    private void gereralerte(MouseEvent event) {
-        try {
+    private void close(MouseEvent event) {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void gereralerte(MouseEvent event) {
+ try {
             Parent parent = FXMLLoader.load(getClass().getResource("/GUI/GererAlerte.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
@@ -73,13 +83,10 @@ public class DashbordAdminEventsController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(GererOffreController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @FXML
-    private void close(MouseEvent event) {
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+    private void notifier(ActionEvent event) {
     }
     
 }

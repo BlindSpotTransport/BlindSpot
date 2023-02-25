@@ -101,7 +101,7 @@ public class GererOffreController implements Initializable {
             offretList.clear();
             
            
-            query = "SELECT * FROM `evenement`";
+            query = "SELECT * FROM `Evenement`";
             preparedStatement = cnx.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             

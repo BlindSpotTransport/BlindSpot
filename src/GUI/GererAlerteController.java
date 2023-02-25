@@ -95,8 +95,9 @@ public class GererAlerteController implements Initializable {
         // TODO
     }   
     
-    
+    //recuperer les donnes 
     private void refreshtable() {
+        // affichage
         
 //        AlerteService as = new AlerteService();
 //        as.afficher();
@@ -172,10 +173,11 @@ public class GererAlerteController implements Initializable {
     @FXML
     private void print(MouseEvent event) {
     }
-
+     // afficher
+    // takhou colonne w thotna valeur mtaaha bi id 
     private void loadDate() {
         refreshtable();
-        
+      
         idcol_alerte.setCellValueFactory(new PropertyValueFactory<>("id_alerte_eve"));
         tiypecol_alerte.setCellValueFactory(new PropertyValueFactory<>("type_alerte_eve"));
         titrecol_alerte.setCellValueFactory(new PropertyValueFactory<>("titre_eve"));
@@ -183,14 +185,15 @@ public class GererAlerteController implements Initializable {
         datedebut_alertecol.setCellValueFactory(new PropertyValueFactory<>("date_deb_eve"));
         datefin_alertecol.setCellValueFactory(new PropertyValueFactory<>("date_fin_eve"));
         
-        //add cell of button edit 
+        
+        // ken fergha colone lekhra test null ki tabda masna3t chaay sinn bch nasnou les icon delete,modif
          Callback<TableColumn<Alerte, String>, TableCell<Alerte, String>> cellFoctory = (TableColumn<Alerte, String> param) -> {
-            // make cell containing buttons
+           
             final TableCell<Alerte, String> cell = new TableCell<Alerte, String>() {
                 @Override
                 public void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
-                    //that cell created only on non-empty rows
+                    
                     if (empty) {
                         setGraphic(null);
                         setText(null);
@@ -213,6 +216,7 @@ public class GererAlerteController implements Initializable {
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
                             
                             try {
+                                //récuperation de donnes pour faire modification et supp 
                                 Alerte a = tabalerte.getSelectionModel().getSelectedItem();
                                 query = "DELETE FROM `alerte` WHERE id_alerte_eve  ="+a.getId_alerte_eve();
                                 //connection = DbConnect.getConnect();
@@ -229,6 +233,8 @@ public class GererAlerteController implements Initializable {
                           
 
                         });
+                        
+                        // modifier
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
                             
                             Alerte a= tabalerte.getSelectionModel().getSelectedItem();
@@ -239,7 +245,7 @@ public class GererAlerteController implements Initializable {
                             } catch (IOException ex) {
                                 Logger.getLogger(GererAlerteController.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            
+                            // true pour faire update 
                             AjouterAlerteController ajouteralerteController = loader.getController();
                             ajouteralerteController.setUpdate(true);
                             ajouteralerteController.setTextField(a.getId_alerte_eve(), a.getType_alerte_eve(), a.getTitre_eve(),
@@ -271,6 +277,7 @@ public class GererAlerteController implements Initializable {
 
             return cell;
         };
+         //akher colonne edit ,supp 
          mod_supalerte.setCellFactory(cellFoctory);
          tabalerte.setItems(alerteList);
          

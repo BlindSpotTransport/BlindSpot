@@ -55,8 +55,8 @@ public class Taktak {
          
          //******** les notifications pour les clients et les chauffeureus 
          
-//         NotificationService notif = new NotificationService();
-//         notif.Notification();
+       NotificationService notif = new NotificationService();
+         notif.Notification();
          
          
          
