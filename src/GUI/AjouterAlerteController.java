@@ -5,18 +5,28 @@
  */
 package GUI;
 
+import API.EnvoyerEmail;
+import Service.NotificationService;
 import Service.ServiceCircuit;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import entites.Alerte;
 import entites.Circuit;
 import entites.Evenement;
+import entites.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -45,7 +55,7 @@ import tools.MaConnection;
  */
 public class AjouterAlerteController implements Initializable {
     
-    
+    List<Utilisateur> clients = new ArrayList<>();
     String query = null;
     Connection cnx = null ;
     PreparedStatement preparedStatement = null ;
@@ -162,14 +172,58 @@ public class AjouterAlerteController implements Initializable {
         }else {
             getQuery();
             insert();
-           // clean();
-
+            clean();
+           LocalDate today = LocalDate.now();
+           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+           String dateString = formatter.format(date_deb);
+           SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
+           String dateString1 = formatter1.format(today);
         }
+    }
+    
+    
+        
+           /////////Calendarrrrrrrrr
+           /*
+            EnvoyerEmail msg_envoyer = new EnvoyerEmail();
+            LocalDate today = LocalDate.now();
+            //notif.getOnlyClients();
+              try {
+            String sql = "select * from utilisateur WHERE  roleU ='client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
+            Statement ste = cnx.createStatement();
+            ResultSet s = ste.executeQuery(sql);
+            while (s.next()) {
+
+                Utilisateur u = new Utilisateur(s.getInt("idU"),s.getString("nomU"),s.getString("prenomU"),s.getString("emailU"));
+                this.clients.add(u);
+                
+            }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+//              LocalDate localDate;
+//            localDate = date_deb.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//              
+//               DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//               LocalDate dateAsLocalDate = LocalDate.parse(formatter.format(date_deb.toInstant()), formatter);
+//        
+             //Date date = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            //LocalDate dateAsLocalDate = date_deb.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            
+
+            if (today.equals(date_deb)) {
+                for (Utilisateur u : clients) { 
+                msg_envoyer.envoyer(titreEv,u.getEmailU(),descEv);
+                 System.out.println("The dates are the same!");
+            }
+            }
+           */
+        ///////////////////////////////////////////////////////////////
         
     
         
         
-    }
+    
     
     
      private void getQuery() {
@@ -216,9 +270,10 @@ public class AjouterAlerteController implements Initializable {
     
         private void clean() {
         typeidalerte.setText(null);
-        titreldalerte.setText(null);
+        
+        //titreldalerte.setText(null);
         descldalerte.setText(null);
-       ddebldalerte.setValue(null);
+        ddebldalerte.setValue(null);
         dfinldalerte.setValue(null);
         
     }

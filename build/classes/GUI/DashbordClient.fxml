@@ -21,18 +21,21 @@
             <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
                <children>
                   <FontAwesomeIconView fill="#243665" glyphName="CLOSE" layoutX="604.0" layoutY="31.0" onMouseClicked="#close" size="20" styleClass="btn" wrappingWidth="36.999988317489624" />
-                  <Text fill="#243665" layoutX="88.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications">
+                  <Text fill="#243665" layoutX="185.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications">
                      <font>
                         <Font name="Constantia Italic" size="37.0" />
                      </font>
                   </Text>
-                  <ImageView fx:id="logo" fitHeight="95.0" fitWidth="116.0" layoutX="-33.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logo" fitHeight="95.0" fitWidth="116.0" layoutX="42.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Taktak/src/GUI/logotaktak.PNG" />
                      </image>
                   </ImageView>
-                  <Text fx:id="promo" layoutX="448.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="155.6708984375" />
+                  <Text fx:id="promo" layoutX="471.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="155.6708984375" />
                </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </AnchorPane>
          </right>
          <center>
@@ -68,7 +71,7 @@
                   </Text>
                </children>
                <BorderPane.margin>
-                  <Insets right="40.0" />
+                  <Insets />
                </BorderPane.margin>
             </AnchorPane>
          </center>

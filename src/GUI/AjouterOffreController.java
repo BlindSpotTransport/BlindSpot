@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Service.NotificationService;
 import entites.Evenement;
 import entites.Offres;
 import java.io.IOException;
@@ -87,6 +88,9 @@ public class AjouterOffreController implements Initializable {
             getQuery();
             insert();
             clean();
+            
+         
+            //notif.NotificationALL();
 
         }
 
