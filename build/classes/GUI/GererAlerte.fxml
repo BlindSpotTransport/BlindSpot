@@ -43,9 +43,9 @@
             </FontAwesomeIconView>
          </children>
       </HBox>
-      <TableView fx:id="tabalerte" layoutX="21.0" layoutY="125.0" minHeight="0.0" minWidth="0.0" prefHeight="273.0" prefWidth="817.0">
+      <TableView fx:id="tabalerte" layoutX="49.0" layoutY="125.0" minHeight="0.0" minWidth="0.0" prefHeight="276.0" prefWidth="730.0">
          <columns>
-            <TableColumn fx:id="idcol_alerte" maxWidth="81.60000610351562" prefWidth="81.60000610351562" text="ID" />
+            <TableColumn fx:id="idcol_alerte" maxWidth="81.60000610351562" prefWidth="81.60000610351562" text="ID" visible="false" />
             <TableColumn fx:id="tiypecol_alerte" maxWidth="140.0" prefWidth="109.5999755859375" text="Type" />
             <TableColumn fx:id="titrecol_alerte" maxWidth="152.7999725341797" prefWidth="127.99998474121094" text="Titre" />
             <TableColumn fx:id="desceiptioncol_alerte" maxWidth="164.79998779296875" prefWidth="128.0" text="Description" />

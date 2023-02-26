@@ -7,8 +7,10 @@ package GUI;
 
 import Service.NotificationService;
 import java.awt.Image;
+import static java.lang.Thread.sleep;
 import java.net.URL;
 import javafx.util.Duration;
+import java.util.concurrent.TimeUnit;
 //import java.time.Duration;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -22,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -35,21 +38,38 @@ import org.controlsfx.control.Notifications;
  * @author hp
  */
 public class DashbordClientController implements Initializable {
-     
-
+      NotificationService notification = new NotificationService();
         
-     @FXML
-    private Text promo;
-   @FXML
-    private ImageView logo;
+  
+ 
 
+    @FXML
+    private Button notif;
     @FXML
     private ImageView event;
+    @FXML
+    private Button evenement;
+    @FXML
+    private ImageView logo;
+    @FXML
+    private TextField calcul;
+    @FXML
+    private TextField per;
 
     @FXML
-
-    private Button notif;
-
+    private TextField old;
+    @FXML
+    private Button btncalc;
+    
+     
+    
+    //private float last=Float.parseFloat(old.getText());
+    
+    //float old=Float.parseFloat(poldprice.getText());
+    
+      
+    //Integer pourcent=Integer.parseInt(pourcentage.getText());
+    
     @FXML
     void close(MouseEvent event) {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -58,22 +78,49 @@ public class DashbordClientController implements Initializable {
     }
 
     @FXML
-    void notifier(ActionEvent event) {
-        //Image img = new Image("nom taswira");
-        NotificationService notif = new NotificationService();
-        notif.Notifyondashbord();
-       
+    void notifier(ActionEvent event) throws InterruptedException {
+        notification.NotifyondashbordAlert(); 
     }
-
+       @FXML
+    void notifierevent(ActionEvent event) {
+        notification.NotifyondashbordEvent();
+    }
+    
+    public Float afficherPrix(Float prix,int percent) {
+        return prix -((prix*percent)/100) ; 
+    }
+    
+   
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    //System.out.println(last);
         // TODO
+      //calcul.setText(afficherPrix(old,pourcent).toString());
+      
+      
+      //System.out.println(pourcentage);
+      
+      
       
     }    
+
+    @FXML
+    private void calcilerprix(ActionEvent event) {
+        String last = old.getText();
+      float oldprice = Float.parseFloat(last);
+      
+      String lastper = per.getText();
+      int pourcentage = Integer.parseInt(lastper);
+      
+      
+      calcul.setText(afficherPrix(oldprice,pourcentage).toString());
+    }
+
+  
     
     
     

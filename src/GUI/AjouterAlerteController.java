@@ -46,6 +46,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 import tools.MaConnection;
 
 /**
@@ -65,6 +66,9 @@ public class AjouterAlerteController implements Initializable {
     int alerteid;
     
     
+    LocalDate today = LocalDate.now();
+    EnvoyerEmail msg_envoyer = new EnvoyerEmail();
+    NotificationService notification = new NotificationService();
 
     private TextField typeidalerte;
     private TextField titreldalerte;
@@ -84,8 +88,7 @@ public class AjouterAlerteController implements Initializable {
     ObservableList<String> list=FXCollections.observableArrayList("greve","panne","climat","accident","traffic");
     ObservableList<String> list_greve=FXCollections.observableArrayList("Bus","Metro","Train");
     ObservableList<String> list_autres=FXCollections.observableArrayList();
-    String typeAlerte ,titreEv;
-  
+    String typeAlerte ,titreEv,date_deb;
     
     
      public AjouterAlerteController () {
@@ -113,7 +116,7 @@ public class AjouterAlerteController implements Initializable {
                 this.titre_comboalerte.setItems(list_greve);
              }else if(selectedItem.equals("traffic")){
                   this.liste_circuits=FXCollections.observableArrayList();
-                   this.getAllCircuit();
+                  this.getAllCircuit();
              }else{
                   this.titre_comboalerte.setItems(this.list_autres);
              }
@@ -142,15 +145,32 @@ public class AjouterAlerteController implements Initializable {
     
     }
     
-  
-       
-  
     
     
+        public void sendcREALtIME() {
+        try {
+            String sql = "select * from utilisateur WHERE  roleU ='client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
+            Statement ste = cnx.createStatement();
+            ResultSet s = ste.executeQuery(sql);
+            while (s.next()) {
+                Utilisateur u = new Utilisateur(s.getInt("idU"),s.getString("nomU"),s.getString("prenomU"),s.getString("emailU"));
+                this.clients.add(u);    
+            }
+                        if(ddebldalerte.getValue().compareTo(today)==0){
+                            for (Utilisateur u : clients) {   
+                        msg_envoyer.envoyer(this.typeAlerte,u.getEmailU(),descldalerte.getText());
+                        }
+                        
+                          
+                    }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
     
-    
-    
-    
+}
+
 // ajouter sur 3 partie 
     @FXML
     private void save(MouseEvent event) {
@@ -160,73 +180,29 @@ public class AjouterAlerteController implements Initializable {
         String descEv =descldalerte.getText(); 
         String date_deb = String.valueOf(ddebldalerte.getValue());
         String date_fin = String.valueOf(dfinldalerte.getValue());
-          System.out.println("this.typeAlerte : "+this.typeAlerte+"this.titreEv :  "+this.titreEv);
+        
+          //System.out.println("this.typeAlerte : "+this.typeAlerte+"this.titreEv :  "+this.titreEv);
         // Controle de saisie
         
         if (typeAlerte.isEmpty()|| titreEv.isEmpty() ||descEv.isEmpty() || date_deb.isEmpty() || date_fin.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
+            alert.setHeaderText("Champs Vide !");
             alert.setContentText("Veuillez remplir toutes les champs");
             alert.showAndWait();
-
-        }else {
+        }
+        else {
             getQuery();
             insert();
-            clean();
-           LocalDate today = LocalDate.now();
-           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-           String dateString = formatter.format(date_deb);
-           SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
-           String dateString1 = formatter1.format(today);
+            //clean();
+            sendcREALtIME();
+            System.out.println(ddebldalerte.getValue());
+                    
+
+            
         }
     }
-    
-    
-        
-           /////////Calendarrrrrrrrr
-           /*
-            EnvoyerEmail msg_envoyer = new EnvoyerEmail();
-            LocalDate today = LocalDate.now();
-            //notif.getOnlyClients();
-              try {
-            String sql = "select * from utilisateur WHERE  roleU ='client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
-            Statement ste = cnx.createStatement();
-            ResultSet s = ste.executeQuery(sql);
-            while (s.next()) {
 
-                Utilisateur u = new Utilisateur(s.getInt("idU"),s.getString("nomU"),s.getString("prenomU"),s.getString("emailU"));
-                this.clients.add(u);
-                
-            }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-//              LocalDate localDate;
-//            localDate = date_deb.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//              
-//               DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//               LocalDate dateAsLocalDate = LocalDate.parse(formatter.format(date_deb.toInstant()), formatter);
-//        
-             //Date date = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            //LocalDate dateAsLocalDate = date_deb.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            
-
-            if (today.equals(date_deb)) {
-                for (Utilisateur u : clients) { 
-                msg_envoyer.envoyer(titreEv,u.getEmailU(),descEv);
-                 System.out.println("The dates are the same!");
-            }
-            }
-           */
-        ///////////////////////////////////////////////////////////////
-        
-    
-        
-        
-    
-    
-    
-     private void getQuery() {
+    private void getQuery() {
 
         if (update == false) {
             
@@ -254,6 +230,14 @@ public class AjouterAlerteController implements Initializable {
             preparedStatement.setString(4, String.valueOf(ddebldalerte.getValue()));
             preparedStatement.setString(5, String.valueOf(dfinldalerte.getValue()));
             preparedStatement.execute();
+            
+            if (dfinldalerte.getValue().isBefore(ddebldalerte.getValue())) {
+                    JOptionPane.showMessageDialog(null, "La date de début doit être antérieure à la date de fin", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "L'alerte a été enregistrée avec succès", "Ajout d'alerte  réussi", JOptionPane.INFORMATION_MESSAGE);
+                }
+            
+            
 
         } catch (SQLException ex) {
          //   Logger.getLogger(AjouterAlerteController.class.getName()).log(Level.SEVERE, null, ex);
@@ -268,15 +252,14 @@ public class AjouterAlerteController implements Initializable {
     
     
     
-        private void clean() {
-        typeidalerte.setText(null);
-        
-        //titreldalerte.setText(null);
-        descldalerte.setText(null);
-        ddebldalerte.setValue(null);
-        dfinldalerte.setValue(null);
-        
-    }
+//        private void clean() {
+//        combo_alertetype.getItems().clear();
+//        titre_comboalerte.getItems().clear();
+//        descldalerte.setText(null);
+//        ddebldalerte.setValue(null);
+//        dfinldalerte.setValue(null);
+//        
+//    }
         
      
 
@@ -294,18 +277,13 @@ public class AjouterAlerteController implements Initializable {
         }
 
     }
-            
     
-    
-   
-        
-
         
     void setTextField(int id, String type,String titre,String description, LocalDate fromLocalDate1, LocalDate toLocalDate2) {
 
         alerteid = id;
-        typeidalerte.setText(type);
-        titreldalerte.setText(titre);
+        combo_alertetype.setValue(type);
+        titre_comboalerte.setValue(titre);
         descldalerte.setText(description);
         ddebldalerte.setValue(fromLocalDate1);
          dfinldalerte.setValue(toLocalDate2);

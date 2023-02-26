@@ -38,6 +38,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import javax.swing.JOptionPane;
 import tools.MaConnection;
 
 /**
@@ -133,14 +134,6 @@ public class GererAlerteController implements Initializable {
         }          
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
     @FXML
     private void close(MouseEvent event) {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -178,7 +171,7 @@ public class GererAlerteController implements Initializable {
     private void loadDate() {
         refreshtable();
       
-        idcol_alerte.setCellValueFactory(new PropertyValueFactory<>("id_alerte_eve"));
+        //idcol_alerte.setCellValueFactory(new PropertyValueFactory<>("id_alerte_eve"));
         tiypecol_alerte.setCellValueFactory(new PropertyValueFactory<>("type_alerte_eve"));
         titrecol_alerte.setCellValueFactory(new PropertyValueFactory<>("titre_eve"));
         desceiptioncol_alerte.setCellValueFactory(new PropertyValueFactory<>("desc_eve"));
@@ -214,8 +207,10 @@ public class GererAlerteController implements Initializable {
                                 + "-fx-fill:#00E676;"
                         );
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
-                            
-                            try {
+                            int confirmation = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment Supprimer cet Alerte ?", "Confirmation de Suppression", JOptionPane.YES_NO_OPTION);
+
+                                if (confirmation == JOptionPane.YES_OPTION) {
+                                     try {
                                 //récuperation de donnes pour faire modification et supp 
                                 Alerte a = tabalerte.getSelectionModel().getSelectedItem();
                                 query = "DELETE FROM `alerte` WHERE id_alerte_eve  ="+a.getId_alerte_eve();
@@ -227,16 +222,18 @@ public class GererAlerteController implements Initializable {
                             } catch (SQLException ex) {
                                 Logger.getLogger(GererAlerteController.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            
-                           
-
-                          
+                                   
+                                } else {
+                                   // Annuler la modification
+                                }
 
                         });
                         
                         // modifier
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
-                            
+                            int confirmation = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment Modifier cette Alerte ?", "Confirmation de Modification", JOptionPane.YES_NO_OPTION);
+
+                                if (confirmation == JOptionPane.YES_OPTION){  
                             Alerte a= tabalerte.getSelectionModel().getSelectedItem();
                             FXMLLoader loader = new FXMLLoader ();
                             loader.setLocation(getClass().getResource("/GUI/AjouterAlerte.fxml"));
@@ -258,8 +255,13 @@ public class GererAlerteController implements Initializable {
                             
 
                            
-
+                                }
                         });
+                                
+                                
+                            
+                            
+                            
 
                         HBox managebtn = new HBox(editIcon, deleteIcon);
                         managebtn.setStyle("-fx-alignment:center");

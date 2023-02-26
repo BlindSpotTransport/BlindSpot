@@ -45,14 +45,14 @@
             </FontAwesomeIconView>
          </children>
       </HBox>
-      <TableView fx:id="offretab" layoutX="20.0" layoutY="138.0" minHeight="0.0" minWidth="0.0" prefHeight="273.0" prefWidth="689.0">
+      <TableView fx:id="offretab" layoutX="41.0" layoutY="142.0" minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="639.0">
         <columns>
-          <TableColumn fx:id="id_col_offre" maxWidth="81.60000610351562" prefWidth="81.60000610351562" text="ID" />
+          <TableColumn fx:id="id_col_offre" maxWidth="81.60000610351562" prefWidth="81.60000610351562" text="ID" visible="false" />
           <TableColumn fx:id="titrecol_off" maxWidth="140.0" prefWidth="109.5999755859375" text="Titre" />
             <TableColumn fx:id="descpcol_off" maxWidth="152.7999725341797" prefWidth="127.99998474121094" text="Description" />
             <TableColumn fx:id="datedebcol_off" maxWidth="164.79998779296875" prefWidth="128.0" text="Date Début" />
             <TableColumn fx:id="datefin_coloff" maxWidth="163.2000732421875" prefWidth="119.20001220703125" text="Date Fin" />
-            <TableColumn fx:id="editcol" prefWidth="119.20001220703125" text="Mod-Sup" />
+            <TableColumn fx:id="editcol" prefWidth="152.0" text="Mod-Sup" />
         </columns>
       </TableView>
    </children>

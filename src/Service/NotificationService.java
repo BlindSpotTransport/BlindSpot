@@ -20,6 +20,7 @@ import java.util.Properties;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -141,19 +142,48 @@ public class NotificationService   {
                 msg_envoyer.envoyer(e.getTitre_eve(),u.getEmailU(),e.getDesc_eve());
             } }
         } 
+   
     
-    
-    public void Notifyondashbord(){
+    public void NotifyondashbordEvent(){
         this.getTargetUsers();
         this.getEvents();
          for (Utilisateur u : users) {   
-            for (Evenement e : evenements) {                //msg_envoyer.envoyer(e.getTitre_eve(),u.getEmailU(),e.getDesc_eve());
+            for (Evenement e : evenements) {
+                ImageView img=new ImageView("/Service/verda.png");                
                 Notifications notificationBuilder = Notifications.create()
                 .title(e.getTitre_eve())
                 .text(e.getDesc_eve())
-                //.graphic(new ImageView(img))
+                .graphic(img)
                 //.hideAfter(Duration.seconds(5))
-                .hideAfter(Duration.seconds(3))
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.TOP_RIGHT)
+                .onAction(new EventHandler<ActionEvent>() {
+
+        public void handle(ActionEvent event) {
+        System.out.println("clicked on notification");
+        }
+
+        });
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();
+            } 
+         }
+        } 
+
+    
+        public void NotifyondashbordAlert(){
+        this.getOnlyClients();
+        this.getAlerts();
+        
+         for (Utilisateur u : clients) {   
+            for (Alerte a : alerts) {    
+                ImageView img=new ImageView("/Service/rouga.png");
+                Notifications notificationBuilder = Notifications.create()
+                .title(a.getTitre_eve())
+                .text(a.getDesc_eve())
+                .graphic(img)
+                //.hideAfter(Duration.seconds(5))
+                .hideAfter(Duration.seconds(5))
                 .position(Pos.TOP_RIGHT)
                 .onAction(new EventHandler<ActionEvent>() {
 
@@ -179,6 +209,9 @@ public class NotificationService   {
             }
            } 
         } 
+    
+     
+    
 
     
 } 
