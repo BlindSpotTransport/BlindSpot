@@ -24,8 +24,8 @@ public class AbnFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException  {
-        //Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterAbn.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherTable.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterAbn.fxml"));
+       // Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherTable.fxml"));
         Scene scene = new Scene(root,600,400); 
         primaryStage.setTitle("Gérer Abonnement");
         primaryStage.setScene(scene);

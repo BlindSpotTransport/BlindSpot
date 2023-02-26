@@ -12,42 +12,50 @@ import java.sql.Date;
  *
  * @author 21626
  */
+import java.sql.*;
+import static java.time.temporal.TemporalQueries.localDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDate;
+
+
+
 public class Abonnement {
-    private int idA,idU,redEtA,redEvA;
+
+    private int idA;
+    private int idU;
+    private String moyTrA;
     private Date dateA;
+    private LocalDate dateExpA;
+    private int idtypeA;
     private boolean etudiantA;
-  //  private byte[] imageA;
-  //  private enum moyTrA {Bus,Métro,Train};
-    private String imageA,moyTrA ;
+    private int redEtA;
+    private int redEvA;
 
-    public Abonnement(){}
+    public Abonnement() {}
 
-    public Abonnement(int idA,int idU,String moyTrA,Date dateA,String imageA,boolean etudiantA , int redEtA, int redEvA) {
+    public Abonnement(int idA, int idU, String moyTrA, Date dateA, LocalDate dateExpA, int idtypeA, boolean etudiantA, int redEtA, int redEvA) {
         this.idA = idA;
         this.idU = idU;
         this.moyTrA = moyTrA;
         this.dateA = dateA;
-        this.imageA = imageA;
+        this.dateExpA = dateExpA;
+        this.idtypeA = idtypeA;
         this.etudiantA = etudiantA;
         this.redEtA = redEtA;
-        this.redEvA = redEvA; 
-        
+        this.redEvA = redEvA;
     }
-    public Abonnement(int idU,String moyTrA,boolean etudiantA , int redEtA, int redEvA) {
-        
-        this.idU = idU;
+        public Abonnement(String moyTrA, Date dateA, int idtypeA, boolean etudiantA, int redEtA, int redEvA) {
+
         this.moyTrA = moyTrA;
-        
+        this.dateA = dateA;
+     
+        this.idtypeA = idtypeA;
         this.etudiantA = etudiantA;
         this.redEtA = redEtA;
-        this.redEvA = redEvA; 
-        
+        this.redEvA = redEvA;
     }
 
-
-
-
- // idA auto increment?
     public int getIdA() {
         return idA;
     }
@@ -62,6 +70,46 @@ public class Abonnement {
 
     public void setIdU(int idU) {
         this.idU = idU;
+    }
+
+    public String getMoyTrA() {
+        return moyTrA;
+    }
+
+    public void setMoyTrA(String moyTrA) {
+        this.moyTrA = moyTrA;
+    }
+
+    public Date getDateA() {
+        return dateA;
+    }
+
+    public void setDateA(Date dateA) {
+        this.dateA = dateA;
+    }
+
+    public LocalDate getDateExpA() {
+        return dateExpA;
+    }
+
+    public void setDateExpA(LocalDate dateExpA) {
+        this.dateExpA = dateExpA;
+    }
+
+    public int getIdtypeA() {
+        return idtypeA;
+    }
+
+    public void setIdtypeA(int idtypeA) {
+        this.idtypeA = idtypeA;
+    }
+
+    public boolean isEtudiantA() {
+        return etudiantA;
+    }
+
+    public void setEtudiantA(boolean etudiantA) {
+        this.etudiantA = etudiantA;
     }
 
     public int getRedEtA() {
@@ -80,51 +128,23 @@ public class Abonnement {
         this.redEvA = redEvA;
     }
 
-    public Date getDateA() {
-        return dateA;
-    }
-
-    public void setDateA(Date dateA) {
-        this.dateA = dateA;
-    }
-
-    public boolean isEtudiantA() {
-        return etudiantA;
-    }
-
-    public void setEtudiantA(boolean etudiantA) {
-        this.etudiantA = etudiantA;
-    }
-
- /*   public byte[] getImageA() {
-        return imageA;
-    }
-
-    public void setImageA(byte[] imageA) {
-        this.imageA = imageA;
-    }
-*/
-    
-    public String getImageA() {
-        return imageA;
-    }
-
-    public void setImageA(String imageA) {
-        this.imageA = imageA;
-    }
-
-    public String getMoyTrA() {
-        return moyTrA;
-    }
-
-    public void setMoyTrA(String moyTrA) {
-        this.moyTrA = moyTrA;
-    }
-
-    
     @Override
     public String toString() {
-        return "Abonnement{" + "idA=" + idA + ", idU=" + idU + ", redEtA=" + redEtA + ", redEvA=" + redEvA + ", dateA=" + dateA + ", etudiantA=" + etudiantA + ", imageA=" + imageA + '}';
+        return "Abonnement{" +
+                "idA=" + idA +
+                ", idU=" + idU +
+                ", moyTrA='" + moyTrA + '\'' +
+                ", dateA=" + dateA +
+                ", dateExpA=" + dateExpA +
+                ", idtypeA=" + idtypeA +
+                ", etudiantA=" + etudiantA +
+                ", redEtA=" + redEtA +
+                ", redEvA=" + redEvA +
+                '}';
     }
     
+
+    
 }
+
+   

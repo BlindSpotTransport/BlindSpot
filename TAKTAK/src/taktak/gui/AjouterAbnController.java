@@ -9,9 +9,19 @@ import static java.awt.SystemColor.control;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import static java.time.temporal.TemporalQueries.localDate;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,14 +32,26 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import taktak.entity.Abonnement;
-import taktak.entity.TypeAbn;
+import taktak.entity.Typeabn;
+
+
 import taktak.services.AbnService;
 import taktak.services.TypeService;
+
 
 
 /**
@@ -42,9 +64,11 @@ public class AjouterAbnController implements Initializable {
     private TextField PromoFld;
     @FXML
     private RadioButton RadioBtn;
+    PreparedStatement ste;
     @FXML
     private ChoiceBox<String> ChoiceBx;
     private String[] moyTr = {"Bus","Métro","Train"};
+    private String[] type = {"Mensuel","Semestriel","Annuel"};
     AbnService as=new AbnService();
     TypeService ts=new TypeService();
     @FXML
@@ -56,57 +80,110 @@ public class AjouterAbnController implements Initializable {
     //Abonnememt ab=new Abonnement();
     private Scene scene;
     private Stage stage;
-    @FXML
-    private ImageView ImgFld1;
-    @FXML
-    private Button PlanMBtn;
-    @FXML
-    private Button PlanSBtn;
-    @FXML
-    private Button PlanABtn;
-    @FXML
-    private Label control3;
     private RadioButton rBtn1;
-    @FXML
-    private Button ReadBtn;
     private RadioButton rbtn1;
     private RadioButton rbtn2;
     private RadioButton rbtn3;
+    @FXML
+    private Button ReadBtn1;
+     Abonnement a= new Abonnement();
+    Typeabn t=new Typeabn();
+    @FXML
+    private Button ReadBtn2;
+    private Label disDuree;
+    @FXML
+    private ChoiceBox<String> ChoiceBx2;
+    @FXML
+    private TableView<Abonnement> tblAbn;
+    @FXML
+    private TableColumn<Abonnement,Integer> idaColumn;
+    @FXML
+    private TableColumn<Abonnement,Integer> iduColumn;
+    @FXML
+    private TableColumn<Abonnement,String> moyenColumn;
+    @FXML
+    private TableColumn<Abonnement,Date> dateColumn;
+    @FXML
+    private TableColumn<Abonnement,LocalDate> dateExColumn;
+    @FXML
+    private TableColumn<Abonnement,Integer> planColumn;
+    @FXML
+    private TableColumn<Abonnement,Boolean> etudColumn;
+    @FXML
+    private TableColumn<Abonnement,Integer> redColumn;
+    @FXML
+    private TableColumn<Abonnement,Integer> promoColumn;
+    @FXML
+    private Button deleteBtn;
+    @FXML
+    private TextField searchBar;
+     List<Abonnement> abonnements =as.getAll();
+   
+    LocalDate currentDate = LocalDate.now();
+    @FXML
+    private Button RefBtn;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Settings ChoiceBox
         ChoiceBx.getItems().addAll(moyTr);
-        
+        ChoiceBx2.getItems().addAll(type);
+        //Affichage
+        idaColumn.setCellValueFactory(new PropertyValueFactory<>("idA"));
+        iduColumn.setCellValueFactory(new PropertyValueFactory<>("idU"));
+        moyenColumn.setCellValueFactory(new PropertyValueFactory<>("moyTrA"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("dateA" ));
+        dateExColumn.setCellValueFactory(new PropertyValueFactory<>("dateExpA" ));
+        planColumn.setCellValueFactory(new PropertyValueFactory<>("idtypeA" ));
+        etudColumn.setCellValueFactory(new PropertyValueFactory<>("etudiantA"));
+        redColumn.setCellValueFactory(new PropertyValueFactory<>("redEtA"));
+        promoColumn.setCellValueFactory(new PropertyValueFactory<>("redEvA"));
+        tblAbn.setItems(FXCollections.observableArrayList(abonnements));
+ 
 		
 	}
 
     @FXML
-    private void ajouterAbn(ActionEvent event){
-         Abonnement a= new Abonnement();
-         TypeAbn t=new TypeAbn();
-        if (ChoiceBx.getSelectionModel().isEmpty())
-        {control.setText("Ce champ est obligatoire");}
+    private void ajouterAbn(ActionEvent event) throws SQLException{
+
+        if (ChoiceBx.getSelectionModel().isEmpty()||ChoiceBx2.getSelectionModel().isEmpty())
+        {control.setText("les champs moyen transport et plan sont obligatoires");}
         else{
 
           
-            a.setIdU(1);
+          //  a.setIdU(1);
             a.setMoyTrA(ChoiceBx.getValue());
             verifEtudiant(a);
             verifPromo(a);
-            t.setIdA(a.getIdA());
-            t.setIdU(a.getIdU());
-            ajouterPlan(a,t);
-            as.add2(a);
-            ts.add(t);
-            reset();
+            
+
 
     }
 
+    if (ChoiceBx2.getValue().equals("Mensuel")) {
+        a.setIdtypeA(1);
+        
+        a.setDateExpA(currentDate.plusMonths(1));
+   
+    } else if (ChoiceBx2.getValue().equals("Semestriel")) {
+        a.setIdtypeA(2);
+        a.setDateExpA(currentDate.plusMonths(6));
+    } else if (ChoiceBx2.getValue().equals("Annuel")) {
+        a.setIdtypeA(3);
+        a.setDateExpA(currentDate.plusYears(1));
+    }
+  //  controleAbn(a);
+
+    as.add(a);
+   
+    reset();
+   
     }
 
     private void reset() {
         PromoFld.setText("");
         RadioBtn.setSelected(false);
         ChoiceBx.getSelectionModel().clearSelection();
+        ChoiceBx2.getSelectionModel().clearSelection();
         
     }	
     
@@ -128,48 +205,104 @@ public class AjouterAbnController implements Initializable {
         else{control2.setText("Code invalide"); }
     }
 
-private void ajouterPlan(Abonnement a,TypeAbn t) {
-    if (PlanMBtn.isPressed()) {
-        //TypeAbn t = new TypeAbn();
-        //t.setIdA(a.getIdA());
-        //t.setIdU(a.getIdU());
-        t.setPrixA(5);
-        t.setDureeA("Mensuel");
-        t.setDateExpA(addDurationToDate(a.getDateA(), Calendar.MONTH, 1));
-        //ts.add(t);
-    } else if (PlanSBtn.isPressed()) {
-        //TypeAbn t = new TypeAbn();
-        //t.setIdA(a.getIdA());
-        //t.setIdU(a.getIdU());
-        t.setPrixA(10);
-        t.setDureeA("Semestriel");
-        t.setDateExpA(addDurationToDate(a.getDateA(), Calendar.MONTH, 6));
-        //ts.add(t);
-    } else if (PlanABtn.isPressed()) {
-        //TypeAbn t = new TypeAbn();
-        //t.setIdA(a.getIdA());
-       // t.setIdU(a.getIdU());
-        t.setPrixA(15);
-        t.setDureeA("Annuel");
-        t.setDateExpA(addDurationToDate(a.getDateA(), Calendar.YEAR, 1));
-        //ts.add(t);
-    } else {
-        control3.setText("Veillez Choisir un Plan");
-    }
-}
+ 
 
-private Date addDurationToDate(Date date, int field, int amount) {
-    Calendar calendar = Calendar.getInstance();
-    calendar.setTime(date);
-    calendar.add(field, amount);
-    return (Date) calendar.getTime();
+    
+
+  @FXML
+private void modifierAbn(ActionEvent event) {
+    if (tblAbn.getSelectionModel().isEmpty()) {
+                  Alert alert = new Alert (Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+           alert.setContentText("Veillez sélectionner un abonnement à modifier");
+           alert.showAndWait();
+    } else {
+        Abonnement abonnement = tblAbn.getSelectionModel().getSelectedItem();
+        // int x=Integer.parseInt(idaColumn.getText());
+       //  abonnement.setIdA(x);
+        abonnement.setMoyTrA(ChoiceBx.getValue());
+        verifEtudiant(abonnement);
+        verifPromo(abonnement);
+
+        if (ChoiceBx2.getValue().equals("Mensuel")) {
+            abonnement.setIdtypeA(1);
+            abonnement.setDateExpA(currentDate.plusMonths(1));
+        } else if (ChoiceBx2.getValue().equals("Semestriel")) {
+            abonnement.setIdtypeA(2);
+            abonnement.setDateExpA(currentDate.plusMonths(6));
+        } else if (ChoiceBx2.getValue().equals("Annuel")) {
+            abonnement.setIdtypeA(3);
+            abonnement.setDateExpA(currentDate.plusYears(1));
+        }
+
+        try {
+            as.update(abonnement);
+        } catch (SQLException ex) {
+            Logger.getLogger(AjouterAbnController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        reset();
+    }
 }
 
 
 
     
- 
 
+    
+
+    @FXML
+    private void supprimerAbn(ActionEvent event) {
+           List<Abonnement> list;
+        Abonnement clicked=new Abonnement();
+  /*      if(tblAbn.getSelectionModel().getSelectedItems()!=null)
+        {   int x=Integer.parseInt(idaColumn.getText());
+            a.setIdA(x);
+            as.delete(a); }}*/
+     clicked = tblAbn.getSelectionModel().getSelectedItem();
+    //System.out.println("clicked");
+    as.delete(clicked);
+                //updating user data after closing popup
+                list = FXCollections.observableList(as.getAll());
+                tblAbn.setItems((ObservableList<Abonnement>) list);
     }
+
+    @FXML
+    private void rechercherAbn(KeyEvent event) {
+     String searchText = searchBar.getText() + event.getText();
+    ObservableList<Abonnement> filteredAbonnements = FXCollections.observableArrayList();
+    for (Abonnement abonnement : abonnements) {
+        if (String.valueOf(abonnement.getIdA()).contains(searchText) || String.valueOf(abonnement.getIdU()).contains(searchText)) {
+            filteredAbonnements.add(abonnement);
+        }
+    }
+    tblAbn.setItems(filteredAbonnements);
+    }
+
+
+    @FXML
+    private void refreshTable(ActionEvent event) {
+
+    List<Abonnement> abonnements = as.getAll();
+    
+    tblAbn.setItems(FXCollections.observableArrayList(abonnements));
+    
+                }
+    private void controleAbn(Abonnement a){
+        
+      //   if (!as.isUnique(a) && a.getDateExpA().isBefore(currentDate)){
+      if (!as.isUnique(a)){
+            Alert alert = new Alert (Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+           alert.setContentText("Vous avez déjà un abonnement actid");
+           alert.showAndWait();
+    }
+        
+    }
+
+
+}
+    
     
 

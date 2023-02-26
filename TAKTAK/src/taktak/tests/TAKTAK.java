@@ -8,9 +8,10 @@ package taktak.tests;
 
 import java.sql.Date;
 import taktak.entity.Abonnement;
-import taktak.entity.TypeAbn;
+
 import taktak.services.AbnService;
 import taktak.services.TypeService;
+
 import taktak.tools.MyConnection;
 /**
  *
@@ -29,9 +30,9 @@ public class TAKTAK {
  
        // Date d = java.sql.Date.valueOf("2022-02-14");
        Date d = java.sql.Date.valueOf("2005-06-05");
-       Abonnement a= new Abonnement(1,"Bus",true,20,0);
-       TypeAbn t=new TypeAbn(a.getIdA(),a.getIdU(),"Mensuel",30,d);
-       as.add(a);
+     //  Abonnement a= new Abonnement(1,"Bus",true,20,0);
+     //  TypeAbn t=new TypeAbn(a.getIdA(),a.getIdU(),"Mensuel",30,d);
+    //   as.add(a);
        // as.updateMoy("Métro", a);
        //as.delete(a);
        //System.out.println(as.getAll());
