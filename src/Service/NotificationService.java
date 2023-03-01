@@ -131,7 +131,7 @@ public class NotificationService   {
         
     
 }
-
+//important
     public void NotificationMail(){
         this.getTargetUsers();
         this.getEvents();
@@ -143,6 +143,7 @@ public class NotificationService   {
             } }
         } 
    
+    // les notification al dashbord:
     
     public void NotifyondashbordEvent(){
         this.getTargetUsers();

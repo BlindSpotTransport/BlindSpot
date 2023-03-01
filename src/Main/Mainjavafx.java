@@ -29,7 +29,7 @@ public class Mainjavafx extends Application {
        @Override
     public void start(Stage primaryStage) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/GUI/DashbordClient.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/GUI/DashbordAdminEvents.fxml"));
             Scene scene = new Scene(parent);
             scene.setFill(Color.TRANSPARENT);
             primaryStage.setScene(scene);

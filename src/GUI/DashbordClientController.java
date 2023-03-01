@@ -46,11 +46,7 @@ public class DashbordClientController implements Initializable {
     @FXML
     private Button notif;
     @FXML
-    private ImageView event;
-    @FXML
     private Button evenement;
-    @FXML
-    private ImageView logo;
     @FXML
     private TextField calcul;
     @FXML
@@ -60,7 +56,11 @@ public class DashbordClientController implements Initializable {
     private TextField old;
     @FXML
     private Button btncalc;
-    
+      @FXML
+    private ImageView events_image;
+
+    @FXML
+    private ImageView alerte_img;
      
     
     //private float last=Float.parseFloat(old.getText());

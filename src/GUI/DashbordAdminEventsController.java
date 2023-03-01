@@ -37,7 +37,9 @@ public class DashbordAdminEventsController implements Initializable {
     @FXML
     private ImageView logo;
     @FXML
-    private Button notif;
+    private Button clientid;
+    @FXML
+    private Button offradmin;
 
     /**
      * Initializes the controller class.
@@ -81,12 +83,26 @@ public class DashbordAdminEventsController implements Initializable {
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(GererOffreController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GererAlerteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    
+        
+
     @FXML
-    private void notifier(ActionEvent event) {
+    private void passageClient(MouseEvent event) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/GUI/DashbordClient.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DashbordClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
     
 }

@@ -27,18 +27,13 @@
                         <Font name="Constantia Italic" size="37.0" />
                      </font>
                   </Text>
-                  <ImageView fx:id="logo" fitHeight="95.0" fitWidth="116.0" layoutX="42.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Taktak/src/GUI/logotaktak.PNG" />
-                     </image>
-                  </ImageView>
                   <Text fill="#f50a0a" layoutX="34.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Promo" wrappingWidth="169.16455078125">
                      <font>
                         <Font name="Constantia Italic" size="37.0" />
                      </font>
                   </Text>
                   <TextField fx:id="calcul" layoutX="285.0" layoutY="312.0" />
-                  <Text fill="#243665" layoutX="40.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pourcentage">
+                  <Text fill="#243665" layoutX="40.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promo">
                      <font>
                         <Font name="Constantia Italic" size="37.0" />
                      </font>
@@ -53,7 +48,7 @@
                         <Font name="Constantia Italic" size="37.0" />
                      </font>
                   </Text>
-                  <Text fill="#243665" layoutX="441.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+                  <Text fill="#243665" layoutX="420.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
                      <font>
                         <Font name="Constantia Italic" size="37.0" />
                      </font>
@@ -74,34 +69,38 @@
          <center>
             <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="50.0" style="-fx-background-color: #4CCB9E;" BorderPane.alignment="CENTER">
                <children>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="14.0" layoutY="173.0" size="70" text="" wrappingWidth="45.0" />
-                  <Text fill="#243665" layoutX="92.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" wrappingWidth="191.6708984375">
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="14.0" layoutY="136.0" size="70" text="" wrappingWidth="45.0" />
+                  <Text fill="#243665" layoutX="84.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" wrappingWidth="191.6708984375">
                      <font>
                         <Font name="Arial" size="26.0" />
                      </font>
                   </Text>
-                  <ImageView fx:id="event" fitHeight="72.0" fitWidth="65.0" layoutX="14.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Taktak/src/GUI/evenement.PNG" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="notif" layoutX="79.0" layoutY="215.0" mnemonicParsing="false" onAction="#notifier" style="-fx-background-color: #4CCB9E;" text="Consulter Alertes" textFill="#243665">
+                  <Button fx:id="notif" layoutX="101.0" layoutY="190.0" mnemonicParsing="false" onAction="#notifier" style="-fx-background-color: #4CCB9E;" text="Consulter Alertes" textFill="#243665">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Button>
-                  <FontAwesomeIconView fill="WHITE" glyphName="STAR" layoutX="14.0" layoutY="355.0" size="70" text="" wrappingWidth="45.0" />
-                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="14.0" layoutY="443.0" size="70" text="" wrappingWidth="45.0" />
-                  <Text fill="#243665" layoutX="91.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Devenez-Partenaire" wrappingWidth="216.6708984375">
+                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="14.0" layoutY="427.0" size="70" text="" wrappingWidth="45.0" />
+                  <Text fill="#243665" layoutX="85.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Devenez-Partenaire" wrappingWidth="216.6708984375">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
                   </Text>
-                  <Button fx:id="evenement" layoutX="92.0" layoutY="303.0" mnemonicParsing="false" onAction="#notifierevent" style="-fx-background-color: #4CCB9E;" text="Consulter Evenement" textFill="#243665">
+                  <Button fx:id="evenement" layoutX="91.0" layoutY="279.0" mnemonicParsing="false" onAction="#notifierevent" style="-fx-background-color: #4CCB9E;" text="Consulter Evenement" textFill="#243665">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Button>
+                  <ImageView fx:id="events_image" fitHeight="90.0" fitWidth="146.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@evenement.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="alerte_img" fitHeight="71.0" fitWidth="74.0" layoutX="10.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@alerte.PNG" />
+                     </image>
+                  </ImageView>
                </children>
                <BorderPane.margin>
                   <Insets />

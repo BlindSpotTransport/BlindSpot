@@ -22,6 +22,7 @@ public class EnvoyerEmail {
  final String username = "salsabil.hamraoui@esprit.tn";
  final String password = "223JFT1907";
  private Session session;
+ // methode 
 public void envoyer(String subject,String reciever,String msg) {
 // Etape 1 : Création de la session
 Properties props = new Properties();
