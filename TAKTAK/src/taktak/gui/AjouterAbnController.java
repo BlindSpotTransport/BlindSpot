@@ -87,7 +87,7 @@ public class AjouterAbnController implements Initializable {
     @FXML
     private Button ReadBtn1;
      Abonnement a= new Abonnement();
-    Typeabn t=new Typeabn();
+   // Typeabn t=new Typeabn();
     @FXML
     private Button ReadBtn2;
     private Label disDuree;
@@ -122,6 +122,10 @@ public class AjouterAbnController implements Initializable {
     LocalDate currentDate = LocalDate.now();
     @FXML
     private Button RefBtn;
+    @FXML
+    private Button ExpBtn;
+    @FXML
+    private Button NextBtn;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Settings ChoiceBox
@@ -236,11 +240,7 @@ private void modifierAbn(ActionEvent event) {
             abonnement.setDateExpA(currentDate.plusYears(1));
         }
 
-        try {
-            as.update(abonnement);
-        } catch (SQLException ex) {
-            Logger.getLogger(AjouterAbnController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        as.update(abonnement);
         reset();
     }
 }
@@ -299,6 +299,36 @@ private void modifierAbn(ActionEvent event) {
            alert.showAndWait();
     }
         
+    }
+
+    @FXML
+    private void abnExpiree(ActionEvent event) {
+        as.deleteExpiredAbonnements();
+
+    }
+
+    @FXML
+    private void suivant(ActionEvent event) {
+      try {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/TypeAbn.fxml"));
+                                    Parent root = loader.load();
+                                 Scene scene = new Scene(root);  
+                                  Stage primaryStage = new Stage();
+                                 primaryStage.setScene(scene);  
+                                 primaryStage.setTitle("Fiche patient");  
+                                 primaryStage.centerOnScreen();  
+                                 primaryStage.setResizable(false);  
+                                 primaryStage.setOpacity(1);  
+                                 primaryStage.show();  
+                                 Node node = (Node) event.getSource();
+                                 Stage stage = (Stage) node.getScene().getWindow();
+                                 stage.close();
+                                 //rechercher(ab);
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 

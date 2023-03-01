@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/21626/Documents/NetBeansProjects/TAKTAK/src/taktak/gui/AjouterAbnController.java</file>
+            <file>file:/C:/Users/21626/Documents/NetBeansProjects/TAKTAK/src/taktak/api/StatsAPI.java</file>
             <file>file:/C:/Users/21626/Documents/NetBeansProjects/TAKTAK/src/taktak/tests/AbnFXMain.java</file>
-            <file>file:/C:/Users/21626/Documents/NetBeansProjects/TAKTAK/src/taktak/entity/Abonnement.java</file>
-            <file>file:/C:/Users/21626/Documents/NetBeansProjects/TAKTAK/src/taktak/services/AbnService.java</file>
         </group>
     </open-files>
 </project-private>

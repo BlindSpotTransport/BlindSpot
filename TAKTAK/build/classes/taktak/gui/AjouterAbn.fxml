@@ -19,8 +19,6 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label fx:id="control" layoutX="201.0" layoutY="127.0" textFill="#ea0000" />
-      <Label fx:id="control2" layoutX="201.0" layoutY="260.0" textFill="#ea0000" />
       <AnchorPane layoutX="422.0" layoutY="117.0" prefHeight="539.0" prefWidth="670.0">
          <children>
             <TableView fx:id="tblAbn" layoutY="79.0" prefHeight="459.0" prefWidth="717.0" style="-fx-background-color: white;">
@@ -36,25 +34,25 @@
                   <TableColumn fx:id="promoColumn" prefWidth="75.0" text="Red Ev" />
                </columns>
             </TableView>
-            <Button fx:id="deleteBtn" layoutX="348.0" layoutY="29.0" mnemonicParsing="false" onAction="#supprimerAbn" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: white;" text="Supprimer" textFill="#19a597">
+            <TextField fx:id="searchBar" layoutY="32.0" onKeyPressed="#rechercherAbn" prefHeight="26.0" prefWidth="328.0" />
+            <Button fx:id="RefBtn" layoutX="349.0" layoutY="29.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="31.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-background-color: white;" text="Refresh" textFill="#19a597">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="searchBar" layoutY="32.0" onKeyPressed="#rechercherAbn" prefHeight="26.0" prefWidth="328.0" />
-            <Button fx:id="RefBtn" layoutX="483.0" layoutY="29.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="31.0" prefWidth="119.0" style="-fx-cursor: hand; -fx-background-color: white;" text="Refresh" textFill="#19a597">
+            <Button fx:id="ExpBtn" layoutX="596.0" layoutY="29.0" mnemonicParsing="false" onAction="#abnExpiree" prefHeight="31.0" prefWidth="108.0" style="-fx-background-color: white;" text="Expirée" textFill="#19a597">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteBtn" layoutX="471.0" layoutY="29.0" mnemonicParsing="false" onAction="#supprimerAbn" prefHeight="31.0" prefWidth="108.0" style="-fx-background-color: white;" text="Supprimer" textFill="#19a597">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@325508739_734940078152267_1599891798343371885_n-removebg-preview.png" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="21.0" layoutY="196.0" prefHeight="459.0" prefWidth="386.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="20.0" layoutY="196.0" prefHeight="459.0" prefWidth="386.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="16.0" layoutY="33.0" text="Veillez saisir un moyen de transport :" textFill="#19a597">
                <font>
@@ -80,22 +78,29 @@
                </font>
             </Label>
             <ChoiceBox fx:id="ChoiceBx2" layoutX="305.0" layoutY="272.0" prefHeight="26.0" prefWidth="70.0" />
+            <Label fx:id="control" layoutX="14.0" layoutY="66.0" prefHeight="18.0" prefWidth="99.0" textFill="#ea0000" />
+            <Label fx:id="control2" layoutX="14.0" layoutY="208.0" prefHeight="18.0" prefWidth="108.0" textFill="#ea0000" />
          </children>
       </AnchorPane>
-      <Button fx:id="ReadBtn2" layoutX="248.0" layoutY="668.0" mnemonicParsing="false" onAction="#modifierAbn" prefHeight="31.0" prefWidth="119.0" style="-fx-cursor: hand; -fx-background-color: white;" text="Modifier" textFill="#19a597">
+      <Button fx:id="ReadBtn2" layoutX="148.0" layoutY="668.0" mnemonicParsing="false" onAction="#modifierAbn" prefHeight="31.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-background-color: white;" text="Modifier" textFill="#19a597">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="ReadBtn1" layoutX="108.0" layoutY="668.0" mnemonicParsing="false" onAction="#ajouterAbn" prefHeight="31.0" prefWidth="119.0" style="-fx-cursor: hand; -fx-background-color: white;" text="Valider" textFill="#19a597">
+      <Button fx:id="ReadBtn1" layoutX="28.0" layoutY="668.0" mnemonicParsing="false" onAction="#ajouterAbn" prefHeight="31.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-background-color: white;" text="Valider" textFill="#19a597">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="992.0" layoutY="668.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@325508739_734940078152267_1599891798343371885_n-removebg-preview.png" />
          </image>
       </ImageView>
+      <Button fx:id="NextBtn" layoutX="268.0" layoutY="668.0" mnemonicParsing="false" onAction="#suivant" prefHeight="31.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-background-color: white;" text="Suivant" textFill="#19a597">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
