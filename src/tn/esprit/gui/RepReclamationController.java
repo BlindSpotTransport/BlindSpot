@@ -108,16 +108,18 @@ public class RepReclamationController implements Initializable {
                     ((Text)p.getChildren().get(4)).setText(rp.getReponse());
                     ((Text)p.getChildren().get(5)).setText(String.valueOf(reps.size()- index2));
                     
+                    
                     p.setPrefWidth(350);
                     p.setPrefHeight(100);
-                    p.setLayoutX(115);
-                    p.setLayoutY(1820-110*index3);
+                    p.setLayoutX(130);
+                    p.setLayoutY(1830-110*index3);
                          anchorPaneMsg.getChildren().add(p);
                          } catch (IOException ex) {
                         Logger.getLogger(RepReclamationController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     index2++;
                     index3++;
+                    
              }
             FXMLLoader loader = new FXMLLoader(getClass().getResource("paneMsg.fxml"));
 
@@ -132,10 +134,13 @@ public class RepReclamationController implements Initializable {
                     ((Button)p.getChildren().get(7)).setOnMouseClicked((event -> {
                                 setInput(index);
                             }));
+                      ((Button)p.getChildren().get(8)).setOnMouseClicked((event -> {
+                                setInput(index);
+                            }));
             p.setPrefWidth(450);
             p.setPrefHeight(100);
-            p.setLayoutX(150);
-            p.setLayoutY(1820-110*index3);
+            p.setLayoutX(50);
+            p.setLayoutY(1830-110*index3);
                  anchorPaneMsg.getChildren().add(p);
                  } catch (IOException ex) {
                 Logger.getLogger(RepReclamationController.class.getName()).log(Level.SEVERE, null, ex);

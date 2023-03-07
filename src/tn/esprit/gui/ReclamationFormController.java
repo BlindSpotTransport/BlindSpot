@@ -33,6 +33,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 
 
@@ -44,19 +47,22 @@ import java.io.IOException;
  */
 public class ReclamationFormController implements Initializable {
 
-    @FXML
-    private TextArea idtxt;
     private TextArea nomag;
     private TextArea Reponse;
 Connection mc;
     PreparedStatement ste;
-    @FXML
     private TextArea prenomRec;
-    @FXML
     private TextArea nomRec;
-    @FXML
     private TextArea descRec;
        private static final String BAD_WORDS_FILE = "badwords.txt";
+    @FXML
+    private AnchorPane anchorPaneMsg;
+    @FXML
+    private TextField rep2;
+    @FXML
+    private TextField reponseText;
+    @FXML
+    private Button reppsend;
     
     /**
      * Initializes the controller class.
@@ -113,7 +119,6 @@ public static String getFullPath(String fileName) {
         File file = new File(fileName);
         return file.getAbsolutePath();
     }
-    @FXML
     private void AddRec(ActionEvent event) throws SQLException {
         
          String nom = nomRec.getText();
@@ -158,12 +163,15 @@ public static String getFullPath(String fileName) {
     
     }
 
-    @FXML
     private void reset(ActionEvent event) {
         
           nomRec.setText(null);
           prenomRec.setText(null);
           descRec.setText(null);
+    }
+
+    @FXML
+    private void reponseSend(ActionEvent event) {
     }
 
 

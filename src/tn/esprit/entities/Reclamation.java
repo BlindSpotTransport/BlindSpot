@@ -16,7 +16,7 @@ public class Reclamation {
     private int idr ; 
     private String nom ; 
     private String prenom ;
-    private LocalDate dater  ; 
+    private LocalDate dater ; 
     private String descrec ; 
     private User user ; 
     

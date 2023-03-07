@@ -26,5 +26,15 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
+      <ImageView fx:id="delete_repbtn" fitHeight="21.0" fitWidth="21.0" layoutX="315.0" layoutY="10.0" onMouseClicked="#delete_rep" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/close_rec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="edit_repbtn" fitHeight="21.0" fitWidth="21.0" layoutX="286.0" layoutY="10.0" onMouseClicked="#edit_rep" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/edit_rec.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
