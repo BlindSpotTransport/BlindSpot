@@ -62,7 +62,7 @@ public class HomeController implements Initializable {
         @Override
         protected Parent call() throws Exception {
             // Load the GUI using the FXML loader
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("RecInterface.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminRecInterface.fxml"));
             return loader.load();
         }
     };

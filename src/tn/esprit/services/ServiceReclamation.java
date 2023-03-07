@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import tn.esprit.entities.Reclamation;
+import tn.esprit.entities.RepReclamation;
+import tn.esprit.entities.User;
 import tn.esprit.tools.Connexion;
 
 /**
@@ -30,6 +32,7 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
             Calendar calendar = Calendar.getInstance();
             java.util.Date now = calendar.getTime();
             Date currentDate = new Date(now.getTime());
+            
             String requete = "INSERT INTO Reclamation (nom,prenom,dater,descrec) VALUES (?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, r.getNom());
@@ -56,6 +59,9 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
             while(rs.next()){
                 Reclamation r = new Reclamation();
                 r.setNom(rs.getString("nom"));
+                User u= new User();
+                u.setIdU(rs.getInt("idu"));
+                r.setUser(u);
                 r.setPrenom(rs.getString("prenom"));
                 r.setDater(rs.getDate("dater").toLocalDate()); 
                 r.setDescrec(rs.getString("descrec"));   
@@ -121,6 +127,54 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
             System.err.println(ex.getMessage());
         }
         return i;
+    }
+
+    public List<Reclamation> getMessages(int idU) {
+        List<Reclamation> ReclamationsList = new ArrayList<>();
+        
+        try {
+            String requete = "SELECT * FROM reclamation r where idu ="+idU +" order by dater";
+          //   String requete2 = "SELECT * FROM utilisateur u where idu ="+idU +" order by dater";
+            Statement st = cnx.createStatement();
+            ResultSet rs =  st.executeQuery(requete);
+         //  ResultSet rs2 = st.executeQuery(requete2);
+            while(rs.next()){
+                Reclamation r = new Reclamation();
+                r.setIdr(rs.getInt("idr"));
+                
+                r.setNom(rs.getString("nom"));
+                r.setPrenom(rs.getString("prenom"));
+                r.setDater(rs.getDate("dater").toLocalDate()); 
+                r.setDescrec(rs.getString("descrec"));   
+                
+                ReclamationsList.add(r);
+                
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return ReclamationsList;
+    }
+
+    public List<RepReclamation> getReponses(int id) {
+        List<RepReclamation> reps = new ArrayList<>();
+        try {
+            String requete = "SELECT * FROM RepReclamation r where idr ="+id +" order by daterep desc";
+            Statement st = cnx.createStatement();
+            ResultSet rs =  st.executeQuery(requete);
+            while(rs.next()){
+                RepReclamation r = new RepReclamation();
+                r.setNomAg(rs.getString("nomAg"));
+                r.setReponse(rs.getString("reponse"));
+                r.setDaterep(rs.getDate("daterep").toLocalDate());   
+                
+                reps.add(r);
+                
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return reps;
     }
 
 }  

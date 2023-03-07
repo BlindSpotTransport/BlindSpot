@@ -46,46 +46,44 @@ import javafx.util.Duration;
 import javax.swing.JOptionPane;
 import javax.swing.SpringLayout;
 import tn.esprit.entities.Reclamation;
+import tn.esprit.entities.User;
 import tn.esprit.services.ServiceReclamation;
+import tn.esprit.tools.Variables;
 
 /**
  * FXML Controller class
  *
  * @author sbs
  */
-public class ReclaInterfaceController implements Initializable {
+public class AdminReclaInterfaceController implements Initializable {
 
-    @FXML
     private TextArea prenomRec;
-    @FXML
     private TextArea nomRec;
-        @FXML
-    private TableColumn<Reclamation,Integer> idr;
     @FXML
     private TableColumn<Reclamation, String>nom;
-    @FXML 
+    @FXML
     private TableColumn<Reclamation, String> prenom; 
     @FXML
     private TableColumn<Reclamation, String>date;
     @FXML
     private TableColumn<Reclamation, String> desc;
-      @FXML
+    @FXML
      private TableView<Reclamation> tableRec;
       ObservableList<Reclamation>recList;    
      Connection mc;
     PreparedStatement ste;
-    @FXML 
-     private DatePicker dateRec;
-    @FXML
-    private TextArea descRec;
-
-    @FXML 
-    private TextArea idtxt;
-    private static int id_tst = 0;
+@FXML
+    private DatePicker dateRec;
+   @FXML
+     private TextArea descRec;
+   private static int id_tst = 0;
       ServiceReclamation rc = new ServiceReclamation();
 int ID;
     @FXML
     private TextField recherche;
+    @FXML
+    private TableColumn<Reclamation, Integer> idr;
+   
 
     /**
      * Initializes the controller class.
@@ -111,6 +109,9 @@ int ID;
                 //tekhou mel base w tseti fel instance mb3ed el instance bsh thotha fi lista w tajoputiha or taffich or update
                 r.setIdr(rs.getInt("idr"));
                 r.setNom(rs.getString("nom"));
+                User u= new User();
+                u.setIdU(rs.getInt("idu"));
+                r.setUser(u);
                 r.setPrenom(rs.getString("prenom"));
                 r.setDater(rs.getDate("dater").toLocalDate());
                 r.setDescrec(rs.getString("descrec"));
@@ -131,15 +132,15 @@ int ID;
     
         
     }
-@FXML
+    @FXML
     private void getSelected(MouseEvent event) {
-   Reclamation clicked = tableRec.getSelectionModel().getSelectedItem();
-        
-        id_tst = clicked.getIdr();
+   //Reclamation clicked = tableRec.getSelectionModel().getSelectedItem();
+      Variables.setRecClicked(tableRec.getSelectionModel().getSelectedItem()); 
+      /*  id_tst = clicked.getIdr();
          nomRec.setText(String.valueOf(clicked.getNom()));
         prenomRec.setText(String.valueOf(clicked.getPrenom()));
        dateRec.setValue(clicked.getDater());                  
-        descRec.setText(String.valueOf(clicked.getDescrec()));
+        descRec.setText(String.valueOf(clicked.getDescrec()));*/
     }
 
     @FXML
@@ -178,45 +179,44 @@ int ID;
 
     
 
-    @FXML
-    private void updateRec(ActionEvent event)  {
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Waiting...");
-            alert.setContentText("Confirmation..!");
-       
-          
-             String nom = nomRec.getText();
-             String prenom = prenomRec.getText();
-             LocalDate date =  dateRec.getValue();
-             String description = descRec.getText();
-             
-             Optional<ButtonType>result =  alert.showAndWait(); 
-        if(result.get() == ButtonType.OK){ 
-        
-            try{
-        
-             ServiceReclamation rc = new ServiceReclamation( );
-             Reclamation r= new Reclamation(id_tst,nom,prenom,date,description);
-             rc.modifier_reclamation(r);
-            JOptionPane.showMessageDialog(null, "reclamation modifié");
-        }catch(Exception e){
-               JOptionPane.showMessageDialog(null,e);
-
-        }
-        refresh();
-               }
-//        else{
-//
-//              nomRec.setText(null);
-//              prenomRec.setText(null);
-//              dateRec.setValue(null);
-//              descRec.setText(null);
-//              
-//            ;
+//    private void updateRec(ActionEvent event)  {
+//    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//            alert.setHeaderText("Waiting...");
+//            alert.setContentText("Confirmation..!");
+//       
+//          
+//             String nom = nomRec.getText();
+//             String prenom = prenomRec.getText();
+//             LocalDate date =  dateRec.getValue();
+//             String description = descRec.getText();
+//             
+//             Optional<ButtonType>result =  alert.showAndWait(); 
+//        if(result.get() == ButtonType.OK){ 
+//        
+//            try{
+//        
+//             ServiceReclamation rc = new ServiceReclamation( );
+//             Reclamation r= new Reclamation(id_tst,nom,prenom,date,description);
+//             rc.modifier_reclamation(r);
+//            JOptionPane.showMessageDialog(null, "reclamation modifié");
+//        }catch(Exception e){
+//               JOptionPane.showMessageDialog(null,e);
 //
 //        }
-      
-    }
+//        refresh();
+//               }
+////        else{
+////
+////              nomRec.setText(null);
+////              prenomRec.setText(null);
+////              dateRec.setValue(null);
+////              descRec.setText(null);
+////              
+////            ;
+////
+////        }
+//      
+//    }
 
     @FXML
     private void retourRec(ActionEvent event) {
@@ -261,43 +261,42 @@ int ID;
     thread.start();
     }
 
-    @FXML
-    private void AddRec(ActionEvent event) throws SQLException {
-           
-        String nom = nomRec.getText();
-        String prenom = prenomRec.getText(); // bch te5ou text mawjoud f label w thotou f variable
-        LocalDate dater = dateRec.getValue();
-        String description = descRec.getText();
-        
-     
-         if (nom.isEmpty() || prenom.isEmpty() ||  description.isEmpty() ){
-             Alert alert = new Alert(Alert.AlertType.ERROR);
-             alert.setContentText("Donnees non disponible!!"); // controle de saisie
-             alert.showAndWait();          
-         }
-         else{
-            
-             Reclamation r=new Reclamation(nom,prenom,dater,description);
-             ServiceReclamation rc = new ServiceReclamation();
-             ResultSet rs=ste.executeQuery();
-             rc.ajouter_reclamation(r);
-             
-             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-             
-             alert.setContentText("Reclamation Ajoutée avec succes!");
-                alert.showAndWait();
-                
-           
- 
-           nomRec.setText(null);
-          prenomRec.setText(null);
-          dateRec.setValue(null);
-          descRec.setText(null);
-         }
-         refresh();
+//    private void AddRec(ActionEvent event) throws SQLException {
+//           
+//        String nom = nomRec.getText();
+//        String prenom = prenomRec.getText(); // bch te5ou text mawjoud f label w thotou f variable
+//        LocalDate dater = dateRec.getValue();
+//        String description = descRec.getText();
+//        
+//     
+//         if (nom.isEmpty() || prenom.isEmpty() ||  description.isEmpty() ){
+//             Alert alert = new Alert(Alert.AlertType.ERROR);
+//             alert.setContentText("Donnees non disponible!!"); // controle de saisie
+//             alert.showAndWait();          
+//         }
+//         else{
+//            
+//             Reclamation r=new Reclamation(nom,prenom,dater,description);
+//             ServiceReclamation rc = new ServiceReclamation();
+//             ResultSet rs=ste.executeQuery();
+//             rc.ajouter_reclamation(r);
+//             
+//             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//             
+//             alert.setContentText("Reclamation Ajoutée avec succes!");
+//                alert.showAndWait();
+//                
+//           
+// 
+//           nomRec.setText(null);
+//          prenomRec.setText(null);
+//          dateRec.setValue(null);
+//          descRec.setText(null);
+//         }
+//         refresh();
     
    
-    }
+    //}
  
     //for optimization   
         public void refresh(){
@@ -372,6 +371,48 @@ String nom1 = "";
         .filter(r -> r.getNom().toLowerCase().contains(nom)).collect(Collectors.toCollection(FXCollections::observableArrayList));
     tableRec.setItems(filterReclist);
     
+    }
+
+    @FXML
+    private void repRec(ActionEvent event) {
+        ProgressIndicator progressIndicator = new ProgressIndicator();
+    progressIndicator.setMaxSize(100, 100);
+    StackPane stackPane = new StackPane(progressIndicator);
+
+    // Create a scene for the progress indicator and set it on the primary stage
+    Scene progressScene = new Scene(stackPane);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Platform.runLater(() -> {
+        stage.setScene(progressScene);
+        stage.show();
+    });
+
+    // Load the GUI on a background thread
+    Task<Parent> loadTask = new Task<Parent>() {
+        @Override
+        protected Parent call() throws Exception {
+            // Load the GUI using the FXML loader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("RepReclamation.fxml"));
+            return loader.load();
+        }
+    };
+
+    loadTask.setOnSucceeded(e -> {
+        // Get the loaded GUI and set it on the primary stage
+        Parent root = loadTask.getValue();
+        Scene scene = new Scene(root);
+        Platform.runLater(() -> {
+            stage.setScene(scene);
+        });
+    });
+
+    loadTask.setOnFailed(e -> {
+        System.out.println(loadTask.getException().getMessage());
+    });
+
+    // Start the task on a background thread
+    Thread thread = new Thread(loadTask);
+    thread.start();
     }
 }
   

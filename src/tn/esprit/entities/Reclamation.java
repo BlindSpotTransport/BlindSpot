@@ -17,7 +17,9 @@ public class Reclamation {
     private String nom ; 
     private String prenom ;
     private LocalDate dater  ; 
-    private String descrec ;   
+    private String descrec ; 
+    private User user ; 
+    
 
     public Reclamation() {
     }
@@ -27,6 +29,23 @@ public class Reclamation {
         this.prenom = prenom;
         this.dater = dater;
         this.descrec = descrec;
+    }
+
+    public Reclamation(int idr, String nom, String prenom, LocalDate dater, String descrec, User user) {
+        this.idr = idr;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dater = dater;
+        this.descrec = descrec;
+        this.user = user;
+    }
+
+    public Reclamation(String nom, String prenom, LocalDate dater, String descrec, User user) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dater = dater;
+        this.descrec = descrec;
+        this.user = user;
     }
 
     public Reclamation(String nom, String prenom, LocalDate dater, String descrec) {
@@ -40,6 +59,14 @@ public class Reclamation {
         this.nom = nom;
         this.prenom = prenom;
         this.descrec = descrec;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 
@@ -100,12 +127,14 @@ public class Reclamation {
         this.descrec = descrec;
     }
 
-   
-
     @Override
     public String toString() {
-        return "Reclamation{" + "idr=" + idr + ", nom=" + nom + ", prenom=" + prenom + ", dater=" + dater + ", descrec=" + descrec + '}';
+        return "Reclamation{" + "idr=" + idr + ", nom=" + nom + ", prenom=" + prenom + ", dater=" + dater + ", descrec=" + descrec + ", user=" + user + '}';
     }
+
+   
+
+ 
 
    
     

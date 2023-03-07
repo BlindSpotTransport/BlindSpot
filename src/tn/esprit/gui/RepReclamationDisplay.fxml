@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.RepReclamationDisplayController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="-7.0" layoutY="1.0" prefHeight="540.0" prefWidth="861.0" style="-fx-background-color: white;" styleClass="mainFxmlClass">
+         <children>
+            <Pane layoutY="-27.0" prefHeight="99.0" prefWidth="862.0" style="-fx-background-color: #243665;">
+               <children>
+                  <Text fill="#4ccb9e" layoutX="27.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interface Reponses des Reclamations">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <TableView fx:id="tablerep" layoutX="46.0" layoutY="149.0" onMouseClicked="#getSelected" prefHeight="308.0" prefWidth="789.0">
+               <columns>
+                
+                  <TableColumn fx:id="nom" prefWidth="133.0" text="Nom" />
+                  <TableColumn fx:id="date" prefWidth="201.0" text="Date" />
+                  <TableColumn fx:id="Reclamation" prefWidth="229.0" text="Reclamation" />
+                  <TableColumn fx:id="idr" minWidth="0.0" prefWidth="0.0" text="id" />
+                  <TableColumn fx:id="Reponse" prefWidth="225.0" text="Reponse" />
+               </columns>
+            </TableView>
+            <Button layoutX="237.0" layoutY="473.0" mnemonicParsing="false" onAction="#deleteRep" prefHeight="37.0" prefWidth="109.0" style="-fx-background-color: #243665;" text="Supprimer " textFill="#4ccb9e">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="idtxt" layoutX="130.0" layoutY="85.0" opacity="0.0" prefHeight="28.0" prefWidth="147.0" />
+            <Text fill="#4ccb9e" layoutX="467.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recherche" wrappingWidth="108.509281873703">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Text>
+            <Button layoutX="30.0" layoutY="90.0" mnemonicParsing="false" onAction="#retourRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #243665;" text="retour" textFill="#4ccb9e">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="73.0" layoutY="473.0" mnemonicParsing="false" onAction="#reset" prefHeight="37.0" prefWidth="67.0" style="-fx-background-color: #243665;" text="Reset" textFill="#4ccb9e">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="recherche" layoutX="576.0" layoutY="94.0" onKeyPressed="#Recherche" />
+            <Button layoutX="654.0" layoutY="473.0" mnemonicParsing="false" onAction="#repRep" prefHeight="37.0" prefWidth="109.0" style="-fx-background-color: #243665;" text="Repondre" textFill="#4ccb9e">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

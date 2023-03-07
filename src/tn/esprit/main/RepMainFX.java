@@ -21,15 +21,15 @@ import javafx.stage.Stage;
  *
  * @author sbs
  */
-public class Main2FX extends Application {
+public class RepMainFX extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-      // Create a background thread to load the GUI
+     // Create a background thread to load the GUI
     Thread thread = new Thread(() -> {
         try {
             // Load the GUI using a cached FXML loader
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/CommentForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/CommentDisplay.fxml"));
             Parent root = loader.load();
             
             // Create a scene and set it on the primary stage
