@@ -15,14 +15,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import entities.User;
-import entities.adresse;
+import entities.Adresse;
 import tools.MaConnection;
+
 
 /**
  *
  * @author user
  */
-public abstract class service_adresse implements InterfaceService<adresse> {
+public abstract class service_adresse implements InterfaceService<Adresse> {
      Connection cnx;
     Statement st;
 
@@ -32,7 +33,7 @@ public abstract class service_adresse implements InterfaceService<adresse> {
     }
 
     @Override
-    public void ajouter(adresse a) {
+    public void ajouter(Adresse a) {
         try {
             String sql = "insert into adresse(idAdresseU,region,cité,rue,numPoste)"
                     + "values (?,?,?,?,?)";
@@ -50,7 +51,7 @@ public abstract class service_adresse implements InterfaceService<adresse> {
 
     }
    
-    public void modifierA(int numposte,String region,String cité,String rue,adresse a) {
+    public void modifierA(int numposte,String region,String cité,String rue,Adresse a) {
         String sql = "update adresse set NumPoste=?,region=?,cité=?,rue=? where idAdresseU=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
@@ -67,7 +68,7 @@ public abstract class service_adresse implements InterfaceService<adresse> {
 
     }
     @Override
-    public void supprimer(adresse a) {
+    public void supprimer(Adresse a) {
         String sql = "delete from adresse where idAdresseU=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
@@ -79,15 +80,15 @@ public abstract class service_adresse implements InterfaceService<adresse> {
 
     }
     @Override
-    public List<adresse> getAll() {
-        List<adresse> adresses = new ArrayList<>();
+    public List<Adresse> getAll() {
+        List<Adresse> adresses = new ArrayList<>();
         try {
             String sql = "select * from adresse";
             Statement ste = cnx.createStatement();
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
-                adresse a = new adresse(s.getInt("idAdressU"),s.getInt("numPoste"),
+                Adresse a = new Adresse(s.getInt("idAdressU"),s.getInt("numPoste"),
                        s.getString("region"), s.getString("cité"),s.getString("rue"));
                 adresses.add(a);
  
@@ -101,15 +102,15 @@ public abstract class service_adresse implements InterfaceService<adresse> {
   
 
    
-    public List<adresse> findById(int idAdresseU) {
-        List<adresse> adresses = new ArrayList<>();
+    public List<Adresse> findById(int idAdresseU) {
+        List<Adresse> adresses = new ArrayList<>();
         try {
             String sql = "select * from adresse where idAdresseU='"+idAdresseU+"'";
             Statement ste = cnx.createStatement();
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
-                adresse a = new adresse(s.getInt("idAdresseU"),s.getInt("numPoste"),
+                Adresse a = new Adresse(s.getInt("idAdresseU"),s.getInt("numPoste"),
                        s.getString("region"), s.getString("cité"),s.getString("rue"));
                 adresses.add(a);
  

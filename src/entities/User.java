@@ -6,6 +6,7 @@
 package entities;
 
 import java.sql.Date;
+import java.util.Objects;
 
 /**
  *
@@ -15,14 +16,14 @@ public class User {
     
     private int idU;
     private String nomU,prenomU,imagePU,mdpU,emailU, roleU ,permisU,createdAtU;
-    private adresse AdresseU;
+    private Adresse AdresseU;
     private  int telephoneU,cinU;
     private boolean  abonnéU;
 
     public User() {
     }
 
-    public User(int idU, String nomU, String prenomU, String imagePU, String mdpU, String emailU, String roleU, String permisU, adresse AdresseU, int telephoneU, int cinU, String createdAtU, boolean abonnéU) {
+    public User(int idU, String nomU, String prenomU, String imagePU, String mdpU, String emailU, String roleU, String permisU, Adresse AdresseU, int telephoneU, int cinU, String createdAtU, boolean abonnéU) {
         this.idU = idU;
         this.nomU = nomU;
         this.prenomU = prenomU;
@@ -37,6 +38,16 @@ public class User {
         this.createdAtU = createdAtU;
         this.abonnéU = abonnéU;
     }
+     public User(int idU, String nomU, String prenomU, String imagePU, String emailU, int IdAdresseU, int telephoneU ,String roleU) {
+        this.idU = idU;
+        this.nomU = nomU;
+        this.prenomU = prenomU;
+        this.imagePU = imagePU;
+        this.emailU = emailU;
+        this.AdresseU = AdresseU;
+        this.telephoneU = telephoneU;
+        this.roleU=roleU;
+    }
 
     public User(int idU, String nomU, String prenomU, String imagePU, String emailU, int IdAdresseU, int telephoneU) {
         this.idU = idU;
@@ -48,7 +59,15 @@ public class User {
         this.telephoneU = telephoneU;
     }
 
-  
+  public User(String nom,String prenom,String role,String Email) {
+                this.nomU = nomU;
+        this.prenomU = prenomU;
+    
+        this.emailU = emailU;
+        this.roleU = roleU;
+       
+    }
+
 
     public int getIdU() {
         return idU;
@@ -114,15 +133,16 @@ public class User {
         this.permisU = permisU;
     }
 
-    public adresse getAdresseU() {
+    public Adresse getAdresseU() {
         return AdresseU;
     }
 
-    public void setAdresseU(adresse AdresseU) {
+    public void setAdresseU(Adresse AdresseU) {
         this.AdresseU = AdresseU;
     }
 
-  
+  public int getIdAdresseU(){
+  return getAdresseU().getIdAdresse();}
 
     public int getTelephoneU() {
         return telephoneU;
@@ -159,6 +179,66 @@ public class User {
     @Override
     public String toString() {
         return "User{" + "idU=" + idU + ", nomU=" + nomU + ", prenomU=" + prenomU + ", imagePU=" + imagePU + ", mdpU=" + mdpU + ", emailU=" + emailU + ", roleU=" + roleU + ", permisU=" + permisU + ", createdAtU=" + createdAtU + ", AdresseU=" + AdresseU + ", telephoneU=" + telephoneU + ", cinU=" + cinU + ", abonn\u00e9U=" + abonnéU + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final User other = (User) obj;
+        if (this.idU != other.idU) {
+            return false;
+        }
+        if (this.telephoneU != other.telephoneU) {
+            return false;
+        }
+        if (this.cinU != other.cinU) {
+            return false;
+        }
+        if (this.abonnéU != other.abonnéU) {
+            return false;
+        }
+        if (!Objects.equals(this.nomU, other.nomU)) {
+            return false;
+        }
+        if (!Objects.equals(this.prenomU, other.prenomU)) {
+            return false;
+        }
+        if (!Objects.equals(this.imagePU, other.imagePU)) {
+            return false;
+        }
+        if (!Objects.equals(this.mdpU, other.mdpU)) {
+            return false;
+        }
+        if (!Objects.equals(this.emailU, other.emailU)) {
+            return false;
+        }
+        if (!Objects.equals(this.roleU, other.roleU)) {
+            return false;
+        }
+        if (!Objects.equals(this.permisU, other.permisU)) {
+            return false;
+        }
+        if (!Objects.equals(this.createdAtU, other.createdAtU)) {
+            return false;
+        }
+        if (!Objects.equals(this.AdresseU, other.AdresseU)) {
+            return false;
+        }
+        return true;
     }
 
    

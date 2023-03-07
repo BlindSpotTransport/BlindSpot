@@ -5,18 +5,20 @@
  */
 package entities;
 
+import java.util.Objects;
+
 /**
  *
  * @author user
  */
-public class adresse {
+public class Adresse {
      private int idAdresseU,NumPoste;
     private String region,cité,rue;
 
-    public adresse() {
+    public Adresse() {
     }
 
-    public adresse(int idAdresseU, int NumPoste, String region, String cité, String rue) {
+    public Adresse(int idAdresseU, int NumPoste, String region, String cité, String rue) {
         this.idAdresseU = idAdresseU;
         this.NumPoste = NumPoste;
         this.region = region;
@@ -67,6 +69,42 @@ public class adresse {
     @Override
     public String toString() {
         return "adresse{" + "idAdresseU=" + idAdresseU + ", NumPoste=" + NumPoste + ", region=" + region + ", cit\u00e9=" + cité + ", rue=" + rue + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Adresse other = (Adresse) obj;
+        if (this.idAdresseU != other.idAdresseU) {
+            return false;
+        }
+        if (this.NumPoste != other.NumPoste) {
+            return false;
+        }
+        if (!Objects.equals(this.region, other.region)) {
+            return false;
+        }
+        if (!Objects.equals(this.cité, other.cité)) {
+            return false;
+        }
+        if (!Objects.equals(this.rue, other.rue)) {
+            return false;
+        }
+        return true;
     }
     
 }
