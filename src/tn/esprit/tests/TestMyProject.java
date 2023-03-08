@@ -17,6 +17,7 @@ import tn.esprit.services.MoyenstransportService;
 import tn.esprit.services.ReservationService;
 import tn.esprit.entity.Reservation;
 import tn.esprit.services.PlanningService;
+import tn.esprit.services.service_user;
 
 /**
  *
@@ -90,8 +91,9 @@ public class TestMyProject {
         //System.out.println(rs1.findById(13025486));
 
         
-       
-        
+       String password,encryption;
+       password="CuVn9Bo6LO";
+            System.out.println(encryption=service_user.encryptMdp(password));
    //-------------------------------------------------------------------------------------------------------------------------------------------------//
 
         PlanningService ps1 = new PlanningService();
@@ -111,8 +113,9 @@ public class TestMyProject {
         //ps1.modifierPlannig(t4,80, p1);
         
         //Afficher jointure Planning
-        //Planning pla = new Planning();
+        Planning pla = new Planning();
         //ps1.getAllPlanning();
+        //System.out.println(ps1.getAll());
                 
                 } catch (ParseException ex) {
             Logger.getLogger(TestMyProject.class.getName()).log(Level.SEVERE, null, ex);

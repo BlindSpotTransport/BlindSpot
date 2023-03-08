@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Alert;
 import tn.esprit.tools.MaConnection;
 import tn.esprit.entity.Reservation;
 /**
@@ -30,7 +31,7 @@ public class ReservationService implements NewInterface<Reservation>{
     @Override
     public void ajouter(Reservation r) {
  try{
-        String sql = "INSERT INTO `reservation`(`dateR`, `heureDep`, `heureArr`, `type`, `cin`, `prix`) VALUES (?,?,?,?,?,?) ";
+        String sql = "INSERT INTO `reservation`(`dateR`, `heureDep`, `heureArr`, `type`, `cin`, `prix`, `NumeroT`) VALUES (?,?,?,?,?,?,?) ";
         PreparedStatement ste = cnx.prepareStatement(sql);
         ste.setTime(1, r.getDateR());
         ste.setTime(2, r.getHeureDep());
@@ -38,8 +39,14 @@ public class ReservationService implements NewInterface<Reservation>{
         ste.setString(4, r.getType());
         ste.setInt(5, r.getCin());
         ste.setInt(6, r.getPrix());
-        System.out.println(" Reservation a éte ajoutée avec succées !");
+        ste.setString(7, r.getNUM());
         ste.executeUpdate();
+        Alert alert = new Alert (Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Reservation a éte ajoutée avec succées !");
+            alert.showAndWait();
+            
     } catch (SQLException ex) {
             System.out.println(ex.getMessage());
     }
@@ -117,6 +124,24 @@ try{
             System.out.println(ex.getMessage());
     }
         return Reserv;
+    }
+    
+    public int GetEndTicket(){
+       int ticket = 0;
+        try{
+        String sqlGetDernier = "select MAX(idNum) as ticket from reservation";
+                    Statement ste = cnx.createStatement();
+                                ResultSet s = ste.executeQuery(sqlGetDernier);
+
+        while (s.next()) {
+        ticket = s.getInt("ticket");
+            }
+        
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }     
+        
+            return ticket;
     }
 
 }

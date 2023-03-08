@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="1048.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AfficherUserController">
+   <children>
+      <ImageView cache="true" fitHeight="625.0" fitWidth="1042.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+         <effect>
+            <GaussianBlur radius="2.5" />
+         </effect>
+      </ImageView>
+      <TableView fx:id="table" layoutX="304.0" layoutY="61.0" onMouseClicked="#onSelected" prefHeight="304.0" prefWidth="626.0">
+        <columns>
+          <TableColumn fx:id="nomColumn" prefWidth="94.4000244140625" text="Nom" />
+          <TableColumn fx:id="preColumn" prefWidth="120.79998779296875" text="Prenom" />
+            <TableColumn fx:id="emailColumn" prefWidth="285.5999755859375" text="Email" />
+            <TableColumn fx:id="RoleColumn" prefWidth="128.0" text="Role" />
+        </columns>
+      </TableView>
+      <Button fx:id="bttn_supp" layoutX="691.0" layoutY="449.0" mnemonicParsing="false" onAction="#supprimerAction" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #243665;" text="Supprimer" textFill="#fcfcfc">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="18.0" />
+         </font></Button>
+      <TextField fx:id="nomfield" layoutX="76.0" layoutY="93.0" promptText="Nom" />
+      <TextField fx:id="prenomflied" layoutX="76.0" layoutY="159.0" promptText="Prenom" />
+      <TextField fx:id="roleflied" layoutX="76.0" layoutY="282.0" promptText="Role" />
+      <TextField fx:id="emailfield" layoutX="76.0" layoutY="217.0" promptText="Email" />
+      <Button fx:id="modif_bttn" layoutX="541.0" layoutY="449.0" mnemonicParsing="false" onAction="#ModiferAction" prefHeight="32.0" prefWidth="111.0" style="-fx-background-color: #243665;" text="Modifier" textFill="#f2f2f2">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="18.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

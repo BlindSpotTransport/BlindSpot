@@ -5,6 +5,7 @@
  */
 package tn.esprit.services;
 
+import tn.esprit.entity.Circuit;
 import tn.esprit.entity.Station;
 import java.util.List;
 
@@ -15,7 +16,10 @@ import java.util.List;
 public interface InterfaceStation <S>{
      public void ajouterStation(Station s);
     public List<S> getAll();
-    public List<S> findById(int id);
+    public Station findByNom(String nomS);
+     public List findByNomS(String nomS);
+   // public Station findBy(String nomS);
     public void supprimerStation(Station s);
-    public void modifierStation(String nomS, Station s);
+    public void modifierStation(Station s, int id);
+    public int getID();
 }

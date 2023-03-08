@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="628.0" prefWidth="1071.0" style="-fx-background-color: #d7fcef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DashbordClientController">
+    <stylesheets>
+        <URL value="@../Taktak/src/GUI/dashbordadminevents.css" />
+    </stylesheets>
+   <children>
+      <BorderPane layoutX="33.0" layoutY="42.0" prefHeight="514.0" prefWidth="993.0">
+         <right>
+            <AnchorPane prefHeight="492.0" prefWidth="626.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+               <children>
+                  <FontAwesomeIconView fill="#243665" glyphName="CLOSE" layoutX="604.0" layoutY="31.0" onMouseClicked="#close" size="20" styleClass="btn" wrappingWidth="36.999988317489624" />
+                  <Text fill="#243665" layoutX="185.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications">
+                     <font>
+                        <Font name="Constantia Italic" size="37.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#f50a0a" layoutX="21.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Promo" wrappingWidth="169.16455078125">
+                     <font>
+                        <Font name="Constantia Italic" size="37.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="calcul" layoutX="285.0" layoutY="312.0" />
+                  <Text fill="#243665" layoutX="40.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promo">
+                     <font>
+                        <Font name="Constantia Italic" size="37.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#243665" layoutX="34.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix Actuelle">
+                     <font>
+                        <Font name="Constantia Italic" size="37.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#243665" layoutX="38.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau Prix">
+                     <font>
+                        <Font name="Constantia Italic" size="37.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#243665" layoutX="420.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+                     <font>
+                        <Font name="Constantia Italic" size="37.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="per" alignment="CENTER" layoutX="285.0" layoutY="244.0" prefHeight="31.0" prefWidth="126.0" />
+                  <TextField fx:id="old" alignment="CENTER" layoutX="285.0" layoutY="189.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btncalc" layoutX="233.0" layoutY="389.0" mnemonicParsing="false" onAction="#calcilerprix" prefHeight="43.0" prefWidth="166.0" style="-fx-background-radius: 15;" text="Calculer" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </AnchorPane>
+         </right>
+         <center>
+            <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="50.0" style="-fx-background-color: #4CCB9E;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fx:id="NameClient" fill="#243665" layoutX="114.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" wrappingWidth="191.6708984375">
+                     <font>
+                        <Font name="Arial" size="26.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="notif" layoutX="101.0" layoutY="190.0" mnemonicParsing="false" onAction="#notifier" style="-fx-background-color: #4CCB9E;" text="Consulter Alertes" textFill="#243665">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="20.0" layoutY="424.0" size="70" text="" wrappingWidth="27.399993896484375" />
+                  <Button fx:id="evenement" layoutX="91.0" layoutY="279.0" mnemonicParsing="false" onAction="#notifierevent" style="-fx-background-color: #4CCB9E;" text="Consulter Evenement" textFill="#243665">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <ImageView fx:id="events_image" fitHeight="90.0" fitWidth="146.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@evenement.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="alerte_img" fitHeight="71.0" fitWidth="74.0" layoutX="10.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@alerte.PNG" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="114.0" layoutY="378.0" mnemonicParsing="false" onAction="#btn_fb" style="-fx-background-radius: 15;" text="Join Us" textFill="#243665">
+                     <font>
+                        <Font size="26.0" />
+                     </font></Button>
+                  <Circle fx:id="profilepicture" fill="#1f93ff00" layoutX="46.0" layoutY="136.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <Button id="reser" fx:id="buttonReser" disable="true" layoutX="376.0" layoutY="570.0" mnemonicParsing="false" onAction="#ReserverBtn" prefHeight="45.0" prefWidth="182.0" stylesheets="@style.css" text="Reserver" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

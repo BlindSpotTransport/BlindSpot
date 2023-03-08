@@ -1,28 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.PrincipalePageController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.PrincipalePageController">
    <left>
-      <VBox prefHeight="411.0" prefWidth="210.0" style="-fx-background-color: #4CCB9E;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="691.0" prefWidth="240.0" style="-fx-background-color: #4CCB9E;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="215.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="226.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@whitDDe-paD-texture.jpg" />
+                  <Image url="@images/Logo.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="GestionTranBtn" mnemonicParsing="false" onAction="#TransportAjoutConsulterPage" prefHeight="26.0" prefWidth="215.0" text="Gestion de transport" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="228.0" text="Gestion d'événements" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="224.0" text="Gestion station et circuit" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Gestion d'utilisateurs" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="238.0" text="Gestion de réclamation" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="242.0" text="Gestion d'abonnement" />
-            <Button mnemonicParsing="false" onAction="#ReservationAjoutConsulterPage" prefHeight="26.0" prefWidth="213.0" text="Gestion de reservation" />
-            <Button mnemonicParsing="false" onAction="#PlanningAjoutConsulterPage" prefHeight="26.0" prefWidth="280.0" text="Gestion de planning" />
+            <Button layoutX="10.0" layoutY="564.0" mnemonicParsing="false" onAction="#ProfilAdmin" prefHeight="26.0" prefWidth="280.0" style="-fx-background-color: #243665;" text="Profil" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="GestionTranBtn" mnemonicParsing="false" onAction="#TransportAjoutConsulterPage" prefHeight="34.0" prefWidth="239.0" style="-fx-background-color: #243665;" text="Gestion de transport" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#evenementBTN" prefHeight="33.0" prefWidth="238.0" style="-fx-background-color: #243665;" text="Gestion d'événements" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#StationBtn" prefHeight="33.0" prefWidth="238.0" style="-fx-background-color: #243665;" text="Gestion station " textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#CircuitBtn" prefHeight="33.0" prefWidth="240.0" style="-fx-background-color: #243665;" text="Gestion circuit" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#GestionUser" prefHeight="26.0" prefWidth="240.0" style="-fx-background-color: #243665;" text="Gestion d'utilisateurs" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#ReclamationBtn" prefHeight="26.0" prefWidth="238.0" style="-fx-background-color: #243665;" text="Gestion de réclamation" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#Btn_Abon" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: #243665;" text="Gestion d'abonnement" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#ReservationAjoutConsulterPage" prefHeight="33.0" prefWidth="245.0" style="-fx-background-color: #243665;" text="Gestion de reservation" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#PlanningAjoutConsulterPage" prefHeight="26.0" prefWidth="280.0" style="-fx-background-color: #243665;" text="Gestion de planning" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#EtatJournalierePAGE" prefHeight="26.0" prefWidth="280.0" style="-fx-background-color: #243665;" text="Etat journaliere" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#DemandeConsultBTN" prefHeight="26.0" prefWidth="280.0" style="-fx-background-color: #243665;" text="Consulter les demandes" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </left>

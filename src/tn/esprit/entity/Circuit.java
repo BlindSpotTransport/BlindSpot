@@ -11,19 +11,34 @@ package tn.esprit.entity;
  */
 public class Circuit {
     private int idCircuit;
+    private String nomC;
     private String departC, arriveeC;
 
     public Circuit() {
     }
-    public Circuit(String departC, String arriveeC){
-    this.departC=departC;
-    this.arriveeC=arriveeC;
+
+    public Circuit(int idCircuit, String nomC, String departC, String arriveeC) {
+        this.idCircuit = idCircuit;
+        this.nomC = nomC;
+        this.departC = departC;
+        this.arriveeC = arriveeC;
     }
     public Circuit(int idCircuit, String departC, String arriveeC) {
         this.idCircuit = idCircuit;
         this.departC = departC;
         this.arriveeC = arriveeC;
     }
+    public Circuit(int idCircuit, String nomC) {
+        this.idCircuit = idCircuit;
+        this.nomC = nomC;
+    }
+
+    
+
+    public Circuit(String departC) {
+        this.departC = departC;
+    }
+    
 
     public int getIdCircuit() {
         return idCircuit;
@@ -49,10 +64,24 @@ public class Circuit {
         this.arriveeC = arriveeC;
     }
 
+    public String getNomC() {
+        return nomC;
+    }
+
+    public void setNomC(String nomC) {
+        this.nomC = nomC;
+    }
+
     @Override
     public String toString() {
-        return "Circuit{" + "idCircuit=" + idCircuit + ", departC=" + departC + ", arriveeC=" + arriveeC + '}';
+        return "Circuit{" + "idCircuit=" + idCircuit + ", nomC=" + nomC + ", departC=" + departC + ", arriveeC=" + arriveeC + '}';
     }
+    
+    
+
+    
+
+ 
     
     
     

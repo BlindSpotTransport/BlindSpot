@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #d7fcef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.InterfaceLoginController">
+   <children>
+      <AnchorPane fx:id="pane_login" layoutY="141.0" prefHeight="411.0" prefWidth="1000.0" style="-fx-border-image-width: 9;" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TextField fx:id="txt_email_up" layoutX="104.0" layoutY="61.0" prefHeight="31.0" prefWidth="228.0" promptText="Email">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="19.0" />
+               </font></TextField>
+            <PasswordField fx:id="txt_password_up" layoutX="110.0" layoutY="130.0" prefHeight="25.0" prefWidth="228.0" promptText="Password">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></PasswordField>
+            <Button fx:id="bttn_login" layoutX="332.0" layoutY="302.0" mnemonicParsing="false" onAction="#Login" prefHeight="44.0" prefWidth="143.0" style="-fx-background-color: #4CCB9E;" text="Login" textFill="#fcf9f9">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="19.0" />
+               </font></Button>
+            <Label layoutX="40.0" layoutY="68.0" text="Email:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font></Label>
+            <Label layoutX="14.0" layoutY="136.0" text="Password:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font></Label>
+            <ImageView fitHeight="130.0" fitWidth="150.0" layoutX="488.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Logo%20TakTak.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="462.0" layoutY="108.0" prefWidth="165.0" text="Déplacez facilement" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="19.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="cbox" layoutX="111.0" layoutY="179.0" mnemonicParsing="false" onAction="#checkbox" prefHeight="25.0" prefWidth="116.0" text="View password" />
+            <Label layoutX="53.0" layoutY="241.0" text="Code:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font></Label>
+            <Button fx:id="MdpBttn" layoutX="458.0" layoutY="149.0" mnemonicParsing="false" onAction="#SMSOnAction" prefHeight="26.0" prefWidth="174.0" text="Mot de passe oublié" />
+            <TextField fx:id="captchainput" layoutX="112.0" layoutY="238.0" />
+            <ImageView fx:id="captchagenerate" fitHeight="88.0" fitWidth="192.0" layoutX="91.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="156.0" layoutY="48.0" mnemonicParsing="false" onAction="#LoginpaneShow" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #4CCB9E;" text="Login" textFill="#fffefe">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="25.0" />
+         </font>
+      </Button>
+      <Button layoutX="458.0" layoutY="48.0" mnemonicParsing="false" onAction="#SignuppaneShow" prefHeight="63.0" prefWidth="181.0" style="-fx-background-color: #243665;" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="25.0" />
+         </font>
+
+      </Button>
+      <AnchorPane fx:id="pane_signup" layoutY="123.0" prefHeight="449.0" prefWidth="800.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TextField fx:id="id_nomU" layoutX="111.0" layoutY="17.0" />
+            <TextField fx:id="id_prenomU" layoutX="111.0" layoutY="91.0" />
+            <TextField fx:id="id_telU" layoutX="111.0" layoutY="163.0" />
+            <TextField fx:id="CinU" layoutX="436.0" layoutY="18.0" prefHeight="26.0" prefWidth="158.0" />
+            <TextField fx:id="id_emailU" layoutX="438.0" layoutY="92.0" prefHeight="26.0" prefWidth="158.0" />
+            <TextField fx:id="id_pwdU" layoutX="438.0" layoutY="163.0" prefHeight="25.0" prefWidth="158.0" />
+            <ComboBox fx:id="region_Id" layoutX="80.0" layoutY="207.0" onAction="#SelectAvenue" prefHeight="34.0" prefWidth="116.0" promptText="Gouvernorat" />
+            <Label layoutX="22.0" layoutY="20.0" text="Nom:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="94.0" text="Prenom:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="166.0" text="Téléphone:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="378.0" layoutY="95.0" text="Email:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="387.0" layoutY="21.0" text="Cin:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="353.0" layoutY="167.0" text="Password:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="215.0" text="Adresse:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="17.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="id_abonU" layoutX="660.0" layoutY="117.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="129.0" text="Abonné" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </RadioButton>
+            <TextField fx:id="cImageUrl" layoutX="73.0" layoutY="251.0" prefHeight="26.0" prefWidth="158.0" visible="false" />
+            <Label layoutX="17.0" layoutY="255.0" text="Image:" textFill="#243665" visible="false">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="type_up" layoutX="640.0" layoutY="54.0" prefWidth="150.0" promptText="Type d'utilisateur" />
+            <Button fx:id="bttn_signup" layoutX="341.0" layoutY="357.0" mnemonicParsing="false" onAction="#SignUp" prefHeight="34.0" prefWidth="166.0" style="-fx-background-color: #243665;" text="Done" textFill="#f8f5f5">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="cité_id" layoutX="224.0" layoutY="208.0" prefHeight="34.0" prefWidth="130.0" promptText="Cité" />
+            <ComboBox fx:id="rue_id" layoutX="387.0" layoutY="208.0" prefHeight="34.0" prefWidth="128.0" promptText="Avenue" />
+            <ComboBox fx:id="poste_id" layoutX="544.0" layoutY="208.0" prefHeight="34.0" prefWidth="128.0" promptText="Code postale" />
+            <ImageView fx:id="sigupimage" fitHeight="120.0" fitWidth="130.0" layoutX="111.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/userlogo.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="13.0" layoutY="264.0" mnemonicParsing="false" onAction="#uploadsiguppic" style="-fx-background-color: #243665;" text="upload pic" textFill="#f7f4f4">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="12.0" />
+               </font></Button>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="102.0" fitWidth="116.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logotaktak.PNG" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

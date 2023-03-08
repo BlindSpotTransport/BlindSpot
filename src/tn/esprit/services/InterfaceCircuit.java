@@ -15,7 +15,7 @@ import java.util.List;
 public interface InterfaceCircuit <C>{
      public void ajouterCircuit(Circuit c);
     public List<C> getAll();
-    public List<C> findById(int id);
+    public List<C> findByNomC(String nomC);
     public void supprimerCircuit(Circuit s);
-    public void modifierCircuit(String departC,String ariveeC, Circuit c);
+    public void modifierCircuit(String departC,String ariveeC,String nomC, Circuit c);
 }

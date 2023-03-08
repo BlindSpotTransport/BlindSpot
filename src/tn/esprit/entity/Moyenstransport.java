@@ -10,14 +10,16 @@ package tn.esprit.entity;
  * @author pc
  */
 public class Moyenstransport {
-    private int idMoy ,capacite; 
-    private String type, matricule,numMoy ;
-
+    public int idMoy ,capacite; 
+    public String type , matricule, numMoy ;
+   
     public Moyenstransport() {
     }
-    public Moyenstransport(String type,int capacite) {
+    public Moyenstransport(int idMoy,String type,int capacite, String Num) {
+        this.idMoy = idMoy;
         this.type=type;
         this.capacite=capacite;
+        this.numMoy=Num;
     }
     public Moyenstransport(int idMoy, int capacite, String type, String matricule, String numMoy) {
         this.idMoy = idMoy;
@@ -78,6 +80,8 @@ public class Moyenstransport {
     public String toString() {
         return "Moyenstransport{" + "idMoy=" + idMoy + ", capacite=" + capacite + ", type=" + type + ", matricule=" + matricule + ", numMoy=" + numMoy + '}';
     }
+
+  
     
     
     

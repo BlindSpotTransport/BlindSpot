@@ -14,7 +14,7 @@ import java.sql.Time;
 public class Reservation {
     private int idNum, cin , prix;
     private Time dateR, heureDep, heureArr;
-    private String type ; 
+    private String type ,NUM ; 
 
     public Reservation() {
     }
@@ -29,17 +29,26 @@ public class Reservation {
         this.type = type;
     }
 
-    public Reservation( int cin, int prix, Time dateR, Time heureDep, Time heureArr, String type) {
+    public Reservation( int cin, int prix, Time dateR, Time heureDep, Time heureArr, String type, String NUM) {
         this.cin = cin;
         this.prix = prix;
         this.dateR = dateR;
         this.heureDep = heureDep;
         this.heureArr = heureArr;
         this.type = type;
+        this.NUM=NUM;
     }
 
     public int getIdNum() {
         return idNum;
+    }
+
+    public void setNUM(String NUM) {
+        this.NUM = NUM;
+    }
+
+    public String getNUM() {
+        return NUM;
     }
 
     public void setIdNum(int idNum) {

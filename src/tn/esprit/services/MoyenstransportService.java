@@ -12,6 +12,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import tn.esprit.entity.Moyenstransport;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import tn.esprit.tools.MaConnection;
 
@@ -43,7 +47,7 @@ public class MoyenstransportService implements NewInterface<Moyenstransport>{
          Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("error");
         alert.setHeaderText(null);
-        alert.setContentText(ex.getMessage());
+        alert.setContentText("il y'a une erreur !");
         alert.showAndWait();
             
     }
@@ -179,7 +183,56 @@ public class MoyenstransportService implements NewInterface<Moyenstransport>{
     }
         return MoyensTran;
     }
+   public ObservableList<String> GetByString(String ch){
+            
+            ObservableList<String> listeCH = FXCollections.observableArrayList();
+        try {
+           String SQLgetListS = "select  m."+ch+" as ch from moyenstransport as m";
+           
+           Statement ste = cnx.createStatement();
+       
+          ResultSet c= ste.executeQuery(SQLgetListS);
+          while(c.next()){
+              String Message = c.getString("ch");
+                listeCH.add(Message);
+          }
+             } catch (SQLException ex) {
+            Logger.getLogger(MoyenstransportService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+        return listeCH ;
+   
+   }  
     
+   public boolean RechercherString(String CH, String Col){
+       Boolean  result = false ;
+       for (int i=0 ; i<GetByString(Col).size();i++){
+           if (CH.equals(GetByString(Col).get(i).toString())){
+               result = true;
+               return result;
+           }
+       }
+       return result;
+  
+   }
+        public List<String> getType() {
+        List<String> list = new ArrayList<>();
+        try {
+            String req = "SELECT distinct type FROM `moyenstransport`";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                String c = new String (rs.getString("type"));
+                list.add(c);
+               // System.out.println(list);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+    }
+    return list;
+    }
     
+
     
 }

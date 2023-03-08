@@ -22,20 +22,20 @@ import javafx.stage.Stage;
  *
  * @author pc
  */
-public class TransportMain extends Application {
+public class TransportClientMain extends Application {
     
     @Override
     public void start(Stage primaryStage) {
    try {
-            Parent root = FXMLLoader.load(getClass().getResource("../gui/PrincipalePage.fxml"));
-            Scene scene = new Scene(root, 1150, 650);
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/PrincipalePageClient.fxml"));
+            Scene scene = new Scene(root, 1200, 700);
             primaryStage.setTitle("Taktak");
             primaryStage.setScene(scene);
             primaryStage.resizableProperty().setValue(false);
             primaryStage.show();
             
         } catch (IOException ex) {
-            Logger.getLogger(TransportMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TransportClientMain.class.getName()).log(Level.ALL.SEVERE, null, ex);
         }
     }
 

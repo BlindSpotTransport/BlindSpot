@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" layoutX="50.0" onMouseClicked="#fresh" prefHeight="554.0" prefWidth="1030.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AjouterCircuitController">
+   <children>
+      <ImageView cache="true" fitHeight="579.0" fitWidth="1054.0" layoutX="16.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+         <effect>
+            <GaussianBlur radius="2.5" />
+         </effect>
+      </ImageView>
+      <Label layoutX="65.0" layoutY="318.0" text="Départ:">
+         <font>
+            <Font size="15.0" />
+         </font>
+         
+         <effect>
+            <Glow />
+         </effect></Label>
+      <Label layoutX="64.0" layoutY="364.0" text="Arrivée:">
+         <font>
+            <Font size="15.0" />
+         </font>
+         
+         <effect>
+            <Glow />
+         </effect></Label>
+      <TextField fx:id="TextDepart" layoutX="161.0" layoutY="313.0" prefHeight="32.0" prefWidth="157.0" promptText="Saisir le départ" />
+      <TextField fx:id="TextArrivee" layoutX="161.0" layoutY="359.0" prefHeight="32.0" prefWidth="157.0" promptText="Saisir L'arrivée" />
+      <Button fx:id="AjouterID" layoutX="500.0" layoutY="523.0" mnemonicParsing="false" onAction="#AjouterAction" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #3B79F6;" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="SupprimerID" layoutX="762.0" layoutY="523.0" mnemonicParsing="false" onAction="#SupprimerAction" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #E74C3C;" text="supprimer" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="ModifierID" layoutX="632.0" layoutY="523.0" mnemonicParsing="false" onAction="#ModifierAction" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #76D7C4 #76D7C4;" text="modifier" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <TableView fx:id="table" layoutX="419.0" layoutY="207.0" onMouseClicked="#getSelected" prefHeight="271.0" prefWidth="491.0" style="-fx-background-position: #EBF5FB;">
+        <columns>
+          <TableColumn fx:id="IDCol" prefWidth="75.0" text="ID" visible="false" />
+          <TableColumn fx:id="NomCol" prefWidth="141.60003662109375" style="-fx-background-color: #EBF5FB;" text="Nom" />
+            <TableColumn fx:id="DepartCol" prefWidth="183.99993896484375" style="-fx-background-color: #EBF5FB;" text="Depart" />
+            <TableColumn fx:id="ArriveeCol" prefWidth="165.5999755859375" style="-fx-background-color: #EBF5FB;" text="Arrivée" />
+        </columns>
+      </TableView>
+      <Label layoutX="50.0" layoutY="126.0" text="ID:" visible="false" />
+      <TextField fx:id="ifid" layoutX="102.0" layoutY="122.0" visible="false" />
+      <TextField fx:id="TextRecherche" layoutX="327.0" layoutY="118.0" onKeyPressed="#Rechercher" prefHeight="32.0" prefWidth="157.0" promptText="Rechercher" />
+      <Button fx:id="rechercheID" layoutX="500.0" layoutY="118.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #AED6F1;" text="Rechercher" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Label layoutX="67.0" layoutY="269.0" text="Nom:">
+         <font>
+            <Font size="15.0" />
+         </font>
+         
+         <effect>
+            <Glow />
+         </effect></Label>
+      <TextField fx:id="TextNom" layoutX="161.0" layoutY="266.0" prefHeight="32.0" prefWidth="157.0" promptText="Saisir le nom" />
+      <ImageView fx:id="circuit" fitHeight="103.0" fitWidth="94.0" layoutX="38.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@circuit.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

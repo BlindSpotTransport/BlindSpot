@@ -40,20 +40,33 @@ public class PrincipalePageController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-    @FXML
-    private void TransportAjoutConsulterPage(ActionEvent event) {
-     try {
-            AnchorPane view = FXMLLoader.load(getClass().getResource("CRUDMoyensTransport.fxml"));
+                if(TypeAbnController.BoooleanAbn == true){
+                         try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("AjouterAbn.fxml"));
             //System.out.print(view);
             borderPane.setCenter(view);
             
         } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+                }
+    }    
+    
+    @FXML
+    private void TransportAjoutConsulterPage(ActionEvent event) {
+
+            
+        
+     try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("CRUDMoyensTransport.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+             view.getStylesheets().add(getClass().getResource("style.css").toExternalForm());      
+        } catch (IOException ex) {
             Logger.getLogger(PrincipalePageController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
     @FXML
     private void ReservationAjoutConsulterPage(ActionEvent event) {
@@ -61,7 +74,7 @@ public class PrincipalePageController implements Initializable {
             AnchorPane view = FXMLLoader.load(getClass().getResource("ConsulterReservation.fxml"));
             //System.out.print(view);
             borderPane.setCenter(view);
-            
+                 
         } catch (IOException ex) {
             Logger.getLogger(PrincipalePageController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,6 +90,123 @@ public class PrincipalePageController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(PrincipalePageController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void EtatJournalierePAGE(ActionEvent event) {
+     try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("Etatjournaliere.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    }
+
+    @FXML
+    private void ProfilAdmin(ActionEvent event) {
+         try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("Profil.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void GestionUser(ActionEvent event) {
+         try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("AfficherUser.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void Btn_Abon(ActionEvent event) {
+           try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("AjouterAbn.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    @FXML
+    private void evenementBTN(ActionEvent event) {
+ 
+     try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("DashbordAdminEvents.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void StationBtn(ActionEvent event) {
+    try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("AjouterStation.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+
+    @FXML
+    private void CircuitBtn(ActionEvent event) {
+        try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("AjouterCircuit.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    }
+
+    @FXML
+    private void DemandeConsultBTN(ActionEvent event) {
+     try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("AfficherDemande.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void ReclamationBtn(ActionEvent event) {
+    
+      try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("Home.fxml"));
+            //System.out.print(view);
+            borderPane.setCenter(view);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
     
 }

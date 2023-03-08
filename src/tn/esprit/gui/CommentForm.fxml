@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="492.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.CommentFormController">
+    <children>
+        <VBox alignment="CENTER" layoutX="30.0" layoutY="87.0" prefHeight="332.0" prefWidth="369.0" spacing="10.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="508.0" AnchorPane.topAnchor="87.0">
+            <children>
+                <Label textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="25.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="nomcom" prefHeight="43.0" prefWidth="693.0" promptText="Nom" />
+                <TextField fx:id="prenomcom" prefHeight="31.0" prefWidth="257.0" promptText="Prenom" />
+            <DatePicker fx:id="datecom" prefHeight="31.0" prefWidth="372.0" promptText="date" />
+                <TextArea fx:id="contenucom" prefHeight="98.0" prefWidth="369.0" promptText="Ecrivez un commentaire" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#AddCom" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            </children>
+        </VBox>
+      <Pane layoutY="-3.0" prefHeight="85.0" prefWidth="907.0" style="-fx-background-color: #0598ff;">
+         <children>
+            <Text fill="WHITE" layoutX="193.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interface Commentaire" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="44.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TableView fx:id="tableRec" layoutX="406.0" layoutY="140.0" onMouseClicked="#getSelected" prefHeight="293.0" prefWidth="493.0">
+         <columns>
+            <TableColumn fx:id="nomc" prefWidth="110.0" text="Nom" />
+            <TableColumn fx:id="prenomc" prefWidth="99.0" text="Prenom" />
+            <TableColumn fx:id="datec" prefWidth="107.0" text="Date" />
+            <TableColumn fx:id="contenuc" prefWidth="180.0" text="Description" />
+            <TableColumn fx:id="idc" prefWidth="155.0" text="id" />
+         </columns>
+      </TableView>
+      <Button layoutX="311.0" layoutY="433.0" mnemonicParsing="false" onAction="#reset" prefHeight="37.0" prefWidth="67.0" style="-fx-background-color: #0598ff;" text="Reset" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="39.0" layoutY="433.0" mnemonicParsing="false" onAction="#retourCom" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="retour" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="550.0" layoutY="446.0" mnemonicParsing="false" onAction="#deleteCom" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Supprimer " textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="676.0" layoutY="444.0" mnemonicParsing="false" onAction="#updateCom" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #0598ff;" text="Modifier " textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Text fill="#0598ff" layoutX="492.0" layoutY="123.0" onMouseClicked="#getSelected" strokeType="OUTSIDE" strokeWidth="0.0" text="Recherche" wrappingWidth="99.99999943375587">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="recherche" layoutX="607.0" layoutY="100.0" onKeyPressed="#Recherche" />
+    </children>
+</AnchorPane>

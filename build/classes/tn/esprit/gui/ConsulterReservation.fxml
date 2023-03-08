@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ConsulterReservationController">
+<AnchorPane id="AnchorPane" prefHeight="491.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ConsulterReservationController">
    <children>
-      <TableView fx:id="tableR" layoutX="32.0" layoutY="77.0" prefHeight="311.0" prefWidth="582.0">
+      <ImageView cache="true" fitHeight="605.0" fitWidth="1179.0" layoutX="10.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+         <effect>
+            <GaussianBlur radius="2.5" />
+         </effect>
+      </ImageView>
+      <TableView id="tab" fx:id="tableR" layoutX="270.0" layoutY="109.0" prefHeight="311.0" prefWidth="750.0" stylesheets="@style.css">
         <columns>
-          <TableColumn fx:id="IDcol" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="dateRcol" prefWidth="115.20001220703125" text="date de reservation" />
-            <TableColumn fx:id="heureDepCol" prefWidth="98.4000244140625" text="heure de depart" />
-            <TableColumn fx:id="heureArrCol" prefWidth="94.4000244140625" text="heure d'arriver" />
-            <TableColumn fx:id="typeCol" prefWidth="64.800048828125" text="type" />
-            <TableColumn fx:id="CinCol" prefWidth="71.20001220703125" text="cin" />
-            <TableColumn fx:id="prixCol" prefWidth="60.0" text="prix" />
+          <TableColumn fx:id="IDcol" prefWidth="84.7999496459961" text="ticket" />
+          <TableColumn fx:id="dateRcol" prefWidth="118.4000244140625" text="date de reservation" />
+            <TableColumn fx:id="heureDepCol" prefWidth="116.79998779296875" text="heure de depart" />
+            <TableColumn fx:id="heureArrCol" prefWidth="109.5999755859375" text="heure d'arriver" />
+            <TableColumn fx:id="typeCol" text="type" />
+            <TableColumn fx:id="CinCol" prefWidth="96.79998779296875" text="cin" />
+            <TableColumn fx:id="prixCol" prefWidth="143.99997558593748" text="prix" />
         </columns>
       </TableView>
+      <TextField id="buttonID" fx:id="Rechercher" layoutX="856.0" layoutY="71.0" onKeyPressed="#RechercherTAB" prefHeight="26.0" prefWidth="157.0" promptText="Rechercher" stylesheets="@style.css" />
+      <HBox layoutX="11.0" prefHeight="60.0" prefWidth="1087.0" style="-fx-background-color: #243665;" />
+      <Label layoutX="420.0" layoutY="15.0" text="Reservation" textFill="WHITE">
+         <font>
+            <Font name="Forte" size="29.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

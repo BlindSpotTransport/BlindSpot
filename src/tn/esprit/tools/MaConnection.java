@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class MaConnection {
    private Connection cnx ;
-   String url = "jdbc:mysql://localhost:3306/taktak-4";
+   String url = "jdbc:mysql://localhost:3306/pidev";
    String user = "root";
    String pwd="";
    public static MaConnection ct;
