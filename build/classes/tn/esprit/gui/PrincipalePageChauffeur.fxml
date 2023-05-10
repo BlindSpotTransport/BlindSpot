@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.PrincipalePageChauffeurController">
+   <children>
+      <BorderPane fx:id="borderPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0">
+         <left>
+            <VBox prefHeight="454.0" prefWidth="183.0" style="-fx-background-color: #4CCB9E;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="188.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Logo.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onAction="#ButtonProfil" prefHeight="26.0" prefWidth="215.0" style="-fx-background-color: #243665;" text="Profil" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="ReservationBtn" mnemonicParsing="false" onAction="#DemandeBtn" prefHeight="26.0" prefWidth="228.0" style="-fx-background-color: #243665;" text="Demande" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#calenderBtn" prefHeight="26.0" prefWidth="224.0" style="-fx-background-color: #243665;" text="Calendrier" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

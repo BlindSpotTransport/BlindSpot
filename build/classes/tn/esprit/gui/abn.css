@@ -1,0 +1,51 @@
+#AnchorPane {
+    -fx-background-color: #f4f6f9;
+}
+
+ImageView {
+    -fx-effect: gaussian-blur(2.5);
+}
+
+Label {
+    -fx-text-fill: #19a597;
+    -fx-font-size: 15;
+}
+
+ChoiceBox, TextField {
+    -fx-pref-height: 26;
+    -fx-pref-width: 80;
+}
+
+RadioButton {
+    -fx-pref-height: 18;
+    -fx-pref-width: 70;
+}
+
+#control, #control2 {
+    -fx-text-fill: #ea0000;
+}
+
+HBox {
+    -fx-pref-height: 78;
+    -fx-pref-width: 1022;
+    -fx-background-color: #243665;
+}
+
+Button {
+    -fx-cursor: hand;
+    -fx-background-color: #19a597;
+    -fx-text-fill: white;
+    -fx-pref-height: 31;
+    -fx-pref-width: 140;
+    -fx-font-size: 15;
+}
+
+Label {
+    -fx-content-display: center;
+    -fx-pref-height: 58;
+    -fx-pref-width: 401;
+    -fx-text-alignment: center;
+    -fx-text-fill: white;
+    -fx-font-family: "System Bold";
+    -fx-font-size: 40;
+}

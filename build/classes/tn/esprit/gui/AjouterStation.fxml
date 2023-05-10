@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Anch" layoutX="50.0" prefHeight="651.0" prefWidth="1099.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AjouterStationController">
+   <children>
+      <ImageView cache="true" fitHeight="588.0" fitWidth="1054.0" layoutX="16.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+         <effect>
+            <GaussianBlur radius="2.5" />
+         </effect>
+      </ImageView>
+      <ImageView cache="true" fitHeight="628.0" fitWidth="1060.0" layoutX="2.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/background.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+         <effect>
+            <GaussianBlur radius="2.5" />
+         </effect>
+      </ImageView>
+      <Label layoutX="88.0" layoutY="223.0" text="Nom:">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="N_RESIZE" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect></Label>
+      <Label layoutX="88.0" layoutY="271.0" text="Adresse:">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect></Label>
+      <TextField fx:id="TextNom" layoutX="161.0" layoutY="219.0" prefHeight="32.0" prefWidth="157.0" promptText="Saisir Nom" />
+      <TextField fx:id="TextAdresse" layoutX="161.0" layoutY="266.0" prefHeight="32.0" prefWidth="157.0" promptText="Saisir Adresse" />
+      <Button layoutX="519.0" layoutY="523.0" mnemonicParsing="false" onAction="#AjouterAction" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #3B79F6;" text="Ajouter" textFill="#e3e5e8">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button layoutX="649.0" layoutY="523.0" mnemonicParsing="false" onAction="#ModifierAction" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #76D7C4;" text="Modifier" textFill="#eeeeee">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button layoutX="780.0" layoutY="523.0" mnemonicParsing="false" onAction="#SupprimerAction" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #E74C3C;" text="supprimer" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <TableView fx:id="table" layoutX="419.0" layoutY="207.0" onMouseClicked="#getSelected" prefHeight="271.0" prefWidth="476.0">
+        <columns>
+          <TableColumn fx:id="IDCol" prefWidth="75.0" text="ID" visible="false" />
+          <TableColumn fx:id="nomCol" prefWidth="148.0" style="-fx-background-color: #EBF5FB; -fx-text-fill: #03090d;" text="Nom" />
+            <TableColumn fx:id="adresseCol" prefWidth="182.4000244140625" style="-fx-background-color: #EBF5FB; -fx-text-fill: #03090d;" text="Adresse" />
+            <TableColumn fx:id="circuitCol" prefWidth="145.60009765625" style="-fx-background-color: #EBF5FB; -fx-text-fill: #03090d;" text="Circuit" />
+        </columns>
+      </TableView>
+      <Label layoutX="43.0" layoutY="38.0" text="ID:" visible="false" />
+      <TextField fx:id="ifid" layoutX="96.0" layoutY="38.0" visible="false" />
+      <TextField fx:id="TextRechercher" layoutX="327.0" layoutY="118.0" onKeyPressed="#Rechercher" prefHeight="32.0" prefWidth="157.0" promptText="rechercher" />
+      <Button layoutX="500.0" layoutY="118.0" mnemonicParsing="false" onAction="#RechercherAction" onKeyPressed="#Rechercher" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #AED6F1;" text="Rechercher">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Label layoutX="88.0" layoutY="319.0" text="Circuit:">
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <ComboBox fx:id="circuitCobbox" layoutX="161.0" layoutY="312.0" prefHeight="32.0" prefWidth="157.0" promptText="NomCircuit" style="-fx-background-color: #D6EAF8;" />
+      <ImageView fx:id="station" fitHeight="135.0" fitWidth="114.0" layoutX="39.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@station.png" />
+         </image>
+      </ImageView>
+   </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+</AnchorPane>

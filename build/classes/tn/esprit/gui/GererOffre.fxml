@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="489.0" prefWidth="721.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.GererOffreController">
+    <stylesheets>
+        <URL value="@gereroffre.css" />                   
+    </stylesheets>
+   <children>
+      <Pane layoutX="2.0" layoutY="39.0" prefHeight="2.0" prefWidth="669.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="9.0" />
+      <Text fill="#243665" layoutX="58.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="détails de l'offre" wrappingWidth="312.53668212890625">
+         <font>
+            <Font name="Bauhaus 93" size="32.0" />
+         </font>
+      </Text>
+      <HBox layoutX="639.0" layoutY="7.142857551574707">
+         <children>
+            <HBox alignment="CENTER" />
+         </children>
+         
+         
+      </HBox>
+      <FontAwesomeIconView fill="#243665" glyphName="CLOSE" layoutX="691.0" layoutY="21.0" onMouseClicked="#close" size="20" styleClass="btn" wrappingWidth="36.999988317489624" />
+      <HBox layoutX="21.0" layoutY="70.0" prefHeight="45.0" prefWidth="175.0">
+         <children>
+            <FontAwesomeIconView fill="#243665" glyphName="PLUS" onMouseClicked="#ajouter" size="40" styleClass="btn" />
+            <FontAwesomeIconView fill="#4ccb9e" glyphName="REFRESH" layoutX="10.0" layoutY="44.0" onMouseClicked="#refresh" size="40" styleClass="btn">
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <FontAwesomeIconView fill="#455a64" glyphName="PRINT" layoutX="42.0" layoutY="44.0" onMouseClicked="#print" size="40" styleClass="btn">
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+         </children>
+      </HBox>
+      <TableView fx:id="offretab" layoutX="41.0" layoutY="142.0" minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="639.0">
+        <columns>
+          <TableColumn fx:id="id_col_offre" maxWidth="81.60000610351562" prefWidth="81.60000610351562" text="ID" visible="false" />
+          <TableColumn fx:id="titrecol_off" maxWidth="140.0" prefWidth="109.5999755859375" text="Titre" />
+            <TableColumn fx:id="descpcol_off" maxWidth="152.7999725341797" prefWidth="127.99998474121094" text="Description" />
+            <TableColumn fx:id="datedebcol_off" maxWidth="164.79998779296875" prefWidth="128.0" text="Date Début" />
+            <TableColumn fx:id="datefin_coloff" maxWidth="163.2000732421875" prefWidth="119.20001220703125" text="Date Fin" />
+            <TableColumn fx:id="editcol" prefWidth="152.0" text="Mod-Sup" />
+        </columns>
+      </TableView>
+      <TextField fx:id="idrech" layoutX="383.0" layoutY="76.0" onKeyPressed="#rechercher" prefHeight="34.0" prefWidth="187.0" promptText="Rechercher" />
+      <Label layoutX="578.0" layoutY="75.0" prefHeight="34.0" prefWidth="132.0" text="Rechercher">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

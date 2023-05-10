@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ReclamationFormController">
+  
+    <children>
+       
+      <AnchorPane id="AnchorPane" layoutX="84.0" layoutY="2.0" prefHeight="630.0" prefWidth="1110.0" style="-fx-background-color: white;" styleClass="mainFxmlClass">
+         <children>
+            <ImageView cache="true" fitHeight="718.0" fitWidth="1141.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/background.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="S_RESIZE" />
+               </cursor>
+               <effect>
+                  <GaussianBlur radius="2.5" />
+               </effect>
+            </ImageView>
+             
+            <Pane layoutY="-4.0" prefHeight="72.0" prefWidth="1130.0" style="-fx-background-color: #243665 #243665;">
+               <children>
+                  <Text fill="WHITE" layoutX="296.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mes Reclamations">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <ScrollPane fx:id="scrollpanemsg" fitToWidth="true" layoutX="109.0" layoutY="88.0" prefHeight="500.0" prefWidth="727.0" style="-fx-background-colo: blue;">
+              <content>
+                <AnchorPane id="Anc" fx:id="anchorPaneMsg" layoutX="200.0" layoutY="1830.0" minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="623.0" stylesheets="@style.css" />
+              </content>
+            </ScrollPane>
+            <TextField fx:id="rep2" layoutX="164.0" layoutY="589.0" prefHeight="31.0" prefWidth="262.0" />
+            <TextField fx:id="reponseText" disable="true" layoutX="109.0" layoutY="589.0" prefHeight="31.0" prefWidth="56.0" />
+            <Button fx:id="reppsend" defaultButton="true" layoutX="426.0" layoutY="589.0" mnemonicParsing="false" onAction="#ReclamSend" prefHeight="31.0" prefWidth="82.0" text="Send" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="1000.0" layoutY="580.0" mnemonicParsing="false" onAction="#retourRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #243665;" text="retour" textFill="#4ccb9e">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

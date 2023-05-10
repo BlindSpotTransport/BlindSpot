@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DashbordAdminEventsController">
+    <stylesheets>
+        <URL value="@../Taktak/src/GUI/dashbordadminevents.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="500.0" prefWidth="700.0">
+         <right>
+            <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+               <children>
+                  <FontAwesomeIconView fill="#243665" glyphName="CLOSE" layoutX="604.0" layoutY="31.0" onMouseClicked="#close" size="20" styleClass="btn" wrappingWidth="36.999988317489624" />
+                  <Text fill="#243665" layoutX="88.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications">
+                     <font>
+                        <Font name="Constantia Italic" size="37.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="logo" fitHeight="95.0" fitWidth="116.0" layoutX="-33.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Taktak/src/GUI/logotaktak.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </right>
+         <center>
+            <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="50.0" style="-fx-background-color: #4CCB9E;" BorderPane.alignment="CENTER">
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="14.0" layoutY="173.0" size="70" text="" wrappingWidth="45.0" />
+                  <Text fill="#243665" layoutX="92.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" wrappingWidth="191.6708984375">
+                     <font>
+                        <Font name="Arial" size="26.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="event" fitHeight="72.0" fitWidth="65.0" layoutX="14.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Taktak/src/GUI/evenement.PNG" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="notif" layoutX="79.0" layoutY="215.0" mnemonicParsing="false" onAction="#notifier" style="-fx-background-color: #4CCB9E;" text="Gérer Notification" textFill="#243665">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <FontAwesomeIconView fill="WHITE" glyphName="STAR" layoutX="14.0" layoutY="355.0" size="70" text="" wrappingWidth="45.0" />
+                  <Text fill="#243665" layoutX="92.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paramètres" wrappingWidth="191.6708984375">
+                     <font>
+                        <Font name="Arial" size="26.0" />
+                     </font>
+                  </Text>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="14.0" layoutY="443.0" size="70" text="" wrappingWidth="45.0" />
+                  <Text fill="#243665" layoutX="91.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Devenez-Partenaire" wrappingWidth="216.6708984375">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <BorderPane.margin>
+                  <Insets right="40.0" />
+               </BorderPane.margin>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

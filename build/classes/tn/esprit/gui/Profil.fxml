@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="571.0" prefWidth="856.0" style="-fx-background-color: #d7fcef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ProfilController">
+   <children>
+      <AnchorPane layoutX="23.0" layoutY="50.0" prefHeight="470.0" prefWidth="807.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <TextField fx:id="Prenom_field" layoutX="244.0" layoutY="160.0" />
+            <TextField fx:id="Role_field" disable="true" layoutX="244.0" layoutY="205.0" />
+            <TextField fx:id="region_field" layoutX="482.0" layoutY="118.0" prefHeight="25.0" prefWidth="89.0" promptText="Region" />
+            <Label layoutX="150.0" layoutY="162.0" text="Prenom:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="166.0" layoutY="208.0" text="Role:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="482.0" layoutY="77.0" prefHeight="25.0" prefWidth="108.0" text="Adresse:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="CPostal_field" layoutX="482.0" layoutY="250.0" prefHeight="25.0" prefWidth="89.0" promptText="Code postal" />
+            <TextField fx:id="rue_field" layoutX="482.0" layoutY="205.0" prefHeight="25.0" prefWidth="89.0" promptText="Rue" />
+            <TextField fx:id="cité_field" layoutX="482.0" layoutY="159.0" prefHeight="25.0" prefWidth="89.0" promptText="Cité" />
+            <Label layoutX="112.0" layoutY="253.0" text="Num Téléphone:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Tel_field" layoutX="244.0" layoutY="250.0" />
+            <Button fx:id="bttn_del" layoutX="376.0" layoutY="366.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #243665;" text="Delete account" textFill="#fffbfb">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="bttn_modify" layoutX="224.0" layoutY="366.0" mnemonicParsing="false" onAction="#Modify" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #243665;" text="Modify" textFill="#fffbfb">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="86.0" layoutY="299.0" text="Email:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Email_field" disable="true" layoutX="168.0" layoutY="296.0" prefHeight="26.0" prefWidth="306.0" />
+            <Label fx:id="namellastnameuser" layoutX="175.0" layoutY="32.0" prefHeight="39.0" prefWidth="494.0" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Nom_field" layoutX="244.0" layoutY="121.0" />
+            <Circle fx:id="profilepicture" fill="#f0f1f2" layoutX="72.0" layoutY="71.0" radius="67.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="168.0" layoutY="118.0" prefHeight="25.0" prefWidth="53.0" text="Nom:" textFill="#243665">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="117.0" fitWidth="118.0" layoutX="527.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Logo%20TakTak.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="changepicbtn" layoutX="72.0" layoutY="366.0" mnemonicParsing="false" onAction="#uploadsiguppic" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #243665;" text="Change Pic" textFill="#fffbfb">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="bttn_logout" layoutX="527.0" layoutY="366.0" mnemonicParsing="false" onAction="#Logout" prefHeight="32.0" prefWidth="89.0" style="-fx-background-color: #243665;" text="Logout" textFill="#fffbfb">
+               <font>
+                  <Font name="Times New Roman Bold Italic" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
