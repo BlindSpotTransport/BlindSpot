@@ -5,9 +5,14 @@
  */
 package tn.esprit.gui;
 
+import java.io.File;
 import static tn.esprit.api.JavaMail.sendMail;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,6 +42,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +58,7 @@ import tn.esprit.entity.RepReclamation;
 import tn.esprit.services.ServiceReclamation;
 import tn.esprit.services.ServiceRepReclam;
 import tn.esprit.services.UsersSession;
+import tn.esprit.tools.MaConnection;
 import tn.esprit.tools.Variables;
 /**
  * FXML Controller class
@@ -74,6 +81,14 @@ public class RepReclamationController implements Initializable {
     private Button editrep_btn;
     @FXML
     private ScrollPane scrollpanemsg;
+    
+    private RepReclamation recEdit ;
+        Connection cnx ;
+       public RepReclamationController(){
+      cnx = MaConnection.getInstance().getCnx();
+       }
+       
+
     //private static int
     /**
      * Initializes the controller class.
@@ -109,7 +124,10 @@ public class RepReclamationController implements Initializable {
 
                     try {
                     Pane p = (Pane) loader2.load();
-                    ((Text)p.getChildren().get(0)).setText(rp.getNomAg());
+                    ((Text)p.getChildren().get(0)).setText(UsersSession.getName());
+                     String imagePath0 = UsersSession.getProfilepicture().substring("file:/".length());
+           Image image0 = new Image(new File(imagePath0).toURI().toString());
+                        ((ImageView) p.getChildren().get(1)).setImage(image0);
                     ((Text)p.getChildren().get(3)).setText(rp.getDaterep().toString());
                     ((Text)p.getChildren().get(4)).setText(rp.getReponse());
                     ((Text)p.getChildren().get(5)).setText(String.valueOf(reps.size()- index2));
@@ -121,6 +139,12 @@ ImageView imageView = (ImageView) p.getChildren().get(6);
 imageView.setPickOnBounds(true); imageView.setCursor(Cursor.HAND); 
 imageView.setOnMouseClicked(event -> { remove_reply(rp.getIdrep()); });
 
+
+ImageView imageView1 = (ImageView) p.getChildren().get(7); 
+imageView1.setPickOnBounds(true); imageView1.setCursor(Cursor.HAND); 
+final int indexR = msgUser.size()- index1;
+final int indexRP = reps.size()- index2;
+imageView1.setOnMouseClicked(event -> { edit_reply(indexR,indexRP,rp); });
 
 
                     
@@ -140,22 +164,20 @@ imageView.setOnMouseClicked(event -> { remove_reply(rp.getIdrep()); });
 
             try {
             Pane p = (Pane) loader.load();
+            
             ((Text)p.getChildren().get(0)).setText(r.getNom()+" "+r.getPrenom());
+            String imagePath2 = Variables.getRecClicked().getUser().getImagePU().substring("file:/".length());
+           Image image2 = new Image(new File(imagePath2).toURI().toString());
+                        ((ImageView) p.getChildren().get(1)).setImage(image2);
             ((Text)p.getChildren().get(3)).setText(r.getDater().toString());
             ((Text)p.getChildren().get(4)).setText(r.getDescrec());
             ((Text)p.getChildren().get(5)).setText(String.valueOf(msgUser.size()- index1));
-           
-           //(p.getChildren().get(7)).setOnMouseClicked(repondre(ActionEvent event));
+            
              final int index = msgUser.size()- index1;
-                    ((Button)p.getChildren().get(6)).setOnMouseClicked((event -> {
-                                setInput(index);  
+
+                      ((Button)p.getChildren().get(9)).setOnMouseClicked((event -> {
+                                setInput(index);
                             }));
-
-
-
-//                      ((Button)p.getChildren().get(8)).setOnMouseClicked((event -> {
-//                                setInput(index);
-//                            }));
             p.setPrefWidth(350);
             p.setPrefHeight(100);
             p.setLayoutX(30);
@@ -275,7 +297,7 @@ imageView.setOnMouseClicked(event -> { remove_reply(rp.getIdrep()); });
         repRecc.setReponse(repp);
         ServiceRepReclam srp = new ServiceRepReclam();
           srp.ajouter_repreclamation(repRecc);
-          sendMail("firas.saafi@esprit.tn");
+          sendMail(rec.getUser().getEmailU());
      ProgressIndicator progressIndicator = new ProgressIndicator();
     progressIndicator.setMaxSize(100, 100);
     StackPane stackPane = new StackPane(progressIndicator);
@@ -332,21 +354,89 @@ imageView.setOnMouseClicked(event -> { remove_reply(rp.getIdrep()); });
         ServiceRepReclam srp = new ServiceRepReclam();
         System.out.println(Variables.getRecClicked().getUser().getIdU());
         List<Reclamation> msgUser = sr.getMessages(Variables.getRecClicked().getUser().getIdU());
+        
         Reclamation r = msgUser.get(msgUser.size()-index);
         RepReclamation rep = new RepReclamation();
          LocalDate currentDate = LocalDate.now();
         rep.setDaterep(currentDate);
-        rep.setNomAg("firas");
+        rep.setNomAg(UsersSession.getName());
+            if(rep2.getText().isEmpty()) {
+        // Display a warning message
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez saisir une réponse! ");
+        alert.showAndWait();
+        return;
+    }
         rep.setReponse(rep2.getText());
         rep.setReclamation(r);
         srp.ajouter_repreclamation(rep); 
         anchorPaneMsg.getChildren().clear();
         showMessages();
-        sendMail(UsersSession.getEmail());
+       
+        System.out.println("mail"+ Variables.getRecClicked().getUser().getEmailU());         
+        int idUser = Variables.getRecClicked().getUser().getIdU();
+        String email= ""; 
+        try {
+        String sqlmail = "SELECT email FROM `utilisateur` WHERE id ='"+idUser+"'" ;
+        
+            Statement ste = cnx.createStatement();
+            ResultSet mail = ste.executeQuery(sqlmail);
+            while (mail.next())
+            {
+                email = mail.getString("email");
+            }
+            String resultmail = email ; 
+            
+            System.out.println(resultmail);
+            sendMail(resultmail);
+        } catch (SQLException ex) {
+            Logger.getLogger(RepReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        String email= ""; 
+//        try {
+//        String sqlmail = "SELECT email FROM `utilisateur` WHERE id ='"+idUser+"'" ;
+//        
+//            Statement ste = cnx.createStatement();
+//            ResultSet mail = ste.executeQuery(sqlmail);
+//            while (mail.next())
+//            {
+//                email = mail.getString("email");
+//            }
+//            String resultmail = email ; 
+//            
+//            System.out.println(resultmail);
+//            sendMail(resultmail);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(RepReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//            String pic = ""; 
+//        try {
+//        String sqlpic= "SELECT imagePU FROM `utilisateur` WHERE  nomU='"+nameAg+"'" ;
+//        
+//            Statement ste = cnx.createStatement();
+//            ResultSet rspic = ste.executeQuery(sqlpic);
+//            while (rspic.next())
+//            {
+//                pic = rspic.getString("pic");
+//            }
+//            String resultpic = pic ; 
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(RepReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     @FXML
     private void reponseEdit(ActionEvent event) {
+        String entryRep = rep2.getText(); 
+        recEdit.setReponse(entryRep);
+        ServiceRepReclam srp = new ServiceRepReclam();
+        srp.modifier_repreclamation(recEdit); 
+        rep2.setText("");
+        anchorPaneMsg.getChildren().clear();
+        showMessages();
     }
 
         private void remove_reply(int id) {
@@ -361,4 +451,13 @@ imageView.setOnMouseClicked(event -> { remove_reply(rp.getIdrep()); });
          scrollpanemsg.setVvalue(i);
          
     }
-    }
+       private void edit_reply(int indexR ,int indexRp ,RepReclamation rp) {
+           reponseText.setText("#"+String.valueOf(indexR)+"#"+String.valueOf(indexRp));
+           rep2.setText(rp.getReponse());
+           editrep_btn.setVisible(true);
+           reppsend.setVisible(false);
+           editrep_btn.setDisable(false);
+           recEdit=rp;
+       }
+    
+}

@@ -32,7 +32,6 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
             Calendar calendar = Calendar.getInstance();
             java.util.Date now = calendar.getTime();
             Date currentDate = new Date(now.getTime());
-            
             String requete = "INSERT INTO Reclamation (idU,nom,prenom,dater,descrec) VALUES (?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
              pst.setInt(1, r.getUser().getIdU());
@@ -40,8 +39,6 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
             
             pst.setString(2, r.getNom());
             pst.setString(3, r.getPrenom());
- LocalDate localDate = r.getDater();
- java.sql.Date LocalToDate = java.sql.Date.valueOf(localDate);
             pst.setDate(4, currentDate);
             pst.setString(5, r.getDescrec());
              
@@ -137,7 +134,7 @@ public class ServiceReclamation implements IServiceReclamation<Reclamation>{
         List<Reclamation> ReclamationsList = new ArrayList<>();
         
         try {
-            String requete = "SELECT * FROM reclamation r where idu ="+idU +" order by dater";
+            String requete = "SELECT * FROM reclamation r where idu ="+idU +" order by dater desc";
           //   String requete2 = "SELECT * FROM utilisateur u where idu ="+idU +" order by dater";
             Statement st = cnx.createStatement();
             ResultSet rs =  st.executeQuery(requete);

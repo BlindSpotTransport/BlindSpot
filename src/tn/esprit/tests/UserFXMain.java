@@ -76,7 +76,7 @@ public static BufferedImage iconToImage(Icon icon) {
 //            Scene scene = new Scene(root);
 //            _stage.setScene(scene);
 //            _stage.show();
-//        } catch (IOException ex) {
+//        } catch (IOException ex) {u
 //            System.out.println(ex.getMessage());
 //        }
 //    }   

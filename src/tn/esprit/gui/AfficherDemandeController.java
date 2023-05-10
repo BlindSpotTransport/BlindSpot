@@ -85,7 +85,7 @@ public class AfficherDemandeController implements Initializable {
          Mail mail = new Mail();
                    
             int index=table.getSelectionModel().getSelectedIndex();
-           mail.envoyer("Demande", emailCol.getCellData(index).toString(), resultat);
+           mail.envoyer("Demande", "montabwi@gmail.com", resultat);
             
     }
     

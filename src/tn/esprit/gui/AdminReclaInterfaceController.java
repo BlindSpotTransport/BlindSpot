@@ -48,6 +48,7 @@ import javax.swing.SpringLayout;
 import tn.esprit.entity.Reclamation;
 import tn.esprit.entity.User;
 import tn.esprit.services.ServiceReclamation;
+import tn.esprit.services.service_user;
 import tn.esprit.tools.Variables;
 
 /**
@@ -99,7 +100,7 @@ int ID;
         mc=tn.esprit.tools.MaConnection.getInstance().getCnx();
         recList = FXCollections.observableArrayList();
        
-        
+        service_user su = new service_user() {};
         String sql="select * from reclamation";
         try {
             ste=mc.prepareStatement(sql); //preparer requeete
@@ -109,9 +110,9 @@ int ID;
                 //tekhou mel base w tseti fel instance mb3ed el instance bsh thotha fi lista w tajoputiha or taffich or update
                 r.setIdr(rs.getInt("idr"));
                 r.setNom(rs.getString("nom"));
-                User u= new User();
-                u.setIdU(rs.getInt("idu"));
-                r.setUser(u);
+                //User u= new User();
+                //u.setIdU(rs.getInt("idu"));
+                r.setUser(su.findById(rs.getInt("idu")).get(0));
                 r.setPrenom(rs.getString("prenom"));
                 r.setDater(rs.getDate("dater").toLocalDate());
                 r.setDescrec(rs.getString("descrec"));
@@ -238,7 +239,7 @@ int ID;
         @Override
         protected Parent call() throws Exception {
             // Load the GUI using the FXML loader
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PrincipalePage.fxml"));
             return loader.load();
         }
     };
@@ -392,6 +393,7 @@ String nom1 = "";
         @Override
         protected Parent call() throws Exception {
             // Load the GUI using the FXML loader
+            System.out.println("firasss");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RepReclamation.fxml"));
             return loader.load();
         }

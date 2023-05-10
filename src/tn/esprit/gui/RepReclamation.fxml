@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.RepReclamationController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.RepReclamationController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="-14.0" layoutY="2.0" prefHeight="630.0" prefWidth="1115.0" style="-fx-background-color: white;" styleClass="mainFxmlClass">
          <children>
@@ -32,7 +32,7 @@
             <Button fx:id="editrep_btn" defaultButton="true" disable="true" layoutX="426.0" layoutY="589.0" mnemonicParsing="false" onAction="#reponseEdit" prefHeight="31.0" prefWidth="82.0" text="modify" />
          </children>
       </AnchorPane>
-      <Button layoutX="1000.0" layoutY="580.0" mnemonicParsing="false" onAction="#retourRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #243665;" text="retour" textFill="#4ccb9e">
+      <Button layoutX="1010.0" layoutY="590.0" mnemonicParsing="false" onAction="#retourRec" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #243665;" text="retour" textFill="#4ccb9e">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

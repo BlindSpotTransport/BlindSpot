@@ -39,6 +39,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.sql.ResultSet;
 import javafx.scene.control.Alert;
+import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.services.InterfaceService;
 import tn.esprit.services.UsersSession;
 
@@ -51,21 +52,21 @@ public abstract class service_user implements InterfaceService<User> {
     public service_user() {
         cnx = MaConnection.getInstance().getCnx();
     } //assure la connectivité
-      public static String encryptMdp(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hash = md.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//      public static String encryptMdp(String password) {
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("SHA-256");
+//            byte[] hash = md.digest(password.getBytes());
+//            StringBuilder hexString = new StringBuilder();
+//            for (byte b : hash) {
+//                String hex = Integer.toHexString(0xff & b);
+//                if (hex.length() == 1) hexString.append('0');
+//                hexString.append(hex);
+//            }
+//            return hexString.toString();
+//        } catch (NoSuchAlgorithmException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
 
      public boolean validerEmail(String email) {
@@ -74,14 +75,14 @@ public abstract class service_user implements InterfaceService<User> {
 }
       public static boolean verifierEmail(String email)  {
         try {
-            String requete = "SELECT idU from  utilisateur where emailU=?";
+            String requete = "SELECT id from  utilisateur where email=?";
             PreparedStatement pst = MaConnection.getInstance().getCnx().prepareStatement(requete);
             int Login =0;
             ResultSet rs ;
             pst.setString(1, email);
             rs=pst.executeQuery();
             while(rs.next()){
-                Login = rs.getInt("idU");
+                Login = rs.getInt("id");
             }
             rs.close();
             pst.close();
@@ -123,10 +124,14 @@ public boolean validateString(String inputString) {
 }
     @Override
     public void ajouter(User u) {
+        String password = u.getMdpU();
+       String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
         
-    String encryptedPassword = encryptMdp(u.getMdpU());
+    //String encryptedPassword = encryptMdp(u.getMdpU());
+    
      try {
-            String sql = "INSERT INTO `utilisateur`(`idU`, `nomU`, `prenomU`, `idAdresse`, `telephoneU`, `emailU`, `roleU`, `createdAtU`, `cinU`, `imagePU`, `permisU`, `abonnéU`, `mdpU`) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO `utilisateur`(`id`, `nomu`, `prenomu`, `idAdresse`, `telephoneu`, `email`, `roleu`, `createdatu`, `cinu`, `imagepu`, `abonneu`, `password`,`roles`) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, u.getIdU());
             ste.setString(2, u.getNomU());
@@ -146,9 +151,11 @@ public boolean validateString(String inputString) {
             ste.setString(8, u.getCreatedAtU());
             ste.setInt(9, u.getCinU());
             ste.setString(10, u.getImagePU());
-            ste.setString(11, u.getPermisU());
-            ste.setBoolean(12, u.isAbonnéU());
-            ste.setString(13, encryptedPassword);
+            ste.setBoolean(11, u.isAbonnéU());
+            ste.setString(12, encryptedPassword);
+            if(u.getRoleU()=="Client" || u.getRoleU() == "Chauffeur") {
+            ste.setString(13,"[\"ROLE_USER\"]");             
+            }
             ste.executeUpdate();
             //JOptionPane.showMessageDialog(null, "Utilisateur ajoutée");
             System.out.println("Utilisateur ajoutée");
@@ -162,7 +169,7 @@ public boolean validateString(String inputString) {
 
     @Override
     public void supprimer(User u) {
-        String sql = "delete from utilisateur where IdU=?";
+        String sql = "delete from utilisateur where id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, u.getIdU());
@@ -187,7 +194,7 @@ public boolean validateString(String inputString) {
     
     String encryptedPassword = encryptMdp(mdp);
        
-       String sql = "UPDATE utilisateur SET nomU=?, prenomU=?, imagePU=?, mdpU=?, emailU=?, idAdresse=?, telephoneU=? WHERE idU=?";
+       String sql = "UPDATE utilisateur SET nomu=?, prenomu=?, imagepu=?, password=?, email=?, idAdresse=?, telephoneu=? WHERE id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setString(1, nom);
@@ -210,13 +217,13 @@ public boolean validateString(String inputString) {
         List<User> users = new ArrayList<>();
         
         try {
-            String sql = "select * from utilisateur where roleU='client' or roleU='chauffeur'";
+            String sql = "select * from utilisateur where roleu='Client' or roleu='Chauffeur'";
             Statement ste = cnx.createStatement();
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
                 User u = new User(s.getInt(1), 
-                        s.getString("nomU"), s.getString("prenomU"),s.getString("imagePU"),s.getString("emailU"),s.getInt("idAdresse"),s.getInt("telephoneU"),s.getString("roleU"));
+                        s.getString("nomu"), s.getString("prenomu"),s.getString("imagepu"),s.getString("email"),s.getInt("idAdresse"),s.getInt("telephoneu"),s.getString("roleu"));
                 users.add(u);
  
 
@@ -229,13 +236,13 @@ public boolean validateString(String inputString) {
    public List<User> findById(int id ) {
         List<User> users = new ArrayList<>();
         try {
-            String sql = "select * from utilisateur where idU='"+id+"'";
+            String sql = "select * from utilisateur where id='"+id+"'";
             Statement ste = cnx.createStatement();
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
                 User u = new User(s.getInt(1), 
-                        s.getString("nomU"), s.getString("prenomU"),s.getString("imagePU"),s.getString("emailU"),s.getInt("idAdresse"),s.getInt("telephoneU"));
+                        s.getString("nomu"), s.getString("prenomu"),s.getString("imagepu"),s.getString("email"),s.getInt("idAdresse"),s.getInt("telephoneu"));
                 users.add(u);
  
 
@@ -252,7 +259,7 @@ public boolean validateString(String inputString) {
     //int idAdresse;
     //idAdresse=Adresse.getIdAdresse();
     //String encryptedPassword = encryptMdp(mdp);
- String sql = "UPDATE utilisateur SET nomU=?, prenomU=?,roleU=?,emailU=?,telephoneU=? WHERE idU=?";
+ String sql = "UPDATE utilisateur SET nomu=?, prenomu=?,roleu=?,email=?,telephoneu=? WHERE id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
           ste.setString(1,nom);
@@ -281,7 +288,7 @@ public boolean validateString(String inputString) {
     //int idAdresse;
     //idAdresse=Adresse.getIdAdresse();
     //String encryptedPassword = encryptMdp(mdp);
- String sql = "UPDATE utilisateur SET nomU=?, prenomU=?,roleU=?,emailU=? WHERE idU=?";
+ String sql = "UPDATE utilisateur SET nomu=?, prenomu=?,roleu=?,email=? WHERE id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
           ste.setString(1,nom);
@@ -307,7 +314,7 @@ public boolean validateString(String inputString) {
     //idAdresse=Adresse.getIdAdresse();
     //String encryptedPassword = encryptMdp(mdp);
  try {
-    String sql = "UPDATE utilisateur SET imagePU=? WHERE idU=?";
+    String sql = "UPDATE utilisateur SET imagepu=? WHERE id=?";
        
             PreparedStatement ste = cnx.prepareStatement(sql);
           ste.setString(1,image);
@@ -323,7 +330,7 @@ public boolean validateString(String inputString) {
 //    //int idAdresse;
 //    //idAdresse=Adresse.getIdAdresse();
 //    String encryptedPassword = encryptMdp(mdp);
-// String sql = "UPDATE utilisateur SET mdpU=? WHERE emailU=?";
+// String sql = "UPDATE utilisateur SET password=? WHERE email=?";
 //        try {
 //            PreparedStatement ste = cnx.prepareStatement(sql);
 //          ste.setString(1,encryptedPassword);
@@ -414,55 +421,33 @@ private static final String CHAR_LIST =
             return randomInt - 1;
         }
     }
-     public static boolean LoginUser(String email, String password) throws Exception {
-           boolean checkUser = true;
-          ResultSet rs ;
-         Connection cnx; 
-         cnx = MaConnection.getInstance().getCnx();
-       
-        User u = new User();
-           try {
-           
-  //String encrytedpwd = service_user.encryptMdp(password);
-        String encrytedpwd = service_user.encryptMdp(password);
-        String sql = "Select* from utilisateur where emailU=? and mdpU=?";
+    public static boolean loginUser(String email, String password) throws Exception {
+    boolean checkUser = false;
+    Connection cnx = MaConnection.getInstance().getCnx();
+
+    try {
+        String sql = "SELECT * FROM utilisateur WHERE email = ?";
         PreparedStatement pst = cnx.prepareStatement(sql);
-               pst.setString(1,email);
-               pst.setString(2,encrytedpwd);
-               rs = pst.executeQuery();
-                cUserRow=rs;
-               if(rs.next()) {
-                   //JOptionPane.showMessageDialog(null, "Email And Password is Correct");
-               
-                
-//                cUserId = rs.getInt("idU");
-//                cUserRow = rs;
-//                UsersSession.addUserLogin(cUserRow);
-                   UsersSession.addUserLogin(cUserRow);
-              
-           System.out.println(UsersSession.getIdU());
-               }
-               else{
-               
-               System.out.println("user not found");
-               checkUser = false;
-               }
-               //UsersSession.addUserLogin(cUserRow);
+        pst.setString(1, email);
+        ResultSet rs = pst.executeQuery();
         
-//            System.out.println(UsersSession.getRole());
-         
-//             System.out.println(UsersSession.getEmail());
-
-                
+        if (rs.next()) {
+            String hashedPassword = rs.getString("password");
+            boolean passwordMatches = BCrypt.checkpw(password, hashedPassword);
             
-        } catch (SQLException ex) {
-            Logger.getLogger(service_user.class.getName()).log(Level.SEVERE, null, ex);
-            checkUser = false;
+            if (passwordMatches) {
+                UsersSession.addUserLogin(rs);
+                checkUser = true;
+                System.out.println(UsersSession.getIdU());
+            }
+        } else {
+            System.out.println("User not found");
         }
-        
-        return checkUser;}
+    } catch (SQLException ex) {
+        Logger.getLogger(service_user.class.getName()).log(Level.SEVERE, null, ex);
+    }
     
+    return checkUser;
+}
 
-
-     
-     }
+}

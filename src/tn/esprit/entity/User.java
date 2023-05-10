@@ -18,6 +18,7 @@ public class User {
     private String nomU,prenomU,imagePU,mdpU,emailU, roleU ,permisU,createdAtU;
     private Adresse AdresseU;
     private  int telephoneU,cinU;
+    
     private boolean  abonnéU;
 
     public User() {

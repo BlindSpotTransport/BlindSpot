@@ -44,6 +44,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import tn.esprit.entity.Offres;
 
 
 
@@ -100,7 +101,7 @@ public class GererOffreController implements Initializable {
 		
 		// 2. Set the filter Predicate whenever the filter changes.
 		idrech.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(evenement -> {
+			filteredData.setPredicate(offre -> {
 				// If filter text is empty, display all persons.
 								
 				if (newValue == null || newValue.isEmpty()) {
@@ -110,7 +111,7 @@ public class GererOffreController implements Initializable {
 				// Compare first name and last name of every person with filter text.
 				String lowerCaseFilter = newValue.toLowerCase();
 				
-				if (evenement.getTitre_eve().toLowerCase().contains(lowerCaseFilter) ) {
+				if (offre.getTitre_eve().toLowerCase().contains(lowerCaseFilter) ) {
 					return true; // Filter matches first name.
                                 }
 				     else  
@@ -143,7 +144,7 @@ public class GererOffreController implements Initializable {
             offretList.clear();
             
            
-            query = "SELECT * FROM `Evenement`";
+            query = "SELECT * FROM Offre";
             preparedStatement = cnx.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             
@@ -151,7 +152,7 @@ public class GererOffreController implements Initializable {
             
             while (resultSet.next()){
                 offretList.add(new  Evenement(
-                        resultSet.getInt("id_eve"),
+                        resultSet.getInt("id_offre_eve"),
                         resultSet.getString("titre_eve"),
                          resultSet.getString("desc_eve"),
                         resultSet.getDate("date_deb_eve"),
@@ -172,7 +173,7 @@ public class GererOffreController implements Initializable {
         
          refreshtable();
         
-        id_col_offre.setCellValueFactory(new PropertyValueFactory<>("id_eve"));
+        id_col_offre.setCellValueFactory(new PropertyValueFactory<>("id_offre_eve"));
         titrecol_off.setCellValueFactory(new PropertyValueFactory<>("titre_eve"));
         descpcol_off.setCellValueFactory(new PropertyValueFactory<>("desc_eve"));
         datedebcol_off.setCellValueFactory(new PropertyValueFactory<>("date_deb_eve"));
@@ -212,7 +213,7 @@ public class GererOffreController implements Initializable {
                             
                             try {
                                 Evenement e = offretab.getSelectionModel().getSelectedItem();
-                                query = "DELETE FROM `evenement` WHERE id_eve  ="+e.getId_eve();
+                                query = "DELETE FROM offre WHERE id_offre_eve  ="+e.getId_eve();
                                 //connection = DbConnect.getConnect();
                                 preparedStatement = cnx.prepareStatement(query);
                                 preparedStatement.execute();
@@ -304,23 +305,23 @@ public class GererOffreController implements Initializable {
     @FXML
     void refresh(MouseEvent event) {
         
-
+refreshtable();
     }
 
     @FXML
     private void rechercher(KeyEvent event) {
-        
-           String nom1 = "";
-    if (event.getText().length()>0)
-        nom1 = idrech.getText()+ event.getText();
-    else
-        nom1 = idrech.getText().substring(0,idrech.getText().length()-1 );
-    System.out.println(nom1);
-    String nom = nom1.toLowerCase();
-    ObservableList<Evenement> list =  offretList.stream()
-             
-        .filter(r -> r.getTitre_eve().toLowerCase().contains(nom)).collect(Collectors.toCollection(FXCollections::observableArrayList));
-    offretab.setItems(list);
+//        
+//           String nom1 = "";
+//    if (event.getText().length()>0)
+//        nom1 = idrech.getText()+ event.getText();
+//    else
+//        nom1 = idrech.getText().substring(0,idrech.getText().length()-1 );
+//    System.out.println(nom1);
+//    String nom = nom1.toLowerCase();
+//    ObservableList<Evenement> list =  offretList.stream()
+//             
+//        .filter(r -> r.getTitre_eve().toLowerCase().contains(nom)).collect(Collectors.toCollection(FXCollections::observableArrayList));
+//    offretab.setItems(list);
     }
     
 

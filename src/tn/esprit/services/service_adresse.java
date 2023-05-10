@@ -35,7 +35,7 @@ public abstract class service_adresse implements InterfaceService<Adresse> {
     @Override
     public void ajouter(Adresse a) {
         try {
-            String sql = "insert into adresse(idAdresseU,region,cité,rue,numPoste)"
+            String sql = "insert into adresse(id,region,cite,rue,numposte)"
                     + "values (?,?,?,?,?)";
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, a.getIdAdresse());
@@ -52,7 +52,7 @@ public abstract class service_adresse implements InterfaceService<Adresse> {
     }
    
     public void modifierA(int numposte,String region,String cité,String rue,Adresse a) {
-        String sql = "update adresse set NumPoste=?,region=?,cité=?,rue=? where idAdresseU=?";
+        String sql = "update adresse set numposte=?,region=?,cite=?,rue=? where id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, numposte);
@@ -69,7 +69,7 @@ public abstract class service_adresse implements InterfaceService<Adresse> {
     }
     @Override
     public void supprimer(Adresse a) {
-        String sql = "delete from adresse where idAdresseU=?";
+        String sql = "delete from adresse where id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, a.getIdAdresse());
@@ -88,8 +88,8 @@ public abstract class service_adresse implements InterfaceService<Adresse> {
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
-                Adresse a = new Adresse(s.getInt("idAdressU"),s.getInt("numPoste"),
-                       s.getString("region"), s.getString("cité"),s.getString("rue"));
+                Adresse a = new Adresse(s.getInt("id"),s.getInt("numposte"),
+                       s.getString("region"), s.getString("cite"),s.getString("rue"));
                 adresses.add(a);
  
 
@@ -105,13 +105,13 @@ public abstract class service_adresse implements InterfaceService<Adresse> {
     public List<Adresse> findById(int idAdresseU) {
         List<Adresse> adresses = new ArrayList<>();
         try {
-            String sql = "select * from adresse where idAdresseU='"+idAdresseU+"'";
+            String sql = "select * from adresse where id='"+idAdresseU+"'";
             Statement ste = cnx.createStatement();
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
-                Adresse a = new Adresse(s.getInt("idAdresseU"),s.getInt("numPoste"),
-                       s.getString("region"), s.getString("cité"),s.getString("rue"));
+                Adresse a = new Adresse(s.getInt("id"),s.getInt("numposte"),
+                       s.getString("region"), s.getString("cite"),s.getString("rue"));
                 adresses.add(a);
  
           

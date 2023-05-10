@@ -131,7 +131,7 @@ FileInputStream inputstream;
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("fill all the cases");
+           alert.setContentText("les champs sont obligatoire !");
            alert.showAndWait();
         }else{
       try{
@@ -183,7 +183,7 @@ FileInputStream inputstream;
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("Please select a station from the table");
+           alert.setContentText("s'il vous plait selectionnez une station !");
            alert.showAndWait();
         }else{
         Station s= new Station();
@@ -238,7 +238,7 @@ FileInputStream inputstream;
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("Please select a station from the table");
+           alert.setContentText("s'il vous plait selectionnez une station !");
            alert.showAndWait();
         }else{
         
@@ -294,7 +294,7 @@ int x=Integer.parseInt(ifid.getText());
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("Fill the case");
+           alert.setContentText("les champs sont obligatoire !");
            alert.showAndWait();
         }else{
              String nomS = TextRechercher.getText();

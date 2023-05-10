@@ -21,7 +21,7 @@ public class Reclamation {
     private String prenom ;
     private LocalDate dater ; 
     private String descrec ; 
-    private User user ; 
+    private User user = new User() ; 
    
     
 
@@ -73,11 +73,18 @@ public class Reclamation {
         this.user = user;
     }
     public int getIdU() {
-        return this.user.getIdU();
+        return this.getUser().getIdU();
     }
     public void setIdU(int idU) {
-       this.user.setIdU(idU);
+       this.getUser().setIdU(idU);
 }
+    public String getEmailU(){
+    return this.getEmailU(); 
+    }
+      public String getImagePU() {
+        return this.getImagePU();
+    }
+    
     public String getNom() {
         return nom;
     }

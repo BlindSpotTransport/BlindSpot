@@ -89,7 +89,7 @@ public class AjouterCircuitController implements Initializable {
             Alert alert = new Alert (Alert.AlertType.ERROR);  
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("fill all the case");
+           alert.setContentText("les champs sont obligatoire !");
            alert.showAndWait();
         }else{
         Circuit c= new Circuit();
@@ -116,7 +116,7 @@ public class AjouterCircuitController implements Initializable {
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("Please select a circuit from the table");
+           alert.setContentText("s'il vous plait selectionnez un circuit !");
            alert.showAndWait();
         }else{
         
@@ -142,7 +142,7 @@ public class AjouterCircuitController implements Initializable {
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("Please select a circuit from the table");
+           alert.setContentText("s'il vous plait selectionnez un circuit !");
            alert.showAndWait();
         }else{
         Circuit c= new Circuit();

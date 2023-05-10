@@ -16,5 +16,5 @@ public interface IServiceRepReclam <T> {
     public  List<T> afficher_repreclamation (); 
     public void supprimer_repreclamation(T t);
     public int compter_repreclam();
-    
+    public void modifier_repreclamation(T t);
 }

@@ -149,11 +149,11 @@ public class AjouterAlerteController implements Initializable {
     // metier Calandrier ki yabda date lyoum 
         public void sendcREALtIME() {
         try {
-            String sql = "select * from utilisateur WHERE  roleU ='client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
+            String sql = "select * from utilisateur WHERE  roleu ='Client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
             Statement ste = cnx.createStatement();
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
-                User u = new User(s.getInt("idU"),s.getString("nomU"),s.getString("prenomU"),s.getString("emailU"));
+                User u = new User(s.getInt("id"),s.getString("nomu"),s.getString("prenomu"),s.getString("email"));
                 this.clients.add(u);    
             }
                         //if(ddebldalerte.getValue().compareTo(today)==0){
@@ -197,8 +197,8 @@ public class AjouterAlerteController implements Initializable {
             getQuery();
             insert();
             //clean();
-            sendcREALtIME();
-            notification.sms("Type:"+this.typeAlerte+"\n"+"Description:"+this.descldalerte.getText());
+           sendcREALtIME();
+           // notification.sms("Type:"+this.typeAlerte+"\n"+"Description:"+this.descldalerte.getText());
             
             
                     

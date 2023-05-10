@@ -25,9 +25,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.services.UsersSession;
 import tn.esprit.services.service_user;
-import static tn.esprit.services.service_user.encryptMdp;
+//import static tn.esprit.services.service_user.encryptMdp;
 //import static services.service_user.cUserRow;
 import tn.esprit.tools.MaConnection;
 
@@ -71,9 +72,10 @@ public RecupererMdpController(){
         
        try { 
       if(Random1.equals(message)){
-          
-        String encryptedPassword = encryptMdp(mdp);
- String sql = "UPDATE utilisateur SET mdpU=? WHERE emailU=?";
+                 String encryptedPassword = BCrypt.hashpw(mdp, BCrypt.gensalt());
+
+        //String encryptedPassword = encryptMdp(mdp);
+ String sql = "UPDATE utilisateur SET password=? WHERE email=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
           ste.setString(1,encryptedPassword);
@@ -88,7 +90,7 @@ public RecupererMdpController(){
         String Body="Bonjour Voici votre nouveau mot de passe"+" "+mdp;
         ps.sendEmail(UsersSession.getEmail(), Objet,Body);
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("profil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceLogin.fxml"));
          Parent root;
           
               root = loader.load();
@@ -127,7 +129,7 @@ int g=0;
       
               
                   labelNotif.setText("Email valid,a verification email is sent");
-                 String sql = "select * from utilisateur where emailU=?";
+                 String sql = "select * from utilisateur where email=?";
                 PreparedStatement ste = cnx.prepareStatement(sql);
                   ste.setString(1,email);
                   ResultSet s = ste.executeQuery();
@@ -135,7 +137,7 @@ int g=0;
                      UserRow=s;
                      UsersSession.addUserLogin(UserRow);
                  System.out.println(UsersSession.getIdU());
-                  g=s.getInt("telephoneU"); 
+                  g=s.getInt("telephoneu"); 
                    str2=String.valueOf(g);
                    Num=str.concat(str2); 
                  System.out.println(Num);

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tn.esprit.gui;
 
 import tn.esprit.services.NotificationService;
@@ -77,33 +73,33 @@ public class AjouterOffreController implements Initializable {
         // TODO
     } 
     
-  
-            public void sendcREALtIME() {
-        try {
-            String sql = "select * from utilisateur WHERE  roleU ='client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
-            Statement ste = cnx.createStatement();
-            ResultSet s = ste.executeQuery(sql);
-            while (s.next()) {
-                User u = new User(s.getInt("idU"),s.getString("nomU"),s.getString("prenomU"),s.getString("emailU"));
-                this.clients.add(u);    
-            }
-                        //if(ddebldalerte.getValue().compareTo(today)==0){
-                            for (User u : clients) {   
-                        msg_envoyer.envoyer(titre,u.getEmailU(),description);
-                        }
-                        
-                          
-                        
-            
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        
-        
-        
-    
-}
+//  
+//            public void sendcREALtIME() {
+//        try {
+//            String sql = "select * from utilisateur WHERE  roleU ='client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
+//            Statement ste = cnx.createStatement();
+//            ResultSet s = ste.executeQuery(sql);
+//            while (s.next()) {
+//                User u = new User(s.getInt("idU"),s.getString("nomU"),s.getString("prenomU"),s.getString("emailU"));
+//                this.clients.add(u);    
+//            }
+//                        //if(ddebldalerte.getValue().compareTo(today)==0){
+//                            for (User u : clients) {   
+//                        msg_envoyer.envoyer(titre,u.getEmailU(),description);
+//                        }
+//                        
+//                          
+//                        
+//            
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        
+//        
+//        
+//        
+//    
+//}
     
     @FXML
     private void save(MouseEvent event) {
@@ -124,7 +120,8 @@ public class AjouterOffreController implements Initializable {
             getQuery();
             insert();
             clean();
-            sendcREALtIME();
+        
+//            sendcREALtIME();
             
          
             //notif.NotificationALL();
@@ -137,14 +134,15 @@ public class AjouterOffreController implements Initializable {
 
         if (update == false) {
             
-            query = "INSERT INTO `evenement`(`titre_eve`, `desc_eve`, `date_deb_eve`, `date_fin_eve`) VALUES (?,?,?,?)";
+            query = "INSERT INTO offre (titre_eve, desc_eve, date_deb_eve, date_fin_eve) VALUES (?,?,?,?)";
 
         }else{
-            query = "UPDATE `evenement` SET "
+            query = "UPDATE offre SET "
                     + "`titre_eve`=?,"
                     + "`desc_eve`=?,"
                     + "`date_deb_eve`=?,"
-                    + "`date_fin_eve`= ? WHERE id_eve = '"+Offreid+"'";
+                    + "`date_fin_eve`= ? WHERE id_offre_eve = '"+Offreid+"'";
+                            
         }
 
     }

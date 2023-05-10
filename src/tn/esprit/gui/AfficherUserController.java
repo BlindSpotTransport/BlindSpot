@@ -9,6 +9,7 @@ import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabe
 import tn.esprit.entity.User;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -123,11 +124,11 @@ public class AfficherUserController implements Initializable {
         Statement ste;
         try {
             ste = cnx.createStatement();
-            String SQLgetIDAdress = "SELECT idU from utilisateur where   emailU='" +text+"' ";
+            String SQLgetIDAdress = "SELECT id from utilisateur where   email='" +text+"' ";
         m = ste.executeQuery(SQLgetIDAdress);
           ObservableList<Integer> IDU = FXCollections.observableArrayList();
             while (m.next()) {
-            int IDD_A = m.getInt("idU");
+            int IDD_A = m.getInt("id");
                 IDU.add(IDD_A);
               ID = String.valueOf(IDU.get(0));
             }
@@ -152,6 +153,7 @@ public class AfficherUserController implements Initializable {
 
     @FXML
     private void ModiferAction(ActionEvent event) {
+        String rolesJson = "['ROLE_USER']";
     if (table.getSelectionModel().getSelectedItem()== null ){
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -166,15 +168,56 @@ public class AfficherUserController implements Initializable {
         b.setPrenomU(prenomflied.getText());
         b.setEmailU(emailfield.getText());
         b.setRoleU(roleflied.getText());
+ 
+
+         // Assuming you have the role stored in this variable
+         // Assuming you have the ID stored in this variable
+
+        // Create the JSON array as a string
+        try {
+        if(b.getRoleU().equals("Client")||b.getRoleU().equals("Chauffeur")){
+        rolesJson = "['ROLE_USER']";
+        }else{
+         rolesJson = "['ROLE_ADMIN']";
+        }
+        // Construct the SQL query
+        String sql = "UPDATE utilisateur SET roles = ? WHERE id = ?";
+
+            // Connect to the database
+            Connection cnxx = MaConnection.getInstance().getCnx();
+            // Create a prepared statement with parameter placeholders
+            PreparedStatement statement = cnxx.prepareStatement(sql);
+
+            // Set the JSON array as a parameter
+            statement.setString(1, rolesJson);
+
+            // Set the ID as a parameter
+            statement.setInt(2, x);
+
+            // Execute the update
+            int rowsAffected = statement.executeUpdate();
+
+            System.out.println(rowsAffected + " row(s) updated.");
+
+            // Close the statement and connection
+
+         //b.setRoles(ROLESFIELD.getText());
          String nom=b.getNomU();
          String prenom=b.getPrenomU();
          String role=b.getRoleU();
+         System.out.println(role);
          String email=b.getEmailU();
          int phone;
         su.modifier2(nom,prenom,role,email,b);
-        Refresh();
        
-    }
+        
+        Refresh();
+         } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+       
+}
     
     }
+
 

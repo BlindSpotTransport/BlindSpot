@@ -40,16 +40,14 @@ public class PrincipalePageController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                if(TypeAbnController.BoooleanAbn == true){
-                         try {
-            AnchorPane view = FXMLLoader.load(getClass().getResource("AjouterAbn.fxml"));
+        try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("Profil.fxml"));
             //System.out.print(view);
             borderPane.setCenter(view);
             
         } catch (IOException ex) {
             Logger.getLogger(PrincipalePageClientController.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-                }
+        }
     }    
     
     @FXML

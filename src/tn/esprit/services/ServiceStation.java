@@ -57,7 +57,7 @@ String cs;
                     Alert alert = new Alert (Alert.AlertType.CONFIRMATION);  
             alert.setTitle("Succes");
             alert.setHeaderText(null);
-           alert.setContentText("Station added successfully");
+           alert.setContentText("Station ajoutée avec succée !");
            alert.showAndWait();
                    
                 } catch (SQLException ex) {
@@ -65,7 +65,7 @@ String cs;
              Alert alert = new Alert (Alert.AlertType.ERROR);  
             alert.setTitle("Error");
             alert.setHeaderText(null);
-           alert.setContentText("Circuit already exist");
+           alert.setContentText("Circuit deja existe !");
            alert.showAndWait();
                 }
             }
@@ -165,7 +165,7 @@ String cs;
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION);  
             alert.setTitle("Succes");
             alert.setHeaderText(null);
-           alert.setContentText("Station deleted successfully");
+           alert.setContentText("Station a ete supprimer avec succée !");
            alert.showAndWait();
            
         } catch (SQLException ex) {
@@ -190,7 +190,7 @@ String cs;
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION);  
             alert.setTitle("Succes");
             alert.setHeaderText(null);
-           alert.setContentText("Station updated successfully");
+           alert.setContentText("Station a ete modifiée avec succes !");
            alert.showAndWait();
             
         } catch (SQLException ex) {

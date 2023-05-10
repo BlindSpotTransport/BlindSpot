@@ -20,7 +20,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class Mail {
     final String username = "nawres.lakhal@esprit.tn";
- final String password = "223JFT1613";
+ final String password = "kpkclfpgwusmvayd";
  private Session session;
  
  

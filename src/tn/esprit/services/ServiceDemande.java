@@ -41,7 +41,7 @@ public class ServiceDemande implements InterfaceDemande{
 
                 try {
 
-                    String req = "insert into demande(nomC, moyen,hd,ha, permis, EmailC) VALUES (?,?,?,?,?,?)";
+                    String req = "insert into demande(nomC, moyen,dated, datea, permis, EmailC) VALUES (?,?,?,?,?,?)";
                     PreparedStatement ps = cnx.prepareStatement(req);
                     ps.setString(1, d.getNomC());
                     ps.setString(2, d.getMoyen());
@@ -94,8 +94,8 @@ public class ServiceDemande implements InterfaceDemande{
             while (rs.next()) {
 
                 Demande d = new Demande(rs.getInt(1),
-                        rs.getString("nomC"), rs.getString("moyen"), rs.getString("HD"),
-                rs.getString("HA"), rs.getString("permis"), rs.getString("EmailC"));
+                        rs.getString("nomC"), rs.getString("moyen"), rs.getString("dated"),
+                rs.getString("datea"), rs.getString("permis"), rs.getString("EmailC"));
                 demandes.add(d);
 
             }

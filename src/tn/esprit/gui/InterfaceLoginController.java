@@ -156,11 +156,11 @@ private void Login (ActionEvent event) throws Exception{
            System.out.println("captcha valid");
            String email=txt_email_up.getText();
            String password=txt_password_up.getText();
-           boolean result = ps.LoginUser(email, password);
+           boolean result = ps.loginUser(email, password);
             if(result)
         {
            
-        if(UsersSession.getRole().equals("admin")){
+        if(UsersSession.getRole().equals("Admin")){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PrincipalePage.fxml"));
             
     Parent root = loader.load();
@@ -172,7 +172,7 @@ private void Login (ActionEvent event) throws Exception{
     stage.setScene(scene);
     stage.show();
         }
-        else if(UsersSession.getRole().equals("client")){
+        else if(UsersSession.getRole().equals("Client")){
                           FXMLLoader loader = new FXMLLoader(getClass().getResource("PrincipalePageClient.fxml"));
             
     Parent root = loader.load();
@@ -197,6 +197,8 @@ private void Login (ActionEvent event) throws Exception{
     stage.show();
         }
         }
+            String message1="You just signed in :";
+//            ps.sendEmail(UsersSession.getEmail(), message1, "Welcome to our Application we are HAPPY 😊 TO SEE YOU AGAIN\n TAKTAK is providing no offers don't hesitate to check them!!! ");
 
 }
 
@@ -206,6 +208,7 @@ private void Login (ActionEvent event) throws Exception{
 }
     @FXML
   private void SignUp(ActionEvent event) throws SQLException {
+      boolean TEST=false;
       try {
       cnx = MaConnection.getInstance().getCnx(); 
       service_user ps =new service_user() {
@@ -245,7 +248,8 @@ private void Login (ActionEvent event) throws Exception{
                     alert.showAndWait();
                     return;
         }
-                
+           String message1="Welcome TO TakTak Transport :";
+//                 ps.sendEmail(UsersSession.getEmail(), message1, "Welcome to our Application we are HAPPY 😊 TO SEE YOU, TAKTAK is providing no offers don't hesitate to check them!!! ");     
             
         if (ps.validerEmail(id_emailU.getText())==false) {
                
@@ -270,7 +274,7 @@ private void Login (ActionEvent event) throws Exception{
         a.setRue(rue_id.getValue());
         a.setNumPoste(poste_id.getValue());
         
-         String SQLgetIDAdress = "SELECT idAdresseU from adresse where region='" + region_Id.getValue() + "' AND cité='" +cité_id.getValue() + "' AND rue='" +rue_id.getValue() + "' ";
+         String SQLgetIDAdress = "SELECT id from adresse where region='" + region_Id.getValue() + "' AND cite='" +cité_id.getValue() + "' AND rue='" +rue_id.getValue() + "' ";
          Statement ste= cnx.createStatement();   
          ResultSet m,s;
         
@@ -278,7 +282,7 @@ private void Login (ActionEvent event) throws Exception{
         
             ObservableList<Integer> IDAdresse = FXCollections.observableArrayList();
             while (m.next()) {
-                int IDD_A = m.getInt("idAdresseU");
+                int IDD_A = m.getInt("id");
                 IDAdresse.add(IDD_A);
             } 
             if (IDAdresse.isEmpty()){
@@ -286,7 +290,7 @@ private void Login (ActionEvent event) throws Exception{
              s =ste.executeQuery(SQLgetIDAdress);
               ObservableList<Integer> ID_A = FXCollections.observableArrayList();
             while (s.next()) {
-                int IDD = s.getInt("idAdresseU");
+                int IDD = s.getInt("id");
                 ID_A.add(IDD);
                  int FINAL_ID = ID_A.get(0);
                  a.setIdAdresse(FINAL_ID);
@@ -304,6 +308,7 @@ private void Login (ActionEvent event) throws Exception{
             String Cin=CinU.getText();
             
   if (ps.validerCin(Tel)&&ps.validerCin(Cin)&&ps.validateString(nom) && ps.validateString(prenom)){
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         p.setNomU(id_nomU.getText());
         p.setPrenomU(id_prenomU.getText());
         p.setImagePU(cImageUrl.getText());
@@ -324,7 +329,7 @@ private void Login (ActionEvent event) throws Exception{
          Connection cnx; 
          String email=id_emailU.getText();
          cnx = MaConnection.getInstance().getCnx();
-         String sql = "Select* from utilisateur where emailU=? ";
+         String sql = "Select* from utilisateur where email=? ";
         PreparedStatement pst = cnx.prepareStatement(sql);
          pst.setString(1,email);
         rs = pst.executeQuery();
@@ -382,7 +387,7 @@ private void Login (ActionEvent event) throws Exception{
          JFrame frame = new JFrame("JOptionPane showMessageDialog example");
          frame.setAlwaysOnTop(true);    
         cnx = MaConnection.getInstance().getCnx(); 
-    type_up.getItems().addAll("client","chauffeur");
+    type_up.getItems().addAll("Client","Chauffeur");
     region_Id.getItems().addAll("Tunis", "Manouba","Ariana","Ben arous");
     rue_id.getItems().addAll("Avenue de Carthage", "Avenue de France","Avenue de Paris","Avenue de la Liberté","Avenue des États-Unis","Avenue Farhat-Hached","Avenue Habib-Bourguiba","Avenue Habib-Thameur","Avenue Hédi-Chaker","Avenue Mohammed-V");
     poste_id.getItems().addAll(1111, 2080,2037,2027,2091,2050);}
@@ -436,7 +441,7 @@ private void Login (ActionEvent event) throws Exception{
 //            if (rst.next()) {
 //       String s = rst.getString("nomU");
 ////EnvoyerEmail e = new EnvoyerEmail(){};
-//    String str=rst.getString("mdpU");
+//    String str=rst.getString("password");
 //    String firstFiveChars = str.substring(0,5);
 //    ps.sendEmail(txt_email_up.getText(),firstFiveChars,s);
 //}

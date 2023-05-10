@@ -90,6 +90,8 @@ public class GererAlerteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         loadDate();
         
         
@@ -156,7 +158,7 @@ public class GererAlerteController implements Initializable {
 
     @FXML
     private void refresh(MouseEvent event) {
-        
+        refreshtable();
         
     }
     

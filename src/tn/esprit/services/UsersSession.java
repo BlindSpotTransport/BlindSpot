@@ -171,18 +171,18 @@ public class UsersSession {
 //            pst.setInt(1, userRow.getInt("id"));
 //            pst.execute();
 //            pst.close();
-            System.out.println("Added user session!");
-            cin=userRow.getInt("cinU");
-            idU = userRow.getInt("idU");
-            tel=userRow.getInt("telephoneU");
+           
+            cin=userRow.getInt("cinu");
+            idU = userRow.getInt("id");
+            tel=userRow.getInt("telephoneu");
             System.out.println("Added Id user session!");
-            email = userRow.getString("emailU");
-            role = userRow.getString("RoleU");
-            name = userRow.getString("nomU");
-            lastname = userRow.getString("prenomU");
-            password = userRow.getString("mdpU");
-            profilepicture = userRow.getString("imagePU");
-            abonneUser = userRow.getInt("abonnéU");
+            email = userRow.getString("email");
+            role = userRow.getString("roleu");
+            name = userRow.getString("nomu");
+            lastname = userRow.getString("prenomu");
+            password = userRow.getString("password");
+            profilepicture = userRow.getString("imagepu");
+            abonneUser = userRow.getInt("abonneu");
             
 
         } catch (Exception e) {

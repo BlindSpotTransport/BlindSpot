@@ -76,9 +76,9 @@
       <TableView fx:id="table" layoutX="419.0" layoutY="207.0" onMouseClicked="#getSelected" prefHeight="271.0" prefWidth="476.0">
         <columns>
           <TableColumn fx:id="IDCol" prefWidth="75.0" text="ID" visible="false" />
-          <TableColumn fx:id="nomCol" prefWidth="148.0" style="-fx-background-color: #EBF5FB;" text="Nom" />
-            <TableColumn fx:id="adresseCol" prefWidth="182.4000244140625" style="-fx-background-color: #EBF5FB;" text="Adresse" />
-            <TableColumn fx:id="circuitCol" prefWidth="145.60009765625" style="-fx-background-color: #EBF5FB;" text="Circuit" />
+          <TableColumn fx:id="nomCol" prefWidth="148.0" style="-fx-background-color: #EBF5FB; -fx-text-fill: #03090d;" text="Nom" />
+            <TableColumn fx:id="adresseCol" prefWidth="182.4000244140625" style="-fx-background-color: #EBF5FB; -fx-text-fill: #03090d;" text="Adresse" />
+            <TableColumn fx:id="circuitCol" prefWidth="145.60009765625" style="-fx-background-color: #EBF5FB; -fx-text-fill: #03090d;" text="Circuit" />
         </columns>
       </TableView>
       <Label layoutX="43.0" layoutY="38.0" text="ID:" visible="false" />

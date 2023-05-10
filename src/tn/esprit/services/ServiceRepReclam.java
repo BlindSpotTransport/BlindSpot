@@ -105,6 +105,21 @@ public class ServiceRepReclam implements IServiceRepReclam<RepReclamation>{
         }
         return i;
     }
+    @Override
+    public void modifier_repreclamation(RepReclamation rp) {
+     
+        try {
+            PreparedStatement pst = cnx.prepareStatement("Update RepReclamation set reponse=? where idrep = ? ");
+            pst.setString(1, rp.getReponse());
+            pst.setInt(2, rp.getIdrep());
+            pst.executeUpdate();
+            System.out.println("Répréclmation modifiée!");
+           
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+ 
+    }  
     }
    
  

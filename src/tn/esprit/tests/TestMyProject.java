@@ -93,7 +93,7 @@ public class TestMyProject {
         
        String password,encryption;
        password="CuVn9Bo6LO";
-            System.out.println(encryption=service_user.encryptMdp(password));
+//            System.out.println(encryption=service_user.encryptMdp(password));
    //-------------------------------------------------------------------------------------------------------------------------------------------------//
 
         PlanningService ps1 = new PlanningService();

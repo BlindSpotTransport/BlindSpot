@@ -20,8 +20,9 @@ import javax.mail.internet.MimeMessage;
  
 public class EnvoyerEmail {
  final String username = "salsabil.hamraoui@esprit.tn";
- final String password = "223JFT1907";
+ final String password = "vwlbhiwggyoscwaj";
  private Session session;
+ 
  // methode 
 public void envoyer(String subject,String reciever,String msg) {
 // Etape 1 : Création de la session
@@ -55,9 +56,6 @@ Transport.send(message);
 throw new RuntimeException(e);
 } 
 }
-
-
-
 
 //Etape 4 : Tester la méthode
 public static void main(String[] args) {

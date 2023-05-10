@@ -51,7 +51,7 @@ public class NotificationService   {
     }
     
     //get all users 
-    //SELECT * FROM `utilisateur` WHERE 1
+    //SELECT * FROM utilisateur WHERE 1
     
     //get all events 
     public void getEvents() {
@@ -101,12 +101,12 @@ public class NotificationService   {
        
   
         try {
-            String sql = "select * from utilisateur WHERE roleU = 'chauffeur' or roleU = 'client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
+            String sql = "select * from utilisateur WHERE roleu = 'chauffeur' or roleu = 'client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
             Statement ste = cnx.createStatement();
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
-                User u = new User(s.getInt("idU"),s.getString("nomU"),s.getString("prenomU"),s.getString("emailU"));
+                User u = new User(s.getInt("id"),s.getString("nomu"),s.getString("prenomu"),s.getString("email"));
                 this.users.add(u);
                 
             }
@@ -118,12 +118,12 @@ public class NotificationService   {
 }
     public void getOnlyClients() {
         try {
-            String sql = "select * from utilisateur WHERE  roleU ='client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
+            String sql = "select * from utilisateur WHERE  roleu ='client' ";   //	enum('admin', 'chauffeur', 'client', 'partenaire')	
             Statement ste = cnx.createStatement();
             ResultSet s = ste.executeQuery(sql);
             while (s.next()) {
 
-                User u = new User(s.getInt("idU"),s.getString("nomU"),s.getString("prenomU"),s.getString("emailU"));
+                User u = new User(s.getInt("id"),s.getString("nomu"),s.getString("prenomu"),s.getString("email"));
                 this.clients.add(u);
                 
             }
@@ -232,8 +232,4 @@ public class NotificationService   {
     
 
     
-} 
-    
-    
-   
-
+}

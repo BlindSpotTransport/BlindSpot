@@ -235,11 +235,11 @@ public class ReservationPage1Controller implements Initializable {
                             displayImage.setImage(imagesArray[1]);/*setting array image to Third Image*/
                         }
                         
-                        if(UsersSession.getAbonneUser() == 1 ){
+                       if(UsersSession.getAbonneUser() == 1 ){
                                 
                         setText("depart : " + name.getCir().getDepartC() + " à " + name.getCir().getArriveeC() + " Numéro " + name.getMoy().getNumMoy() + " Date de départ : " + name.getDateD() + " Date d'arriver : " + name.getDateA());
-                        }
-                        else{
+                       }
+                      else{
                         setText("depart : " + name.getCir().getDepartC() + " à " + name.getCir().getArriveeC() + " Numéro " + name.getMoy().getNumMoy() + " Date de départ : " + name.getDateD() + " Date d'arriver : " + name.getDateA() + " prix : " + name.getPrix());
 
                         }
@@ -325,7 +325,6 @@ if(listeP.isEmpty()){
 
             //recuperer prix in prixx 
             int prixx = Integer.parseInt(prix);
-
             Reservation R = new Reservation(UsersSession.getCin(), prixx, TimeNow, t1, t2, Type, NUM);
             rs.ajouter(R);
 
@@ -334,11 +333,12 @@ if(listeP.isEmpty()){
             int Ticket = rs.GetEndTicket();
 
             SendMail sm = new SendMail();
+            System.out.println(UsersSession.getEmail());
             sm.sendEmail(UsersSession.getEmail(), Ticket);
 
             //envoyer sms 
             SendSms sms = new SendSms();
-            //sms.sendSms(Ticket,"+216"+u1.getTelephoneU());
+//            sms.sendSms(Ticket,"+216"+UsersSession.getTel());
 
         } catch (ParseException ex) {
             Logger.getLogger(ReservationPage1Controller.class.getName()).log(Level.SEVERE, null, ex);
